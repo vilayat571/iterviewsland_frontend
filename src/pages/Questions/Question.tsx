@@ -29,7 +29,7 @@ const Question = () => {
         className={`text-white ${
           loading && "h-screen flex justify-center items-center"
         } 
-          xl:w-11/12 lg:w-11/12 md:w-full sm:w-full
+          xl:w-4/5 lg:w-4/5 md:w-full sm:w-full
         mx-auto relative  mt-6`}
       >
         {loading ? (

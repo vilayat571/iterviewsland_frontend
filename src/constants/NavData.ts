@@ -1,23 +1,40 @@
-export const hrefsData = [
-    {
-      id: 1,
-      text: "Əsas səhifə",
-      link: "/",
-    },
-    {
-      id: 2,
-      text: "Suallar",
-      link: "/suallar",
-    },
-    {
-      id: 3,
-      text: "Qanunlar & Sənədlər",
-      link: "/qanunvericilik",
-    },
-    {
-      id: 4,
-      text: "Əlaqə",
-      link: "/elaqe",
-    },
-  ];
+export interface INavData {
+  id: number;
+  text: string;
+  isDropdown?: boolean;
+  isActive: boolean;
+  link: string;
+}
+
+export const hrefsData: INavData[] = [
+  {
+    id: 1,
+    text: "Yol xəritələri",
+    isDropdown: false,
+    isActive: true,
+    link: "/",
+  },
+  {
+    id: 2,
+    text: "Bloqlar",
+    isDropdown: false,
+    isActive: false,
+    link: "/",
+  },
+
+  {
+    id: 4,
+    text: "Dokumentasiyalar",
+    isDropdown: false,
+    isActive: true,
+    link: "/",
+  },
+  {
+    id: 5,
+    text: "Müsahibə",
+    isDropdown: true,
+    isActive: true,
+    link: "/suallar",
+  },
   
+];
