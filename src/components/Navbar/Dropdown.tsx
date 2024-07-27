@@ -17,9 +17,15 @@ const Dropdown: React.FC<IDropdown> = ({ text, mode, setMode }) => {
         <div
           className={` text-black text-[15px] rounded text-left
                absolute mt-8 z-1 bg-[#fff]  flex-col items-start gap-2 ${
-                 !mode ? "flex" : "hidden"
+                 mode ? "flex" : "hidden"
                }`}
         >
+          <Link
+            className=" hover:bg-orange-500 px-4 w-full rounded   whitespace-nowrap py-3 hover:text-white"
+            to="/suallar"
+          >
+            Müsahibə sualları
+          </Link>
           <Link
             className=" hover:bg-orange-500 px-4 w-full rounded   whitespace-nowrap py-3 hover:text-white"
             to="/"

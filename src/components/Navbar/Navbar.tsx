@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Logo from "../../atoms/Navbar/Logo";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { hrefsData, INavData } from "../../constants/NavData";
 import Dropdown from "./Dropdown";
@@ -8,6 +8,8 @@ import { useState } from "react";
 
 const Navbar = () => {
   const [mode, setMode] = useState<boolean>(false);
+
+  const [isSidebar, setIsSidebar] = useState(false);
 
   return (
     <div
@@ -18,12 +20,52 @@ const Navbar = () => {
       <button
         className="cursor-pointer
       xl:hidden sm:block md:block lg:hidden"
+        onClick={() => setIsSidebar(!isSidebar)}
       >
         <FontAwesomeIcon
           icon={faBars}
           className="text-xl text-[#fff] px-2 rounded-[3px] py-[6px] bg-[#ff790bee] relative right-2"
         />
       </button>
+
+      {isSidebar && (
+        <div className=" fixed gap-3 flex flex-col px-4 py-4 top-0 w-full h-screen z-10 left-0 bg-[#161515]">
+          <div className="flex items-center my-4 justify-between px-0">
+          
+            <Logo />
+            <button
+              className="cursor-pointer
+      xl:hidden sm:block md:block lg:hidden"
+              onClick={() => setIsSidebar(!isSidebar)}
+            >
+              <FontAwesomeIcon
+                icon={faTimes}
+                className="text-xl text-[#fff] px-2 rounded-[3px] py-[6px] bg-[#ff790bee] relative "
+              />
+            </button>
+          </div>
+          {hrefsData.map((item: INavData) => {
+            return (
+              <Link
+                className="text-lg tracking-wider"
+                key={item.id}
+                onClick={() =>
+                  !item.isActive &&
+                  alert("Bu hissə tam hazır deyil. Üzür istəyirik!")
+                }
+                to={!item.isDropdown ? item.link : ""}
+              >
+                {item.isDropdown ? (
+                  <Dropdown text={item.text} mode={mode} setMode={setMode} />
+                ) : (
+                  item.text
+                )}
+              </Link>
+            );
+          })}
+        </div>
+      )}
+
       <div
         className=" tracking-widest text-[#f1efef]
       xl:flex lg:flex md:hidden sm:hidden
@@ -37,7 +79,7 @@ const Navbar = () => {
                 !item.isActive &&
                 alert("Bu hissə tam hazır deyil. Üzür istəyirik!")
               }
-              to={item.link}
+              to={!item.isDropdown ? item.link : ""}
             >
               {item.isDropdown ? (
                 <Dropdown text={item.text} mode={mode} setMode={setMode} />
