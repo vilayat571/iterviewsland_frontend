@@ -72,7 +72,7 @@ const Question = () => {
                 </div>
               </div>
             ) : (
-              <div className="w-full text-3xl h-[400px] border flex justify-center items-center">
+              <div className="w-full text-2xl h-[400px]  flex justify-center items-center">
                 Bu kateqoriya üzrə suallar hələ əlavə edilməyib!
               </div>
             )}
