@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import Logo from "../../atoms/Navbar/Logo";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Navbar = () => {
   return (
@@ -8,6 +10,12 @@ const Navbar = () => {
     py-3 xl:my-8 lg:my-8 md:my-4 sm:my-4 rounded-full text-[#fff] xl:px-12 lg:px-12 md:px-3 sm:px-2 flex justify-between items-center  "
     >
       <Logo />
+      <button className="cursor-pointer">
+      <FontAwesomeIcon icon={faBars}
+      className="text-xl text-[#fff] px-2 rounded-[3px] py-[6px] bg-[#ff790bee] relative right-2"
+      />
+
+      </button>
       <div className=" tracking-widest text-[#f1efef]
       xl:flex lg:flex md:hidden sm:hidden
       items-center gap-5 text-base relative r-4">
