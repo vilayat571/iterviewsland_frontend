@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import Layout from "../../Layout/Layout";
 import { useEffect, useState } from "react";
+import { url } from "../../constants/Apiurl";
 
 export interface IQuestions {
   title: string;
@@ -15,8 +16,8 @@ const Question = () => {
   const { category } = useParams();
 
   useEffect(() => {
-    const url = `http://localhost:3000/api/v1/questions/${category}`;
-    fetch(url)
+    const urlApp = `${url}/questions/${category}`;
+    fetch(urlApp)
       .then((res) => res.json())
       .then((data) => setQuestions(data.questions))
       .then(() => setLoading(false));
@@ -27,22 +28,35 @@ const Question = () => {
       <div
         className={`text-white ${
           loading && "h-screen flex justify-center items-center"
-        } w-3/4 mx-auto relative  mt-12`}
+        } 
+          xl:w-11/12 lg:w-11/12 md:w-full sm:w-full
+        mx-auto relative  mt-6`}
       >
         {loading ? (
           <div className="text-center text-white text-3xl">Yüklənir..</div>
         ) : (
           <>
             {questions?.length ? (
-              <div className="flex flex-col  px-12 mt-10">
-                <p className="text-3xl text-white mb-6 text-center">
+              <div
+                className="flex flex-col  
+              xl:px-12 lg:px-12 md:px-3 sm:px-5
+               mt-10"
+              >
+                <p
+                  className="
+                xl:text-3xl lg:text-3xl md:text-2xl sm:text-2xl
+                text-white mb-6 
+                xl:text-center lg:text-center md:text-left sm:text-left"
+                >
                   {category} müsahibə sualları : {questions?.length} ədəd
                 </p>
                 <div className="grid grid-cols-1 gap-3 ">
                   {questions?.map((question: IQuestions) => {
                     return (
                       <p
-                        className="px-4 py-3 flex justify-between items-center border-b border-[#5c5c5c] col-span-1  text-[#d1d1d1]
+                        key={Math.random()}
+                        className="px-0 py-3 flex justify-between items-start relative bottom-2 border-b
+                         border-[#5c5c5c] col-span-1  text-[#d1d1d1]
             rounded"
                       >
                         <span>
