@@ -1,7 +1,7 @@
 
 const IntroTextMain = () => {
   return (
-    <div className="mt-8 mb-24 px-4">
+    <div className="mt-8  px-4">
     <p
       className="text-[#f1f1f1] 
 xl:text-center lg:text-center md:text-left sm:text-left 

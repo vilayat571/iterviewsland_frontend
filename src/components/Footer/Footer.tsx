@@ -10,7 +10,7 @@ const Footer = () => {
    xl:px-12  lg:px-12  md:px-4 sm:px-2 
    xl:w-11/12 lg:w-11/12 md:w-full sm:w-full
     
-    pt-10 pb-4  font-semibold flex flex-col h-auto text-white mt-16 bg-[#161515] "
+    pt-10 pb-4  font-semibold flex flex-col h-auto text-white mt-16 "
     >
       <div
         className="grid gap-y-16
