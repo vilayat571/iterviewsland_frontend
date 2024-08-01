@@ -32,7 +32,6 @@ const Navbar = () => {
       {isSidebar && (
         <div className=" fixed gap-3 flex flex-col px-4 py-4 top-0 w-full h-screen z-10 left-0 bg-[#02050A]">
           <div className="flex items-center my-4 justify-between px-0">
-          
             <Logo />
             <button
               className="cursor-pointer
@@ -80,7 +79,7 @@ const Navbar = () => {
                 !item.isActive &&
                 alert("Bu hissə tam hazır deyil. Üzür istəyirik!")
               }
-              to={!item.isDropdown ? item.link : ""}
+              to={  item.isActive ? !item.isDropdown ? item.link : "" : ''}
             >
               {item.isDropdown ? (
                 <Dropdown text={item.text} mode={mode} setMode={setMode} />
@@ -91,9 +90,12 @@ const Navbar = () => {
           );
         })}
       </div>
-      <div className="xl:block md:hidden lg:block sm:hidden text-[#fff] bg-[#ff790bee]  px-5 py-[10px] rounded-sm">
+      <button 
+      onClick={()=>alert('Bu hissə tam hazır deyil. Üzür istəyirik!')}
+      className="xl:block md:hidden lg:block sm:hidden 
+      text-[#fff] bg-[#ff790bee]  px-5 py-[10px] rounded-sm">
         Daxil ol
-      </div>
+      </button>
     </div>
   );
 };

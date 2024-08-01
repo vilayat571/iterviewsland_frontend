@@ -13,7 +13,9 @@ const Question = () => {
   const [loading, setLoading] = useState<boolean>(true);
 
   const [questions, setQuestions] = useState<IQuestions[] | null>(null);
-  const { category } = useParams();
+
+
+  const {category}=useParams();
 
   useEffect(() => {
     const urlApp = `${url}/questions/${category}`;
@@ -21,6 +23,8 @@ const Question = () => {
       .then((res) => res.json())
       .then((data) => setQuestions(data.questions))
       .then(() => setLoading(false));
+
+      console.log(category)
   });
 
   return (

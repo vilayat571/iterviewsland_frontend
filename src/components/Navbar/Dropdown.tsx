@@ -21,29 +21,29 @@ const Dropdown: React.FC<IDropdown> = ({ text, mode, setMode }) => {
                }`}
         >
           <Link
-            className=" hover:bg-orange-500 px-4 w-full rounded   whitespace-nowrap py-3 hover:text-white"
-            to="/suallar"
+            className=" hover:bg-orange-500 px-4 w-full rounded text-left  whitespace-nowrap py-3 hover:text-white"
+            to="/"
           >
             Müsahibə sualları
           </Link>
-          <Link
-            className=" hover:bg-orange-500 px-4 w-full rounded   whitespace-nowrap py-3 hover:text-white"
-            to="/"
+          <button
+            onClick={() => alert("Bu hissə tam hazır deyil. Üzür istəyirik!")}
+            className=" hover:bg-orange-500 px-4 w-full rounded text-left  whitespace-nowrap py-3 hover:text-white"
           >
             Təcrübəni paylaş
-          </Link>
-          <Link
-            className=" hover:bg-orange-500 px-4 w-full rounded   whitespace-nowrap py-3 hover:text-white"
-            to="/"
+          </button>
+          <button
+            onClick={() => alert("Bu hissə tam hazır deyil. Üzür istəyirik!")}
+            className=" hover:bg-orange-500 px-4 w-full rounded text-left  whitespace-nowrap py-3 hover:text-white"
           >
             Təcrübə oxu
-          </Link>
-          <Link
-            className=" hover:bg-orange-500 px-4 w-full rounded   whitespace-nowrap py-3 hover:text-white"
-            to="/"
+          </button>
+          <button
+            onClick={() => alert("Bu hissə tam hazır deyil. Üzür istəyirik!")}
+            className=" hover:bg-orange-500 px-4 w-full rounded text-left  whitespace-nowrap py-3 hover:text-white"
           >
             Özünü sına
-          </Link>
+          </button>
         </div>
       </div>
     </>

@@ -7,7 +7,6 @@ export interface INavData {
 }
 
 export const hrefsData: INavData[] = [
-
   {
     id: 1,
     text: "Bloq",
@@ -15,21 +14,26 @@ export const hrefsData: INavData[] = [
     isActive: false,
     link: "/",
   },
-
   {
     id: 2,
+    text: "Müsahibə",
+    isDropdown: true,
+    isActive: true,
+    link: "/",
+  },
+  {
+    id: 3,
     text: "Dokumentasiya",
     isDropdown: false,
     isActive: false,
     link: "/",
   },
+
   {
-    id: 3,
-    text: "Müsahibə",
-    isDropdown: true,
+    id: 4,
+    text: "Missiyamız",
+    isDropdown: false,
     isActive: true,
-    link: "/suallar",
+    link: "/mission",
   },
-  
-  
 ];
