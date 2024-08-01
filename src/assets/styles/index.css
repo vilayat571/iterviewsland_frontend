@@ -20,3 +20,8 @@ body {
   overflow-x: hidden;
   background-color:#02050A;
 }
+
+input{
+  font-family: 'Poppins';
+  font-weight: 300;
+}

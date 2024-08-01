@@ -7,34 +7,29 @@ export interface INavData {
 }
 
 export const hrefsData: INavData[] = [
+
   {
     id: 1,
-    text: "Yol xəritələri",
-    isDropdown: false,
-    isActive: true,
-    link: "/",
-  },
-  {
-    id: 2,
-    text: "Bloqlar",
+    text: "Bloq",
     isDropdown: false,
     isActive: false,
     link: "/",
   },
 
   {
-    id: 4,
-    text: "Dokumentasiyalar",
+    id: 2,
+    text: "Dokumentasiya",
     isDropdown: false,
-    isActive: true,
+    isActive: false,
     link: "/",
   },
   {
-    id: 5,
+    id: 3,
     text: "Müsahibə",
     isDropdown: true,
     isActive: true,
     link: "/suallar",
   },
+  
   
 ];

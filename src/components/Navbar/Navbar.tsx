@@ -14,7 +14,8 @@ const Navbar = () => {
   return (
     <div
       className="xl:w-11/12 lg:w-11/12 md:w-full sm:w-full
-    py-3 xl:my-8 lg:my-8 md:my-4 sm:my-4 rounded-full text-[#fff] xl:px-12 lg:px-12 md:px-3 sm:px-2 flex justify-between items-center  "
+    py-3 xl:my-8 lg:my-8 md:my-4 sm:my-4 rounded-full text-[#fff] xl:px-12 lg:px-12 md:px-3 sm:px-2 
+    flex justify-between items-center  "
     >
       <Logo />
       <button
@@ -29,7 +30,7 @@ const Navbar = () => {
       </button>
 
       {isSidebar && (
-        <div className=" fixed gap-3 flex flex-col px-4 py-4 top-0 w-full h-screen z-10 left-0 bg-[#161515]">
+        <div className=" fixed gap-3 flex flex-col px-4 py-4 top-0 w-full h-screen z-10 left-0 bg-[#02050A]">
           <div className="flex items-center my-4 justify-between px-0">
           
             <Logo />
@@ -90,7 +91,7 @@ const Navbar = () => {
           );
         })}
       </div>
-      <div className="xl:block md:hidden lg:block sm:hidden text-[#fff] bg-[#ff790bee]  px-6 py-3 rounded-sm">
+      <div className="xl:block md:hidden lg:block sm:hidden text-[#fff] bg-[#ff790bee]  px-5 py-[10px] rounded-sm">
         Daxil ol
       </div>
     </div>
