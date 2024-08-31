@@ -5,9 +5,6 @@ import Logo from "../../atoms/Navbar/Logo";
 const Footer = () => {
 
 
-const sendEmail=()=>{
-  
-}
 
 
   return (
