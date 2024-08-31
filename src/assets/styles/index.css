@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'Ocean';
+  font-family: 'Oceanwide';
   src: url("../fonts/oceanwide-cufonfonts/Oceanwide-Semibold.otf") format("truetype");
 }
 
@@ -11,17 +11,50 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Ocean', sans-serif;
+  font-family: 'Oceanwide', sans-serif;
   scroll-behavior: smooth;
   letter-spacing: 1.5px;
 }
 
-body {
-  overflow-x: hidden;
-  background-color:#02050A;
+.nav{
+  font-family: 'Oceanwide',sans-serif;
+  font-weight: 900;
 }
 
-input{
-  font-family: 'Poppins';
+body {
+  overflow-x: hidden;
+  background-color: #263040;
+}
+
+#span {
+  font-family: 'Oceanwide';
+  letter-spacing: 1px;
+  color: #d1d1d1;
+}
+
+input {
+  font-family: 'Oceanwide';
   font-weight: 300;
+}
+
+.tnav {
+  padding: 10px;
+  font-weight: 900;
+  background: -webkit-linear-gradient(#c5c5c5, #fcfcfc);
+  
+ 
+  /* For other browsers */
+  color: #fff;
+
+}
+
+.ttext {
+  
+  background: -webkit-linear-gradient(#5c86ee, #e58aeb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  /* For other browsers */
+  color: transparent;
+
 }

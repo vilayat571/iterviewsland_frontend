@@ -3,8 +3,16 @@ import { hrefsData } from "../../constants/NavData";
 import Logo from "../../atoms/Navbar/Logo";
 
 const Footer = () => {
+
+
+const sendEmail=()=>{
+  
+}
+
+
   return (
-    <div className="w-full  mt-12 flex justify-center items-center">
+    <div className="xl:w-1/2 lg:w-11/12 md:w-full sm:w-full
+     mt-12 flex justify-center items-center">
       <div
         className=" 
    xl:px-12  lg:px-12  md:px-4 sm:px-2 
@@ -37,7 +45,11 @@ const Footer = () => {
                   return (
                     <Link
                       key={item.id}
-                      to={item.link}
+                      onClick={() =>
+                        !item.isActive &&
+                        alert("Bu hissə tam hazır deyil. Üzür istəyirik!")
+                      }
+                      to={item.isActive ? item.link : ""}
                       className="text-white text-base "
                     >
                       {item.text}

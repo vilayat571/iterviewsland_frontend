@@ -1,27 +1,19 @@
 const Introtext = () => {
   return (
-    <>
-      <p
-        className="text-[#f1f1f1] 
-  xl:text-center lg:text-center md:text-left sm:text-left 
-  xl:text-[45px] lg:text-[45px] md:text-[35px] sm:text-3xl  font-semibold"
-      >
-        Müsahibə sualları!
+    <div className="flex justify-center items-center flex-col mt-8">
+      <p className="text-[#f1f1f1]  font-semibold leading-[64px] w-full text-7xl mb-2 text-center">
+        Növbəti <span className="ttext inline">müsahibənə</span> <br />
+        tam hazır ol!
       </p>
-      <p
-        className="text-white 
-  leading-[25px]
-     xl:text-center lg:text-center md:text-left sm:text-left 
-  text-base tracking-widest
-  xl:mt-3 lg:mt-3 md:mt-2 sm:mt-3 "
-      >
-        <u>interviewsland.sh</u> ilə özünü inkişaf etdir və müsahibələrdə uğurlu
-        ol!
-        <br />
-        Burada sən istədiyin mövzuya aid müsahibə suallarını tapa və hazırlaşa
-        bilərsən.
-      </p>
-    </>
+      <div className="w-full flex justify-center mb-4 mt-0">
+        <p className="text-white  font-normal text-center text-lg w-3/4 ">
+          burada siz müxtəlif sahələr üzrə seçilmiş, ən çox düşən 100 sualı görə
+          bilərsiniz. bununla yanaşı digər insanların təcrübələrindəndə
+          faydalana bilərsiniz.
+        </p>
+      </div>
+
+    </div>
   );
 };
 

@@ -3,18 +3,15 @@ import Logo from "../../atoms/Navbar/Logo";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { hrefsData, INavData } from "../../constants/NavData";
-import Dropdown from "./Dropdown";
 import { useState } from "react";
 
 const Navbar = () => {
-  const [mode, setMode] = useState<boolean>(false);
-
   const [isSidebar, setIsSidebar] = useState(false);
 
   return (
     <div
-      className="xl:w-11/12 lg:w-11/12 md:w-full sm:w-full
-    py-3 xl:my-8 lg:my-8 md:my-4 sm:my-4 rounded-full text-[#fff] xl:px-12 lg:px-12 md:px-3 sm:px-2 
+      className="xl:w-1/2 lg:w-11/12 md:w-full sm:w-full
+    py-3 xl:my-8 lg:my-8 md:my-4 sm:my-4 rounded-full text-[#fff] xl:px-12 lg:px-20 md:px-3 sm:px-2 
     flex justify-between items-center  "
     >
       <Logo />
@@ -53,13 +50,9 @@ const Navbar = () => {
                   !item.isActive &&
                   alert("Bu hissə tam hazır deyil. Üzür istəyirik!")
                 }
-                to={!item.isDropdown ? item.link : ""}
+                to={item.link}
               >
-                {item.isDropdown ? (
-                  <Dropdown text={item.text} mode={mode} setMode={setMode} />
-                ) : (
-                  item.text
-                )}
+                {item.text}
               </Link>
             );
           })}
@@ -67,35 +60,35 @@ const Navbar = () => {
       )}
 
       <div
-        className=" tracking-widest text-[#f1efef]
+        className="  text-[#f1efef]
       xl:flex lg:flex md:hidden sm:hidden
       items-center gap-5 text-base relative right-3"
       >
         {hrefsData.map((item: INavData) => {
           return (
             <Link
+              className="text-lg tracking-wider"
               key={item.id}
               onClick={() =>
                 !item.isActive &&
                 alert("Bu hissə tam hazır deyil. Üzür istəyirik!")
               }
-              to={  item.isActive ? !item.isDropdown ? item.link : "" : ''}
+              to={item.link}
             >
-              {item.isDropdown ? (
-                <Dropdown text={item.text} mode={mode} setMode={setMode} />
-              ) : (
-                item.text
-              )}
+              {item.text}
             </Link>
           );
         })}
       </div>
-      <button 
-      onClick={()=>alert('Bu hissə tam hazır deyil. Üzür istəyirik!')}
-      className="xl:block md:hidden lg:block sm:hidden 
-      text-[#fff] bg-[#ff790bee]  px-5 py-[10px] rounded-sm">
-        Daxil ol
-      </button>
+
+      <div className=" gap-2 px-5 py-3 bg-white items-center justify-center flex text-base rounded">
+        <img
+          src="https://static-00.iconduck.com/assets.00/google-icon-2048x2048-pks9lbdv.png"
+          className="w-6"
+          alt="The icon of google"
+        />
+         <span className="relative top-[2px] text-[#263040]"> Daxil ol</span>
+      </div>
     </div>
   );
 };
