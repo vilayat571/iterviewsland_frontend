@@ -2,19 +2,16 @@ import { useEffect, useState } from "react";
 import Layout from "../../Layout/Layout";
 import { url } from "../../constants/Apiurl";
 import Introtext from "../../atoms/Questions/Introtext";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBookmark } from "@fortawesome/free-solid-svg-icons";
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShare } from "@fortawesome/free-solid-svg-icons";
+import { NavLink } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../redux/reducers/store";
+import { fetchQuestions } from "../../redux/reducers/getQuestions";
 
 export interface ICategory {
   categoryName: string;
-}
-
-export interface IQuestions {
-  title: string;
-  category: string;
-  number: number;
 }
 
 const AllQuestions = () => {
@@ -25,7 +22,7 @@ const AllQuestions = () => {
         const imgData = canvas.toDataURL("image/png");
         const pdf = new jsPDF();
         pdf.addImage(
-          imgData as string,
+          imgData,
           "PNG",
           0,
           0,
@@ -41,129 +38,136 @@ const AllQuestions = () => {
 
   const [categories, setCategories] = useState<ICategory[] | null>(null);
   const [sCategory, setSCategory] = useState<string | null>("Javascript");
-  const [loading, setLoading] = useState<boolean>(true);
-  const [questions, setQuestions] = useState<IQuestions[] | null>(null);
-  const [loadingQ, setLoadingQ] = useState<boolean>(true);
+
+  const dispatch = useAppDispatch();
+
+  const { questions, loading } = useAppSelector((state) => ({
+    questions: state.getQuestions.questions,
+    loading: state.getQuestions.loading,
+  }));
 
   useEffect(() => {
     const urlApp = `${url}/categories`;
-    const urlQuestions = `${url}/questions/${sCategory}`;
     fetch(urlApp)
       .then((res) => res.json())
-      .then((data) => setCategories(data.categories))
-      .then(() => setLoading(false));
+      .then((data) => setCategories(data.categories));
 
-    fetch(urlQuestions)
-      .then((res) => res.json())
-      .then((data) => setQuestions(data.questions))
-      .then(() => setLoadingQ(false));
-  }, [sCategory]);
+    if (sCategory) {
+      dispatch(fetchQuestions({ sCategory }));
+    }
+  }, [dispatch, sCategory]);
 
   return (
     <Layout>
       <div
         className={`flex flex-col z-1
           xl:w-4/5 lg:w-5/6  md:w-full sm:w-full 
-          xl:px-20 lg:px-20 md:px-8 sm:px-4 pb-12 mt-10 
+          xl:px-20 lg:px-20 md:px-8 sm:px-4 pb-12 mt-0 
           ${loading && "h-screen flex justify-center items-center"}`}
       >
         {loading ? (
-          <div className="text-[#000] text-center text-3xl">Yüklənir...</div>
+          <div className="w-full h-screen flex items-center justify-center">
+            <img
+            className="w-1/5"
+              src="https://media0.giphy.com/media/S6dyUm0KJKWOkzl4Pn/giphy.gif?cid=6c09b952jgjkndse4xc07qqwpo387s2ufoc2h24ii08j8jxz&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=s"
+              alt="loading gif"
+            />
+          </div>
         ) : (
           <>
             <Introtext />
-            <div className="flex flex-col mt-12">
-              <p className="text-2xl text-[#000]">
-                {categories?.length} müxtəlif sahə!
-              </p>
+            <div className="flex flex-col px-3 mt-2">
+              <div className="w-full flex justify-between items-center">
+                <span className="w-full border-b-[1px] border-[rgb(30,41,60)]"></span>
+                <p className="text-base border-[1px] border-[rgb(30,41,60)] px-5 py-3 rounded text-nowrap text-slate-300">
+                  Kateqoriyalar
+                </p>
+                <span className="w-full border-b-[1px] border-[rgb(30,41,60)]"></span>
+              </div>
+
               <div
                 className="text-[#000]  w-full mx-auto relative gap-3 grid 
-            xl:grid-cols-4 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 mt-5"
+                xl:grid-cols-5 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 mt-6"
               >
-                {categories?.map((category: ICategory) => {
-                  return (
-                    <a
-                      key={Math.random()}
-                      onClick={() => setSCategory(category.categoryName)}
-                      href={`#cavablar`}
-                      className="px-4 py-3 border-[#2d2d2d] border-[1px] col-span-1  text-[#2d2d2d]
-            rounded"
-                    >
-                      {category.categoryName}
-                    </a>
-                  );
-                })}
+                {categories?.map((category: ICategory) => (
+                  <NavLink
+                    to={`#${category.categoryName}`}
+                    key={category.categoryName} // Use category name as key (ensure it's unique)
+                    onClick={() => setSCategory(category.categoryName)}
+                    className={`px-4 py-4 ${
+                      sCategory === category.categoryName
+                        ? "text-white border-[#363636]"
+                        : "text-slate-400 border-[rgb(30,41,60)]"
+                    } bg-[#10172A] border-[1px] flex justify-between col-span-1 rounded`}
+                  >
+                    <span id="ocean"> {category.categoryName}</span>
+                    <FontAwesomeIcon
+                      className={`${
+                        sCategory === category.categoryName
+                          ? "text-[#fff]"
+                          : "text-slate-400 "
+                      }`}
+                      icon={faShare}
+                    />
+                  </NavLink>
+                ))}
               </div>
             </div>
           </>
         )}
       </div>
 
-      {/* suallar */}
-      <div className="w-full  flex justify-center items-center  p-20 mt-12 ">
+      {/* Suallar */}
+      <div className="w-full flex justify-center items-center px-28 rounded-md mt-3">
         <div
           id="cavablar"
-          className={`text-black bg-[#FBFBFB] ${
-            loadingQ && "h-screen flex justify-center items-center"
-          } px-12
+          className={`text-slate-400 bg-[#10172A] border-[rgb(30,41,60)] border-[1px] px-8 rounded
            xl:w-4/5 lg:w-5/6  md:w-full sm:w-full 
-           
-        mx-auto relative  `}
+           mx-auto relative`}
         >
-          {loadingQ ? (
-            <div className="text-center text-black text-3xl">Yüklənir..</div>
-          ) : (
-            <>
-              {questions?.length ? (
-                <div className="flex flex-col  px-8 py-8">
-                  <p
-                    className="
-                xl:text-3xl lg:text-3xl md:text-2xl sm:text-2xl
-                text-black mb-8
-                xl:text-center lg:text-center md:text-left sm:text-left"
-                  >
-                    {questions.length} {sCategory} müsahibə sualı
-                  </p>
-                  <div id="questions" className="grid grid-cols-1 gap-3 ">
-                    {questions?.map((question: IQuestions, index) => {
-                      return (
-                        <p
-                          key={Math.random()}
-                          className="px-0 py-3 flex justify-between items-start relative bottom-2 border-b
-                      col-span-1  text-black
-            rounded"
-                        >
-                          <span className="text-black">
-                            {index + 1}. {question.title}
-                          </span>
-                          <button
-                            onClick={() => {
-                              alert(
-                                "Sualların cavabları sonrakı yeniləmələr ilə əlavə ediləcək. Üzür istəyirik!"
-                              );
-                            }}
-                            className="text-lg text-nowrap cursor-pointer"
-                          >
-                            <FontAwesomeIcon icon={faBookmark} />
-                          </button>
-                        </p>
-                      );
-                    })}
-                  </div>
+          <>
+            {questions?.length ? (
+              <div className="flex flex-col px-2 py-8">
+                <div className="grid grid-cols-1 gap-3 ">
+                  {questions.map((question, index) => (
+                    <p
+                      id={`${question.category}`}
+                      key={index} // Use index as key if there's no unique id
+                      className="px-0 py-3 flex justify-between items-start relative bottom-2 
+                      col-span-1 text-slate-400 rounded"
+                    >
+                      <span id="poppins" className="text-slate-200">
+                        {index + 1}. {question.title}
+                      </span>
+                    </p>
+                  ))}
+                </div>
+                <div className="flex items-center gap-4">
                   <button
+                    id="poppins"
                     className="mt-6 bg-[#E7EFFE] inline w-44 rounded px-4 py-3 text-[#000]"
                     onClick={generatePDF}
                   >
                     PDF kimi yüklə
                   </button>
+                  <button
+                    id="poppins"
+                    className="mt-6 bg-[#E7EFFE] inline w-44 rounded px-4 py-3 text-[#000]"
+                    onClick={() => window.scrollTo(0, 0)}
+                  >
+                    Kateqoriyalar
+                  </button>
                 </div>
-              ) : (
-                <div className="w-full text-2xl h-[400px]  flex justify-center items-center">
-                  Bu kateqoriya üzrə suallar hələ əlavə edilməyib!
-                </div>
-              )}
-            </>
-          )}
+              </div>
+            ) : (
+              <div
+                id="poppins"
+                className="w-full text-2xl h-[400px] flex justify-center items-center"
+              >
+                Bu kateqoriya üzrə suallar hələ əlavə edilməyib!
+              </div>
+            )}
+          </>
         </div>
       </div>
     </Layout>

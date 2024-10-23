@@ -1,20 +1,14 @@
-import { Link } from "react-router-dom";
-import { hrefsData } from "../../constants/NavData";
-import Logo from "../../atoms/Navbar/Logo";
-
 const Footer = () => {
-
-
-
-
   return (
-    <div className="xl:w-1/2 lg:w-11/12 md:w-full sm:w-full
-     mt-12 flex justify-center items-center">
-      <div
+    <div
+      className="w-full
+     mt-12 flex justify-center bg-[#er] items-center"
+    >
+      {/* <div
         className=" 
-   xl:px-12  lg:px-12  md:px-4 sm:px-2 
-   xl:w-11/12 lg:w-11/12 md:w-full sm:w-full
-    pt-10 pb-4  font-semibold flex flex-col h-auto text-white mt-0"
+  px-20
+   xl:w-4/5 lg:w-11/12 md:w-full sm:w-full
+    pt-10 pb-4  font-semibold flex flex-col h-auto text-[#fff] mt-0"
       >
         <div
           className="grid gap-y-16
@@ -47,7 +41,7 @@ const Footer = () => {
                         alert("Bu hissə tam hazır deyil. Üzür istəyirik!")
                       }
                       to={item.isActive ? item.link : ""}
-                      className="text-white text-base "
+                      className="text-[#fff] text-base "
                     >
                       {item.text}
                     </Link>
@@ -83,11 +77,11 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="text-white text-sm border-t-[#313131] leading-[25px] border-t-[1px] mt-6 pt-6 pb-1 tracking-widest">
+        <div className="text-[#fff] text-sm border-t-[#313131] leading-[25px] border-t-[1px] mt-6 pt-6 pb-1 tracking-widest">
           Copyright © 2024 Bütün hüquqlar qorunur | Bu sayt{" "}
           <u>Vilayət Səfərov</u> tərəfindən hazırlanmışdır.
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

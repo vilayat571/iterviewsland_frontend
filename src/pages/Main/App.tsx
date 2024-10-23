@@ -1,4 +1,4 @@
-import IntroTextMain from "../../components/Main/IntroTextMain";
+import Introtext from "../../atoms/Questions/Introtext";
 import Layout from "../../Layout/Layout";
 
 export interface ICategory {
@@ -13,7 +13,7 @@ const App = () => {
  xl:w-4/5 lg:w-11/12 md:w-full sm:w-full
       text-white"
       >
-        <IntroTextMain />
+        <Introtext />
       </div>
     </Layout>
   );

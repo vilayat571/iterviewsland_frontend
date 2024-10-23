@@ -3,14 +3,15 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "Oceanwide";
-  src: url("../fonts/oceanwide-cufonfonts/Oceanwide-Semibold.otf")
+  font-family: "Poppins";
+  src: url("../fonts/Poppins/Poppins-Regular.ttf")
     format("truetype");
 }
 
 @font-face {
-  font-family: "Outfit";
-  src: url("../fonts/Outfit/static/Outfit-Medium.ttf") format("truetype");
+  font-family: "Oceanwide";
+  src: url("../fonts/oceanwide-cufonfonts/Oceanwide-Semibold.otf")
+  format("truetype");
 }
 
 * {
@@ -22,12 +23,12 @@
   letter-spacing: 1.5px;
 }
 
-#outfit {
-  font-family: "Outfit", sans-serif;
-}
-
 #ocean {
   font-family: "Oceanwide", sans-serif;
+}
+
+#poppins {
+  font-family: "Poppins", sans-serif;
 }
 
 .nav {
@@ -37,7 +38,7 @@
 
 body {
   overflow-x: hidden;
-  background-color: #e7effe;
+  background-color: #0E1527;
 }
 
 #span {
