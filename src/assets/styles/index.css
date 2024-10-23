@@ -3,37 +3,51 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'Oceanwide';
-  src: url("../fonts/oceanwide-cufonfonts/Oceanwide-Semibold.otf") format("truetype");
+  font-family: "Oceanwide";
+  src: url("../fonts/oceanwide-cufonfonts/Oceanwide-Semibold.otf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "Outfit";
+  src: url("../fonts/Outfit/static/Outfit-Medium.ttf") format("truetype");
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Oceanwide', sans-serif;
+  font-family: "Oceanwide", sans-serif;
   scroll-behavior: smooth;
   letter-spacing: 1.5px;
 }
 
-.nav{
-  font-family: 'Oceanwide',sans-serif;
+#outfit {
+  font-family: "Outfit", sans-serif;
+}
+
+#ocean {
+  font-family: "Oceanwide", sans-serif;
+}
+
+.nav {
+  font-family: "Oceanwide", sans-serif;
   font-weight: 900;
 }
 
 body {
   overflow-x: hidden;
-  background-color: #263040;
+  background-color: #e7effe;
 }
 
 #span {
-  font-family: 'Oceanwide';
+  font-family: "Oceanwide";
   letter-spacing: 1px;
   color: #d1d1d1;
 }
 
 input {
-  font-family: 'Oceanwide';
+  font-family: "Oceanwide";
   font-weight: 300;
 }
 
@@ -41,20 +55,16 @@ input {
   padding: 10px;
   font-weight: 900;
   background: -webkit-linear-gradient(#c5c5c5, #fcfcfc);
-  
- 
+
   /* For other browsers */
   color: #fff;
-
 }
 
 .ttext {
-  
   background: -webkit-linear-gradient(#5c86ee, #e58aeb);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   /* For other browsers */
   color: transparent;
-
 }

@@ -63,21 +63,21 @@ const AllQuestions = () => {
     <Layout>
       <div
         className={`flex flex-col z-1
-          xl:w-1/2 lg:w-5/6  md:w-full sm:w-full 
+          xl:w-4/5 lg:w-5/6  md:w-full sm:w-full 
           xl:px-20 lg:px-20 md:px-8 sm:px-4 pb-12 mt-10 
           ${loading && "h-screen flex justify-center items-center"}`}
       >
         {loading ? (
-          <div className="text-white text-center text-3xl">Yüklənir...</div>
+          <div className="text-[#000] text-center text-3xl">Yüklənir...</div>
         ) : (
           <>
             <Introtext />
             <div className="flex flex-col mt-12">
-              <p className="text-2xl text-white">
+              <p className="text-2xl text-[#000]">
                 {categories?.length} müxtəlif sahə!
               </p>
               <div
-                className="text-white  w-full mx-auto relative gap-3 grid 
+                className="text-[#000]  w-full mx-auto relative gap-3 grid 
             xl:grid-cols-4 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 mt-5"
               >
                 {categories?.map((category: ICategory) => {
@@ -86,7 +86,7 @@ const AllQuestions = () => {
                       key={Math.random()}
                       onClick={() => setSCategory(category.categoryName)}
                       href={`#cavablar`}
-                      className="px-4 py-3 border border-[#5c5c5c] col-span-1  text-[#fff]
+                      className="px-4 py-3 border-[#2d2d2d] border-[1px] col-span-1  text-[#2d2d2d]
             rounded"
                     >
                       {category.categoryName}
@@ -100,13 +100,13 @@ const AllQuestions = () => {
       </div>
 
       {/* suallar */}
-      <div className="w-full flex justify-center items-center bg-[#FBFBFB] p-20 mt-12  rounded-3xl  ">
+      <div className="w-full  flex justify-center items-center  p-20 mt-12 ">
         <div
           id="cavablar"
-          className={`text-black ${
+          className={`text-black bg-[#FBFBFB] ${
             loadingQ && "h-screen flex justify-center items-center"
-          } px-4
-           xl:w-1/2 lg:w-5/6  md:w-full sm:w-full 
+          } px-12
+           xl:w-4/5 lg:w-5/6  md:w-full sm:w-full 
            
         mx-auto relative  `}
         >
@@ -122,7 +122,7 @@ const AllQuestions = () => {
                 text-black mb-8
                 xl:text-center lg:text-center md:text-left sm:text-left"
                   >
-                    100 {sCategory} müsahibə sualı
+                    {questions.length} {sCategory} müsahibə sualı
                   </p>
                   <div id="questions" className="grid grid-cols-1 gap-3 ">
                     {questions?.map((question: IQuestions, index) => {
@@ -130,10 +130,10 @@ const AllQuestions = () => {
                         <p
                           key={Math.random()}
                           className="px-0 py-3 flex justify-between items-start relative bottom-2 border-b
-                      col-span-1  text-#black
+                      col-span-1  text-black
             rounded"
                         >
-                          <span>
+                          <span className="text-black">
                             {index + 1}. {question.title}
                           </span>
                           <button
@@ -142,7 +142,7 @@ const AllQuestions = () => {
                                 "Sualların cavabları sonrakı yeniləmələr ilə əlavə ediləcək. Üzür istəyirik!"
                               );
                             }}
-                            className="text-lg cursor-pointer"
+                            className="text-lg text-nowrap cursor-pointer"
                           >
                             <FontAwesomeIcon icon={faBookmark} />
                           </button>
@@ -151,7 +151,7 @@ const AllQuestions = () => {
                     })}
                   </div>
                   <button
-                    className="mt-6 bg-[#263040] inline w-44 rounded px-4 py-3 text-white"
+                    className="mt-6 bg-[#E7EFFE] inline w-44 rounded px-4 py-3 text-[#000]"
                     onClick={generatePDF}
                   >
                     PDF kimi yüklə
