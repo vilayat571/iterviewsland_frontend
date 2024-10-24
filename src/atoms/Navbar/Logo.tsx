@@ -7,7 +7,7 @@ const Logo = () => {
       id="ocean"
       className="text-[#fff] font-black flex items-center tracking-wider"
     >
-      <span id="poppinsbold2" className="text-blue-800 font-extrabold text-4xl">
+      <span id="poppinsbold2" className="text-blue-600 font-extrabold text-4xl">
         it
       </span>
       <span className="text-3xl">hub</span>

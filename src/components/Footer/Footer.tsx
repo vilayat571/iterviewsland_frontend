@@ -1,13 +1,13 @@
 const Footer = () => {
   return (
     <div
+    id="cavablar"
       className="w-full
-     mt-12 flex justify-center bg-[#er] items-center"
+     mt-12 flex justify-center bg-[#er] h-40 items-center"
     >
       {/* <div
         className=" 
   px-20
-   xl:w-4/5 lg:w-11/12 md:w-full sm:w-full
     pt-10 pb-4  font-semibold flex flex-col h-auto text-[#fff] mt-0"
       >
         <div
@@ -55,7 +55,7 @@ const Footer = () => {
             className="col-span-1 flex xl:justify-center lg:justify-center md:justify-center sm:justify-start 
         relative xl:left-12 lg:left-6 md:left-12 sm:left-2"
           >
-            <div className="w-4/5">
+            <div className="">
               <p className="text-xl font-semibold text-[#fff]">Abunə ol</p>
               <p className="text-sm font-semibold text-[#fff] my-2">
                 Saytımızda müəyyən özəlliklər əlavə ediləcəkdir. Bunları

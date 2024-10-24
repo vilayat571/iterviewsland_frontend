@@ -17,6 +17,6 @@
   .close {
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.4s ease, visibility 0.4s ease; /* Transition opacity and visibility */
+    transition: opacity 0s ease, visibility 0s ease; /* Transition opacity and visibility */
   }
   

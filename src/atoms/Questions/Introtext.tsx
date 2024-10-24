@@ -1,27 +1,21 @@
 const Introtext = () => {
   return (
-    <div className="w-full flex justify-center items-start flex-row mt-6 mb-0">
-      <div className="flex flex-col py-12 w-full items-center text-center">
-        <p id="" className="text-[54px] leading-[60px] text-[#eee]">
-          Hazırlaşmağa bu gündən
+    <div className="w-full flex justify-center items-start flex-row mt-20 mb-10">
+      <div className="flex flex-col  w-full items-center text-center">
+        <p id="poppinsbold" className="text-[54px] leading-[65px] text-[#eee]">
+          Hər müsahibənə
           <br />
-          etibarən,  vaxt itirmədən başla!
+          vaxt itirmədən hazırlaş!
         </p>
-        <p id="poppins" className="px-2 text-base text-center text-slate-400 mt-4">
-          Profesional IT mütəxəssislərinin təsdiqi ilə hazırlanmış təcrübə yönümlü <br />
-        müsahibə suallar ilə sənində bilmədiyin mövzu, hazırlaşmadığın sual qalmasın!
+        <p
+          id="poppins"
+          className="px-2 text-base text-center text-slate-300 mt-4"
+        >
+          İşində peşakar İT mütəxəssislərinin təsdiqi ilə hazırlanmış təcrübə
+          yönümlü <br />
+          müsahibə suallar ilə sənində bilmədiyin mövzu, hazırlaşmadığın sual
+          qalmasın!
         </p>
-      {/*   <form className="px-2 mt-6 w-full  flex justify-center items-center">
-          <input
-            placeholder="Təklif və ya sual.."
-            type="text"
-            id="outfit"
-            className="px-6 w-1/3 border-[1px] py-2 placeholder:text-black  rounded-l h-[70px] bg-white "
-          />
-          <button className="bg-[#4079DA] px-8 w-44 text-white rounded-r py-3 h-[70px]">
-            Göndər
-          </button>
-        </form> */}
       </div>
     </div>
   );

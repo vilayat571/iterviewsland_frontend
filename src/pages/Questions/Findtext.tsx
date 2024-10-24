@@ -4,6 +4,7 @@ import styles from "../../assets/styles/Find.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleLeft, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
+import Loading from "../../Layout/Loading";
 
 const Findexperience = () => {
   const navigate = useNavigate();
@@ -31,7 +32,7 @@ const Findexperience = () => {
       setLoading(true);
       setShow(true);
 
-      const uri = `http://localhost:3000/api/v1/experiences/find`;
+      const uri = `https://interviewsland-backend.onrender.com/api/v1/experiences/find`;
 
       fetch(uri, {
         method: "POST",
@@ -103,11 +104,10 @@ const Findexperience = () => {
               className="absolute bg-white hover:bg-red-500 text-lg hover:text-white text-black
               transition duration-300 m-4 top-0 right-0 rounded px-4 py-2 cursor-pointer"
             >
-              {" "}
               <FontAwesomeIcon icon={faTimes} />
             </button>
             {loading ? (
-              <div className="text-3xl text-black">Elan axtarılır...</div>
+              <Loading />
             ) : experience != null && experience != undefined ? (
               <div className="w-1/2 border-[1px] flex flex-col gap-4 border-[#c8c8c8] rounded px-4 py-12 h-[50vh] ">
                 <p className="w-full">{experience.fullName}</p>

@@ -8,6 +8,7 @@ import { Provider } from "react-redux";
 import { store } from "./redux/reducers/store";
 import Share from "./pages/Questions/Share";
 import Findtext from "./pages/Questions/Findtext";
+import UserExperiences from "./pages/Experiences/UserExperiences";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -15,7 +16,8 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<AllQuestions />} />
-          <Route path="/elanpaylash" element={<Share />} />
+          <Route path="/tecrubepaylash" element={<Share />} />
+          <Route path="/tecrubeler" element={<UserExperiences />} />
           <Route path="*" element={<Found />} />
           <Route path="/yazıtap" element={<Findtext />} />
         </Routes>
