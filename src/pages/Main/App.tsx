@@ -2,7 +2,7 @@ import Introtext from "../../atoms/Questions/Introtext";
 import Layout from "../../Layout/Layout";
 
 export interface ICategory {
-  categoryName: string;
+  categoryname: string;
 }
 
 const App = () => {

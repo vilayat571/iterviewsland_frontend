@@ -9,16 +9,30 @@
 }
 
 @font-face {
+  font-family: "PoppinsBold";
+  src: url("../fonts/Poppins/Poppins-SemiBold.ttf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "PoppinsBold2";
+  src: url("../fonts/Poppins/Poppins-ExtraBold.ttf")
+    format("truetype");
+}
+
+@font-face {
   font-family: "Oceanwide";
   src: url("../fonts/oceanwide-cufonfonts/Oceanwide-Semibold.otf")
   format("truetype");
 }
 
+
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Oceanwide", sans-serif;
+  font-family: "Poppins", sans-serif;
   scroll-behavior: smooth;
   letter-spacing: 1.5px;
 }
@@ -29,6 +43,19 @@
 
 #poppins {
   font-family: "Poppins", sans-serif;
+}
+
+.poppins {
+  font-family: "Poppins", sans-serif;
+}
+
+#poppinsbold {
+  font-family: "PoppinsBold", sans-serif;
+}
+
+
+#poppinsbold2 {
+  font-family: "PoppinsBold2", sans-serif;
 }
 
 .nav {

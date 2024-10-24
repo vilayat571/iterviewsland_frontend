@@ -6,7 +6,8 @@ import AllQuestions from "./pages/Questions/AllQuestions";
 import Found from "./pages/Notfound/Found";
 import { Provider } from "react-redux";
 import { store } from "./redux/reducers/store";
-import Share from "./pages/Share";
+import Share from "./pages/Questions/Share";
+import Findtext from "./pages/Questions/Findtext";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -16,6 +17,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Route path="/" element={<AllQuestions />} />
           <Route path="/elanpaylash" element={<Share />} />
           <Route path="*" element={<Found />} />
+          <Route path="/yazıtap" element={<Findtext />} />
         </Routes>
       </BrowserRouter>
     </Provider>

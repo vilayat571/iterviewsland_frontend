@@ -11,7 +11,7 @@ import { useAppDispatch, useAppSelector } from "../../redux/reducers/store";
 import { fetchQuestions } from "../../redux/reducers/getQuestions";
 
 export interface ICategory {
-  categoryName: string;
+  categoryname: string;
 }
 
 const AllQuestions = () => {
@@ -91,19 +91,19 @@ const AllQuestions = () => {
               >
                 {categories?.map((category: ICategory) => (
                   <NavLink
-                    to={`#${category.categoryName}`}
-                    key={category.categoryName} // Use category name as key (ensure it's unique)
-                    onClick={() => setSCategory(category.categoryName)}
+                    to={`#${category.categoryname}`}
+                    key={category.categoryname} // Use category name as key (ensure it's unique)
+                    onClick={() => setSCategory(category.categoryname)}
                     className={`px-4 py-4 ${
-                      sCategory === category.categoryName
+                      sCategory === category.categoryname
                         ? "text-white border-[#363636]"
                         : "text-slate-400 border-[rgb(30,41,60)]"
                     } bg-[#10172A] border-[1px] flex justify-between col-span-1 rounded`}
                   >
-                    <span id="ocean"> {category.categoryName}</span>
+                    <span id="ocean"> {category.categoryname}</span>
                     <FontAwesomeIcon
                       className={`${
-                        sCategory === category.categoryName
+                        sCategory === category.categoryname
                           ? "text-[#fff]"
                           : "text-slate-400 "
                       }`}
@@ -118,7 +118,7 @@ const AllQuestions = () => {
       </div>
 
       {/* Suallar */}
-      <div className="w-full flex justify-center items-center px-28 rounded-md mt-3">
+      <div className="w-full flex justify-center items-center px-28 rounded-md mt-0">
         <div
           id="cavablar"
           className={`text-slate-400 bg-[#10172A] border-[rgb(30,41,60)] border-[1px] px-8 rounded
