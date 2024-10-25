@@ -118,3 +118,16 @@ input {
   transition: opacity 0s ease, visibility 0s ease; /* Transition opacity and visibility */
 }
 
+@keyframes custom-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-custom-spin {
+  animation: custom-spin 1s linear infinite; /* Adjust "1s" to change speed */
+}
+

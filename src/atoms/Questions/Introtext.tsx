@@ -5,7 +5,7 @@ const Introtext = () => {
         <p id="poppinsbold" className="text-[54px] leading-[65px] text-[#eee]">
           Hər müsahibənə
           <br />
-          vaxt itirmədən hazırlaş!
+          vaxt itirmədən hazır ol!
         </p>
         <p
           id="poppins"

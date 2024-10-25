@@ -29,10 +29,10 @@ const Navbar = () => {
           ></iframe>
         </Popup>
 
-        <div className="flex flex-row  items-center gap-10 text-base relative left-32 ">
+        <div className="flex flex-row  items-center gap-0 text-base relative left-28 ">
           <NavLink
             className={({ isActive }) =>
-              isActive ? "bg-blue-800 px-5 py-3 rounded text-white  " : ""
+              isActive ? "bg-blue-800 px-5 py-3 rounded text-white  " : "hover:bg-blue-800 px-5 py-3 rounded transition duration-300"
             }
             id="poppins"
             to="/tecrubeler"
@@ -41,13 +41,20 @@ const Navbar = () => {
           </NavLink>
           <NavLink
             className={({ isActive }) =>
-              isActive ? "bg-white px-5 py-3 rounded text-black" : ""
+              isActive ? "bg-white px-5 py-3 rounded text-black" : "hover:bg-blue-800 px-5 py-3 rounded transition duration-300"
             }
             id="poppins"
             to="/tecrubepaylash"
           >
             Təcrübəni bölüş
           </NavLink>
+          <button
+            className="hover:bg-blue-800 px-5 py-3 rounded transition duration-300"
+  onClick={()=>alert('Yaxında hazır olacaq!')}
+            id="poppins"
+          >
+            Cavablar
+          </button>
         </div>
 
         <div className="flex flex-row items-center gap-4 text-base">

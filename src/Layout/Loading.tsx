@@ -1,9 +1,9 @@
 const Loading = () => {
   return (
-    <div className="w-full h-screen flex items-center bg-black justify-center">
+    <div className="w-full h-screen flex bg-[#0E1527] absolute top-0 left-0 items-center justify-center">
       <img
-        className=""
-        src="https://i.pinimg.com/originals/bd/53/54/bd5354178016d98c4c5d181e700142ee.gif"
+      className="w-1/20"
+        src="https://www.mazda3revolution.com/attachments/ajax-loader-gif.183066/"
         alt="loading gif"
       />
     </div>

@@ -1,7 +1,6 @@
 const Footer = () => {
   return (
     <div
-    id="cavablar"
       className="w-full
      mt-12 flex justify-center bg-[#er] h-40 items-center"
     >

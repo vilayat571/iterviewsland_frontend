@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleLeft, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 import Loading from "../../Layout/Loading";
+import OTPInput from "react-otp-input";
 
 const Findexperience = () => {
   const navigate = useNavigate();
@@ -69,25 +70,34 @@ const Findexperience = () => {
     flex items-center justify-center flex-col"
       >
         <div className="xl:w-1/3  lg:w-1/3 md:w-1/3  sm:w-11/12   h-[340px] flex flex-col items-center">
-          <p className=" text-4xl mb-1 text-slate-100 text-center font-semibold">
+       <div>
+       <p className=" text-4xl mb-1 text-slate-100 text-center font-semibold">
             Kod daxil edin:
           </p>
 
           <form
             onSubmit={(e) => handleSubmit(e)}
             action=""
-            className="w-full mt-5 mb-1 flex items-center"
+            className="w-full  mt-5 mb-1 flex items-center justify-center"
           >
-            <input
-              type="tel"
-              id="poppins"
-              required
+            <OTPInput
               value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Məs: 43456"
-              className="px-6 w-full indent-2 py-6 outline-none  placeholder:text-black bg-white rounded"
+              onChange={setQuery}
+              numInputs={5}
+              placeholder="0"
+              inputStyle={{
+                width:"80px",
+                height:"80px",
+                borderRadius:"6px",
+                color:"black",
+                fontSize:"2px"
+
+              }}
+              renderSeparator={<span>-</span>}
+              renderInput={(props) => <input {...props} />}
             />
           </form>
+       </div>
           <div className="flex items-start justify-start  text-lg  mt-5 gap-4">
             <button
               id="poppins"
@@ -109,20 +119,22 @@ const Findexperience = () => {
             {loading ? (
               <Loading />
             ) : experience != null && experience != undefined ? (
-              <div className="w-1/2 border-[1px] flex flex-col gap-4 border-[#c8c8c8] rounded px-4 py-12 h-[50vh] ">
-                <p className="w-full">{experience.fullName}</p>
-                <p className="w-full border-[1px] border-[#c8c8c8] px-3 py-4 rounded">
-                  {experience.title}
-                </p>
-                <p className="w-full border-[1px] border-[#c8c8c8] px-3 py-4 rounded">
-                  {experience.description}
-                </p>
-                <p className="w-full border-[1px] border-[#c8c8c8] px-3 py-4 rounded">
-                  {experience.category}
-                </p>
-                <p className="w-full border-[1px] border-[#c8c8c8] px-3 py-4 rounded">
-                  {experience.status ? "Paylaşılıb" : "Paylaşılmayib"}
-                </p>
+              <div className="w-full absolute top-0 left-0 h-screen bg-[#0E1527] text-slate-100 flex items-center justify-center">
+                <div className="w-1/2 border-[1px] flex flex-col gap-4  border-[rgba(30,41,60)] rounded px-4 py-12 h-[80vh] ">
+                  <p className="w-full">{experience.fullName}</p>
+                  <p className="w-full border-[1px] border-[rgba(30,41,60)] px-3 py-4 rounded">
+                    {experience.title}
+                  </p>
+                  <p className="w-full border-[1px] border-[rgba(30,41,60)] px-3 py-4 rounded">
+                    {experience.description}
+                  </p>
+                  <p className="w-full border-[1px] border-[rgba(30,41,60)] px-3 py-4 rounded">
+                    {experience.category}
+                  </p>
+                  <p className="w-full border-[1px] border-[rgba(30,41,60)] px-3 py-4 rounded">
+                    {experience.status ? "Paylaşılıb" : "Paylaşılmayib"}
+                  </p>
+                </div>
               </div>
             ) : (
               <div className="flex text-center itemscenter flex-col">
