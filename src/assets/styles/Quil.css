@@ -1,0 +1,54 @@
+  
+  
+/* Root CSS File */
+.quill > * {
+    border-color: rgb(30,41,60) !important;
+    color: white !important;
+  }
+  
+  .quill > .ql-toolbar {
+    /* Border radius of the toolbar */
+    border-radius: 2px 2px 0 0;
+  }
+  
+  .quill > .ql-container {
+    /* Border radius of the container and for font size */
+    font-size: 15px;
+    border-radius: 0 0 2px 2px;
+  }
+  
+  .ql-toolbar.ql-snow .ql-picker-label {
+    color: white !important;
+    opacity: 1;
+  }
+  
+  .ql-snow .ql-picker {
+    color: white !important;
+  }
+  
+  .quill > .ql-container > .ql-editor.ql-blank::before {
+    /* For placeholder */
+    color:  rgb(203 213 225);
+    font-style: normal;
+  }
+  
+  .ql-snow.ql-toolbar button svg {
+    opacity: 0.76;
+    color: white;
+  }
+  
+  .ql-snow .ql-stroke {
+    /* For the border of the editor */
+    stroke: white !important;
+  }
+  
+  .ql-snow .ql-fill {
+    /* For the background color */
+    fill: red !important;
+  }
+  
+  .ql-picker-item {
+    /* For dropdown */
+    color: #444 !important;
+  }
+  

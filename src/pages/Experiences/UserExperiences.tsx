@@ -3,7 +3,7 @@ import { fetchExperiences } from "../../redux/reducers/getExperiences";
 import { useAppDispatch, useAppSelector } from "../../redux/reducers/store";
 import Layout from "../../Layout/Layout";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faExpand, faFilter, faShare } from "@fortawesome/free-solid-svg-icons";
+import { faExpand, faShare } from "@fortawesome/free-solid-svg-icons";
 import Loading from "../../Layout/Loading";
 import Popup from "../../components/Main/Popup";
 

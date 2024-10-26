@@ -2,11 +2,13 @@ import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
 import getQuestions from "./getQuestions";
 import getExperiences from "./getExperiences";
+import postExperience from "./postExperience";
 
 export const store = configureStore({
   reducer: {
     getQuestions: getQuestions,
     getExperiences: getExperiences,
+    postExperience:postExperience
   },
 });
 

@@ -249,7 +249,13 @@ const AllQuestions = () => {
             </div>
           </div>
 
-          {unsupportedShare && <ShareComponent content={content} />}
+          {unsupportedShare && content && (
+            <ShareComponent
+              title={content.title}
+              text={content.text}
+              url={content.url}
+            />
+          )}
 
           {/* Suallar */}
           <div className="w-full px-3 flex justify-center items-center rounded-md mt-0">

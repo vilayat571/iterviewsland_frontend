@@ -1,4 +1,3 @@
-import linkedin_icon from "../assets/images/LinkedIn_icon.png"; // Import LinkedIn icon
 
 export const socialMediaIcons= [
   {

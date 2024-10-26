@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./assets/styles/index.css";
+import "./assets/styles/Quil.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AllQuestions from "./pages/Questions/AllQuestions";
 import Found from "./pages/Notfound/Found";
