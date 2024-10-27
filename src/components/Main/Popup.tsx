@@ -4,7 +4,7 @@ const Popup: React.FC<{
   children: ReactNode;
   play: boolean;
   setPlay: React.Dispatch<React.SetStateAction<boolean>>;
-}> = ({ children, play, setPlay }) => {
+}> = ({ children, play }) => {
   if (!play) return null; // Only render if `play` is true
 
   return (

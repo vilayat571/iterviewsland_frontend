@@ -19,6 +19,7 @@ const UserExperiences = () => {
   const [data, setData] = useState(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
+  console.log(data)
   useEffect(() => {
     dispatch(fetchExperiences({ limit, category: categoryExperience }));
   }, [dispatch, limit, categoryExperience]);

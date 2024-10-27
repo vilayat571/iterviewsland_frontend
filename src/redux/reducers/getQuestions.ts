@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { url } from "../../constants/Apiurl";
 
-interface IQuestion {
+export interface IQuestion {
   title: string;
   category: string;
   number: number;

@@ -5,28 +5,24 @@ import Introtext from "../../atoms/Questions/Introtext";
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faDiagramProject,
-  faShare,
-  faShareNodes,
-  faTimes,
-} from "@fortawesome/free-solid-svg-icons";
+import { faShare, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { useAppDispatch, useAppSelector } from "../../redux/reducers/store";
 import { fetchQuestions } from "../../redux/reducers/getQuestions";
 import Loading from "../../Layout/Loading";
 import { socialMediaIcons } from "../../constants/socialMedia";
 import Popup from "../../components/Main/Popup";
-import { addQuestionToCart } from "../../redux/reducers/addToCart";
 import { ToastContainer } from "react-toastify";
-
-
+import DivshowLoading from "../../components/Allquestions/DivshowLoading";
+import MainPdfDiv from "../../components/Allquestions/MainPdfDiv";
+import Questions from "../../components/Allquestions/Questions";
+import Categories from "../../components/Allquestions/Categories";
 
 export interface ICategory {
   categoryname: string;
 }
 
 const AllQuestions = () => {
-  const [suggest, setSuggest]=useState(false)
+  const [suggest, setSuggest] = useState(false);
   const [categories, setCategories] = useState<ICategory[] | null>(null);
   const [sCategory, setSCategory] = useState<string | null>("Javascript");
   const [display, setDisplay] = useState(false);
@@ -176,95 +172,29 @@ const AllQuestions = () => {
 
   return (
     <>
-      <div
-        ref={questionsRef}
-        style={{
-          position: "absolute",
-          width: "100%", // Set width explicitly
-          display: divShow ? "block" : "none", // Use "block" instead of "hidden" for conditional rendering
-          top: divShow ? "0px" : "-10000px", // Ensure visibility within viewport
-          left: divShow ? "0px" : "-10000px",
-        }}
-      >
-        <p className="bg-blue-600 text-white px-3 inline-block rounded py-4 mb-1">
-          Bu pdf - ithub saytından götürülmüşdür.{" "}
-        </p>
-        <div className="px-2 flex flex-col gap-4 mt-2">
-          {questions?.length &&
-            questions.map((question, index) => (
-              <p key={index}>
-                {index + 1}. {question.title}
-              </p>
-            ))}
-        </div>
-        <div className="px-2 flex flex-row mt-5">
-          <a
-            href="http://localhost:5173/"
-            target="blank"
-            className="bg-blue-600 p-3 text-white rounded"
-          >
-            Sayta get
-          </a>
-        </div>
-      </div>
+      <MainPdfDiv
+        questions={questions}
+        questionsRef={questionsRef}
+        divShow={divShow}
+      />
 
-      {divShow ? (
-        <div className="w-full h-screen fixed z-50 flex items-center justify-center top-0 left-0 bg-[#0e1527] text-white ">
-          <div className="text-xl flex flex-col text-center ">
-            <span className="text-8xl mb-2 animate-custom-spin">◌</span>
-            <span>pdf hazırlanır..</span>
-          </div>
-        </div>
-      ) : (
-        ""
-      )}
+      <DivshowLoading divShow={divShow} />
 
       {loading ? (
         <Loading />
       ) : (
         <Layout>
-
           <Popup play={suggest} setPlay={setSuggest}>
-
-            <div>
-  dree
-            </div>
+            <div>dree</div>
           </Popup>
           <Introtext />
-          <div className="flex flex-col px-3 mt-0">
-            <div className="w-full flex justify-between items-center">
-              <span className="w-full border-b-[1px] border-[rgb(30,41,60)]"></span>
-              <p className="text-base border-[1px] border-[rgb(30,41,60)] px-5 py-3 rounded text-nowrap text-slate-100">
-                Bütün sahələr
-              </p>
-              <span className="w-full border-b-[1px] border-[rgb(30,41,60)]"></span>
-            </div>
 
-            <div
-              className="text-[#000]  w-full mx-auto relative gap-3 grid 
-              xl:grid-cols-5 lg:grid-cols-5 md:grid-cols-2 sm:grid-cols-1 mt-6"
-            >
-              {categories?.map((category: ICategory) => (
-                <button
-                  onClick={(e) => scrollDown(category.categoryname, e)}
-                  key={category.categoryname} // Use category name as key (ensure it's unique)
-                  className={`px-4 py-4 ${
-                    sCategory === category.categoryname
-                      ? "text-white border-[#363636]"
-                      : "text-slate-200 border-[rgb(30,41,60)]"
-                  } bg-[#10172A] border-[1px] flex items-center justify-between col-span-1 rounded `}
-                >
-                  <span id="poppins">{category.categoryname}</span>
-                  {/* Render not supported sharing UI */}
-                  <FontAwesomeIcon
-                    onClick={(e) => handleShare(category.categoryname, e)}
-                    className="text-slate-300 text-lg py-1"
-                    icon={faShareNodes}
-                  />
-                </button>
-              ))}
-            </div>
-          </div>
+          <Categories
+            sCategory={sCategory}
+            categories={categories}
+            handleShare={handleShare}
+            scrollDown={scrollDown}
+          />
 
           {unsupportedShare && content && (
             <ShareComponent
@@ -274,77 +204,12 @@ const AllQuestions = () => {
             />
           )}
 
-<ToastContainer />
-          {/* Suallar */}
-          <div className="w-full xl:px-3 lg:px-3 md:px-2 sm:px-3 flex justify-center items-center rounded-md mt-0">
-            <div
-              className="text-slate-400 bg-[#10172A] mt-6 border-[rgb(30,41,60)] w-full border-[1px] xl:px-8  lg:px-8 md:px-0 sm:px-2 
-            rounded mx-auto relative"
-            >
-              <>
-                {questions?.length ? (
-                  <div className="flex flex-col px-2 py-8">
-                    <div className="grid grid-cols-1 gap-3 ">
-                      {questions.map((question, index) => (
-                        <p
-                      
-                        onClick={() => {
-                          dispatch(
-                            addQuestionToCart({ category: question.title })
-                          );
-                         
-                        }}
-                          key={index} // Use index as key if there's no unique id
-                          className="px-0 py-3 flex border-[1px] border-r-0 border-l-0 border-t-0 border-b-[rgb(30,41,60)]
-                           justify-between items-start relative bottom-2 col-span-1 cursor-pointer text-slate-400 rounded"
-                        >
-                          <span id="poppins" className="text-slate-200">
-                            {index + 1}. {question.title}
-                          </span>
-
-                          <FontAwesomeIcon
-                          className="text-white cursor-pointer"
-                            icon={faDiagramProject}
-                          />
-                        </p>
-                      ))}
-                    </div>
-                    <div id="cavablar" className="flex items-center gap-4">
-                      <button
-                        id="poppins"
-                        className="mt-6 bg-[#E7EFFE] inline w-44 rounded px-4 py-3 text-[#000]"
-                        onClick={() => generatePDF()}
-                      >
-                        PDF kimi yüklə
-                      </button>
-                      <button
-                        id="poppins"
-                        className="mt-6 bg-[#E7EFFE] inline w-44 rounded px-4 py-3 text-[#000]"
-                        onClick={() => window.scrollTo(0, 0)}
-                      >
-                        Kateqoriyalar
-                      </button>
-                      <button
-                        id="poppins"
-
-                        className="mt-6 bg-[#E7EFFE] inline  rounded px-4 py-3 text-[#000]"
-                        onClick={() => {window.scrollTo(0, 0), setSuggest(true)}}
-                      >
-                        Sual tövsiyyə et
-                      </button>
-                    </div>
-                  </div>
-                ) : (
-                  <div
-                    id="poppins"
-                    className="w-full text-2xl h-[400px] flex justify-center items-center"
-                  >
-                    Bu kateqoriya üzrə suallar hələ əlavə edilməyib!
-                  </div>
-                )}
-              </>
-            </div>
-          </div>
+          <ToastContainer />
+          <Questions
+            questions={questions}
+            setSuggest={setSuggest}
+            generatePDF={generatePDF}
+          />
         </Layout>
       )}
     </>

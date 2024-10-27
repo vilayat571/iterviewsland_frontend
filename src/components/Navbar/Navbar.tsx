@@ -3,7 +3,6 @@ import {
   faArrowLeft,
   faBars,
   faCircleNodes,
-  faClose,
   faDiagramProject,
   faDownload,
   faTimes,
