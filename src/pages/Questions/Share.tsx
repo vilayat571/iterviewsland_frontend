@@ -7,6 +7,7 @@ import LoadingShare from "../../components/Share/LoadingShare";
 import ExampleTextBtn from "../../components/Share/ExampleTextBtn";
 import CodeexistShowExperience from "../../components/Share/CodeexistShowExperience";
 import MainpieceofShareCom from "../../components/Share/MainpieceofShareCom";
+import SEO from "../../constants/SEO";
 
 export interface IExperience {
   category: string;
@@ -42,6 +43,14 @@ const Share = () => {
       id="poppins"
       className="] w-full absolute top-0 left-0 h-screen pt-36 flex flex-col items-center"
     >
+      <SEO
+        title="ITHUB - İnkişaf etdiricilər və IT Peşəkarları Müsahibə Təcrübələrini Paylaşır"
+        description="ITHUB-da inkişaf etdiricilər və digər IT mütəxəssisləri real müsahibə təcrübələrini paylaşır. Müsahibələrdə nələr baş verdiyini öyrənin və uğur qazanmağınıza kömək edəcək dəyərli məlumatlar əldə edin."
+        name="ITHUB"
+        type="website"
+        keywords="ITHUB, müsahibə təcrübələri, inkişaf etdirici təcrübələri, IT müsahibələri, proqramlaşdırma, uğur hekayələri, Azərbaycan"
+      />
+
       <ExampleText showPopup={showPopup} setShowPopup={setShowPopup} />
 
       <LoadingShare loading={loading} />

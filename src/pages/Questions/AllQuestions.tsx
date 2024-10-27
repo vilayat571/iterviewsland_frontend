@@ -5,10 +5,7 @@ import Introtext from "../../atoms/Questions/Introtext";
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowLeft,
-  faShare,
-} from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faShare } from "@fortawesome/free-solid-svg-icons";
 import { useAppDispatch, useAppSelector } from "../../redux/reducers/store";
 import { fetchQuestions } from "../../redux/reducers/getQuestions";
 import Loading from "../../Layout/Loading";
@@ -19,6 +16,7 @@ import DivshowLoading from "../../components/Allquestions/DivshowLoading";
 import MainPdfDiv from "../../components/Allquestions/MainPdfDiv";
 import Questions from "../../components/Allquestions/Questions";
 import Categories from "../../components/Allquestions/Categories";
+import SEO from "../../constants/SEO";
 
 export interface ICategory {
   categoryname: string;
@@ -178,6 +176,14 @@ const AllQuestions = () => {
 
   return (
     <>
+      <SEO
+        title="ITHUB - Proqramlaşdırma Müsahibə Sualları"
+        description="ITHUB-da Java, JavaScript, Python, CSS, HTML və digər proqramlaşdırma dillərində ən çox verilən müsahibə sualları və ətraflı cavablar ilə tanış olun."
+        name="ITHUB"
+        type="website"
+        keywords="ITHUB, müsahibə sualları, proqramlaşdırma sualları, Java müsahibə sualları, JavaScript müsahibə sualları, Python müsahibə sualları, CSS sualları, HTML sualları, proqramlaşdırma dili sualları, Azərbaycan"
+      />
+
       <MainPdfDiv
         questions={questions}
         questionsRef={questionsRef}

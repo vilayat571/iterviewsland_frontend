@@ -6,6 +6,7 @@ import { faArrowLeft, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 import Loading from "../../Layout/Loading";
 import OTPInput from "react-otp-input";
+import SEO from "../../constants/SEO";
 
 const Findexperience = () => {
   const navigate = useNavigate();
@@ -59,6 +60,14 @@ const Findexperience = () => {
       animate={{ x: 0 }}
       transition={{ type: "spring", stiffness: 100 }}
     >
+      <SEO
+        title="ITHUB - Müsahibə Təcrübənizi Tapın"
+        description="ITHUB-da öz kodunuzu daxil edərək paylaşdığınız müsahibə təcrübənizi tapın. Müsahibə ilə bağlı yazdıqlarınıza asanlıqla erişin."
+        name="ITHUB"
+        type="website"
+        keywords="ITHUB, kod daxil et, müsahibə təcrübələri, proqramlaşdırma, IT müsahibələri, təcrübə tapma, Azərbaycan"
+      />
+
       <p
         onClick={() => navigate("/")}
         className="text-slate-300 hover:bg-red-600 hover:border-red-600 hover:text-white transition duration-300 

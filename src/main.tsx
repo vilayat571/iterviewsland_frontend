@@ -11,20 +11,23 @@ import Share from "./pages/Questions/Share";
 import Findtext from "./pages/Questions/Findtext";
 import UserExperiences from "./pages/Experiences/UserExperiences";
 import Login from "./pages/Login";
+import { HelmetProvider } from "react-helmet-async";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<AllQuestions />} />
-          <Route path="/tecrubepaylash" element={<Share />} />
-          <Route path="/tecrubeler" element={<UserExperiences />} />
-          <Route path="*" element={<Found />} />
-          <Route path="/yazıtap" element={<Findtext />} />
-          <Route path="/profile" element={<Login />} />
-        </Routes>
-      </BrowserRouter>
-    </Provider>
+    <HelmetProvider>
+      <Provider store={store}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<AllQuestions />} />
+            <Route path="/tecrubepaylash" element={<Share />} />
+            <Route path="/tecrubeler" element={<UserExperiences />} />
+            <Route path="*" element={<Found />} />
+            <Route path="/yazıtap" element={<Findtext />} />
+            <Route path="/profile" element={<Login />} />
+          </Routes>
+        </BrowserRouter>
+      </Provider>
+    </HelmetProvider>
   </React.StrictMode>
 );

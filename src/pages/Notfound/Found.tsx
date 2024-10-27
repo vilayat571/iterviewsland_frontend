@@ -1,9 +1,20 @@
 import { useNavigate } from "react-router-dom";
+import SEO from "../../constants/SEO";
 
 const Found = () => {
   const navigate = useNavigate();
 
   return (
+  <>
+   <SEO
+    title="ITHUB - Səhifə Tapılmadı"
+    description="Axtardığınız səhifə tapılmadı. İthub-a xoş gəlmisiniz! Proqramlaşdırma müsahibə sualları və təcrübələri ilə tanış olun."
+    name="ITHUB"
+    type="website"
+    keywords="ITHUB, səhifə tapılmadı, proqramlaşdırma, müsahibə sualları, proqram inkişafı, Azərbaycan"
+  />
+
+
     <div className="flex items-center justify-center w-full h-screen">
       <div>
         <p id="poppinsbold2" className="text-[260px]  text-white">
@@ -26,6 +37,7 @@ const Found = () => {
         </div>
       </div>
     </div>
+  </>
   );
 };
 
