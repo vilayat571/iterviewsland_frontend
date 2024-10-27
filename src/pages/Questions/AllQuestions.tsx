@@ -5,7 +5,10 @@ import Introtext from "../../atoms/Questions/Introtext";
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShare, faTimes } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowLeft,
+  faShare,
+} from "@fortawesome/free-solid-svg-icons";
 import { useAppDispatch, useAppSelector } from "../../redux/reducers/store";
 import { fetchQuestions } from "../../redux/reducers/getQuestions";
 import Loading from "../../Layout/Loading";
@@ -128,43 +131,46 @@ const AllQuestions = () => {
   }) => {
     return (
       <Popup play={unsupportedShare} setPlay={setUnsupportedShare}>
-        <div className="bg-[#0E1527] text-white w-1/3 h-auto py-6 px-6 rounded">
-          <div
-            id="ocean"
-            className="w-full justify-between flex items-center pb-1"
-          >
-            <p className="text-2xl"> Bizi paylaşmağı unutma 🤗</p>
-            <FontAwesomeIcon
-              className="px-3 py-2 rounded border-[1px] text-lg border-[rgb(30,41,60)]"
-              onClick={() => setUnsupportedShare(false)}
-              icon={faTimes}
-            />
-          </div>
-          {socialMediaIcons.map((icon: any) => {
-            const completeUrl =
-              icon.text === "WhatsApp"
-                ? icon.url + encodeURIComponent(content?.title || "")
-                : icon.text === "LinkedIn"
-                ? `${icon.url}${encodeURIComponent(
-                    shareUrl
-                  )}&title=${encodeURIComponent(content?.title || "")}`
-                : icon.url + encodeURIComponent(shareUrl);
+        <div className="bg-[#0E1527] text-white w-full h-screen fixed flex items-center justify-center rounded">
+          <FontAwesomeIcon
+            className="px-4 cursor-pointer py-3 rounded border-[1px] hover:bg-red-600 hover:text-white  absolute top-6 right-6 text-lg border-[rgb(30,41,60)]"
+            onClick={() => setUnsupportedShare(false)}
+            icon={faArrowLeft}
+          />
+          <div className="w-1/3 h-auto p-6">
+            <div
+              id="ocean"
+              className="w-full border-[1px] border-[rgb(30,41,60)] p-3 py-5 rounded justify-between flex items-center"
+            >
+              <p className="text-2xl"> Bizi paylaşmağı unutma 🤗</p>
+            </div>
+            <div className="border-[rgb(31,40,60)] border-[1px] p-6 px-3 flex flex-col gap-5 rounded border-t-0">
+              {socialMediaIcons.map((icon) => {
+                const completeUrl = `${icon.url}${icon.queryParams(
+                  encodeURIComponent(shareUrl),
+                  encodeURIComponent(content?.title || "")
+                )}`;
 
-            return (
-              <a
-                href={completeUrl}
-                className="flex gap-2 justify-between items-center border-[rgb(31,40,60)] border-[1px] my-3 p-3 py-2 rounded"
-                target="_blank"
-                rel="noopener noreferrer"
-                key={icon.text}
-              >
-                <p className="flex items-center justify-center gap-2">
-                  <span className="text-lg">{icon.text} </span>
-                </p>
-                <FontAwesomeIcon className="px-1 ml-1 text-xl" icon={faShare} />
-              </a>
-            );
-          })}
+                return (
+                  <a
+                    href={completeUrl}
+                    className="flex gap-2 justify-between items-center rounded"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    key={icon.text}
+                  >
+                    <p className="flex items-center justify-center gap-2">
+                      <span className="text-lg">{icon.text}</span>
+                    </p>
+                    <FontAwesomeIcon
+                      className="px-1 ml-1 text-xl"
+                      icon={faShare}
+                    />
+                  </a>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </Popup>
     );

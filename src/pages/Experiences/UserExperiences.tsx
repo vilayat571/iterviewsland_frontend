@@ -3,9 +3,14 @@ import { fetchExperiences } from "../../redux/reducers/getExperiences";
 import { useAppDispatch, useAppSelector } from "../../redux/reducers/store";
 import Layout from "../../Layout/Layout";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faExpand, faShare } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowLeft,
+  faExpand,
+  faShare,
+} from "@fortawesome/free-solid-svg-icons";
 import Loading from "../../Layout/Loading";
 import Popup from "../../components/Main/Popup";
+import { IExperience } from "../Questions/Share";
 
 const UserExperiences = () => {
   const { loading, experiences } = useAppSelector(
@@ -16,10 +21,10 @@ const UserExperiences = () => {
 
   const [limit, setLimit] = useState(6);
   const [categoryExperience, setCategoryExperience] = useState("Kateqoriyalar");
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<IExperience | null>(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  console.log(data)
+  console.log(data);
   useEffect(() => {
     dispatch(fetchExperiences({ limit, category: categoryExperience }));
   }, [dispatch, limit, categoryExperience]);
@@ -37,13 +42,41 @@ const UserExperiences = () => {
     setIsModalVisible(true); // Trigger the modal to be visible
   };
 
-
   return (
     <>
       {/* Modal / Popup */}
 
       <Popup play={isModalVisible} setPlay={setIsModalVisible}>
-        <div className="text-5xl text-white">salam men tam metn</div>
+        <div className="w-full bg-[#0F1629] h-screen flex items-center justify-center fixed text-white p-12 overflow-y-hidden">
+          <button
+            onClick={() => {
+              setIsModalVisible(false), setData(null);
+            }}
+            className=" absolute top-8 z-50 right-8 border-[rgba(30,41,60)] border-[1px] text-sm text-white hover:bg-transparent bg-blue-700
+                 hover:text-white
+                transition duration-300 px-6 py-3 rounded-[3px] "
+          >
+            <FontAwesomeIcon className="text-white" icon={faArrowLeft} />
+          </button>
+          <div className="h-auto border-[rgb(30,41,60)] rounded border-[1.5px] w-1/2 py-6 px-6 flex flex-col items-start gap-3">
+            <p
+              id="ocean"
+              className="text-slate-200 text-left text-base border-[1px] border-[rgb(30,41,60)] py-4 px-3 rounded inline"
+            >
+              {data?.fullName}
+            </p>
+            <p className="text-slate-200 text-left text-base border-[1px] border-[rgb(30,41,60)] py-4 px-3 rounded w-full">
+              {data?.title}
+            </p>
+            <p className="text-slate-100 text-left text-base border-[1px] border-[rgb(30,41,60)] py-4 px-3 rounded w-full">
+              {data?.description}
+            </p>
+
+            <span className="bg-blue-800 text-white px-3 rounded-sm py-3 text-sm">
+              {data?.category}
+            </span>
+          </div>
+        </div>
       </Popup>
 
       {loading ? (
