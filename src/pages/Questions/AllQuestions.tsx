@@ -5,18 +5,28 @@ import Introtext from "../../atoms/Questions/Introtext";
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShare, faTimes } from "@fortawesome/free-solid-svg-icons";
+import {
+  faDiagramProject,
+  faShare,
+  faShareNodes,
+  faTimes,
+} from "@fortawesome/free-solid-svg-icons";
 import { useAppDispatch, useAppSelector } from "../../redux/reducers/store";
 import { fetchQuestions } from "../../redux/reducers/getQuestions";
 import Loading from "../../Layout/Loading";
 import { socialMediaIcons } from "../../constants/socialMedia";
 import Popup from "../../components/Main/Popup";
+import { addQuestionToCart } from "../../redux/reducers/addToCart";
+import { ToastContainer } from "react-toastify";
+
+
 
 export interface ICategory {
   categoryname: string;
 }
 
 const AllQuestions = () => {
+  const [suggest, setSuggest]=useState(false)
   const [categories, setCategories] = useState<ICategory[] | null>(null);
   const [sCategory, setSCategory] = useState<string | null>("Javascript");
   const [display, setDisplay] = useState(false);
@@ -213,6 +223,13 @@ const AllQuestions = () => {
         <Loading />
       ) : (
         <Layout>
+
+          <Popup play={suggest} setPlay={setSuggest}>
+
+            <div>
+  dree
+            </div>
+          </Popup>
           <Introtext />
           <div className="flex flex-col px-3 mt-0">
             <div className="w-full flex justify-between items-center">
@@ -225,7 +242,7 @@ const AllQuestions = () => {
 
             <div
               className="text-[#000]  w-full mx-auto relative gap-3 grid 
-              xl:grid-cols-5 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 mt-6"
+              xl:grid-cols-5 lg:grid-cols-5 md:grid-cols-2 sm:grid-cols-1 mt-6"
             >
               {categories?.map((category: ICategory) => (
                 <button
@@ -241,8 +258,8 @@ const AllQuestions = () => {
                   {/* Render not supported sharing UI */}
                   <FontAwesomeIcon
                     onClick={(e) => handleShare(category.categoryname, e)}
-                    className={`text-white border-[rgb(31,40,60)] px-2 text-lg py-1 rounded border-[1px] `}
-                    icon={faShare}
+                    className="text-slate-300 text-lg py-1"
+                    icon={faShareNodes}
                   />
                 </button>
               ))}
@@ -257,21 +274,38 @@ const AllQuestions = () => {
             />
           )}
 
+<ToastContainer />
           {/* Suallar */}
-          <div className="w-full px-3 flex justify-center items-center rounded-md mt-0">
-            <div className="text-slate-400 bg-[#10172A] mt-6 border-[rgb(30,41,60)] w-full border-[1px] px-8 rounded mx-auto relative">
+          <div className="w-full xl:px-3 lg:px-3 md:px-2 sm:px-3 flex justify-center items-center rounded-md mt-0">
+            <div
+              className="text-slate-400 bg-[#10172A] mt-6 border-[rgb(30,41,60)] w-full border-[1px] xl:px-8  lg:px-8 md:px-0 sm:px-2 
+            rounded mx-auto relative"
+            >
               <>
                 {questions?.length ? (
                   <div className="flex flex-col px-2 py-8">
                     <div className="grid grid-cols-1 gap-3 ">
                       {questions.map((question, index) => (
                         <p
+                      
+                        onClick={() => {
+                          dispatch(
+                            addQuestionToCart({ category: question.title })
+                          );
+                         
+                        }}
                           key={index} // Use index as key if there's no unique id
-                          className="px-0 py-3 flex justify-between items-start relative bottom-2 col-span-1 text-slate-400 rounded"
+                          className="px-0 py-3 flex border-[1px] border-r-0 border-l-0 border-t-0 border-b-[rgb(30,41,60)]
+                           justify-between items-start relative bottom-2 col-span-1 cursor-pointer text-slate-400 rounded"
                         >
                           <span id="poppins" className="text-slate-200">
                             {index + 1}. {question.title}
                           </span>
+
+                          <FontAwesomeIcon
+                          className="text-white cursor-pointer"
+                            icon={faDiagramProject}
+                          />
                         </p>
                       ))}
                     </div>
@@ -289,6 +323,14 @@ const AllQuestions = () => {
                         onClick={() => window.scrollTo(0, 0)}
                       >
                         Kateqoriyalar
+                      </button>
+                      <button
+                        id="poppins"
+
+                        className="mt-6 bg-[#E7EFFE] inline  rounded px-4 py-3 text-[#000]"
+                        onClick={() => {window.scrollTo(0, 0), setSuggest(true)}}
+                      >
+                        Sual tövsiyyə et
                       </button>
                     </div>
                   </div>

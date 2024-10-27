@@ -1,86 +1,74 @@
+import { NavLink } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlayCircle } from "@fortawesome/free-solid-svg-icons";
+import {
+  faGithub,
+  faLinkedin,
+  faYoutube,
+} from "@fortawesome/free-brands-svg-icons";
+
 const Footer = () => {
   return (
     <div
-      className="w-full
-     mt-12 flex justify-center bg-[#er] h-40 items-center"
+      className="w-full bg-[#10172A]
+     mt-24 flex justify-center h-auto
+     pb-20 pt-16 flex-col
+     items-center"
     >
-      {/* <div
-        className=" 
-  px-20
-    pt-10 pb-4  font-semibold flex flex-col h-auto text-[#fff] mt-0"
-      >
-        <div
-          className="grid gap-y-16
-      xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1"
+      <div className="flex flex-row items-center gap-5 mb-16">
+        <NavLink className={"text-slate-300"} id="poppins" to="/tecrubeler">
+          Təcrübələr
+        </NavLink>
+        <NavLink className={"text-slate-300"} id="poppins" to="/tecrubepaylash">
+          Təcrübəni bölüş
+        </NavLink>
+
+        <NavLink className={"text-slate-300"} to={"/yazıtap"} id="poppins">
+          Yazını tap
+        </NavLink>
+
+        <button
+          className={
+            "text-slate-300 border-[1px] border-[rgb(30,41,60)] text-base px-4 py-3 rounded"
+          }
+          id="poppins"
         >
-          <div className="col-span-1 flex flex-col">
-            <Logo />
+          Video təlimat <FontAwesomeIcon icon={faPlayCircle} />
+        </button>
+      </div>
 
-            <p className="mt-1 ml-2 tracking-widest leading-[25px] text-sm text-[#fff]">
-              Bloqlar, dokumentasiyalar və müsahibə <br />
-              ilə bağlı hər şey! Saytımız sizə azərbaycan
-              <br />
-              dilində faydalı resurslar təqdim edir.
-            </p>
-          </div>
+      <div className="text-center flex items-center justify-center text-white w-full">
+        <span id="poppinsbold" className="text-white text-4xl ">
+          it.hub
+        </span>{" "}
+        <p>
+          {" "}
+          <span className="ml-2 mr-1"> by </span>
+          <span className="bg-blue-600 px-1 py-1 rounded text-white">
+            vilayat
+          </span>
+        </p>
+      </div>
 
-          <div
-            className="col-span-1 flex xl:justify-center lg:justify-center md:justify-center sm:justify-start 
-        relative xl:left-12 lg:left-12 md:left-12 sm:left-2"
-          >
-            <div>
-              <p className="text-xl font-semibold text-[#fff]">Səhifələr</p>
-              <div className="mt-3 flex flex-col gap-y-1">
-                {hrefsData.map((item) => {
-                  return (
-                    <Link
-                      key={item.id}
-                      onClick={() =>
-                        !item.isActive &&
-                        alert("Bu hissə tam hazır deyil. Üzür istəyirik!")
-                      }
-                      to={item.isActive ? item.link : ""}
-                      className="text-[#fff] text-base "
-                    >
-                      {item.text}
-                    </Link>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-
-          <div
-            className="col-span-1 flex xl:justify-center lg:justify-center md:justify-center sm:justify-start 
-        relative xl:left-12 lg:left-6 md:left-12 sm:left-2"
-          >
-            <div className="">
-              <p className="text-xl font-semibold text-[#fff]">Abunə ol</p>
-              <p className="text-sm font-semibold text-[#fff] my-2">
-                Saytımızda müəyyən özəlliklər əlavə ediləcəkdir. Bunları
-                vaxtında dəyərləndirə bilmək üçün abunə ol:)
-              </p>
-              <input
-                type="email"
-                required={true}
-                placeholder="E-poçt.."
-                className=" text-sm
-            indent-2 px-5 py-2 rounded
-            h-[60px] w-full bg-transparent my-2 mt-4
-            border-[1px] border-[#313131]"
-              />
-              <button className="bg-orange-500 tracking-widest text-sm px-5 mt-1 mb-3  py-3 rounded-sm">
-                Göndər
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div className="text-[#fff] text-sm border-t-[#313131] leading-[25px] border-t-[1px] mt-6 pt-6 pb-1 tracking-widest">
-          Copyright © 2024 Bütün hüquqlar qorunur | Bu sayt{" "}
-          <u>Vilayət Səfərov</u> tərəfindən hazırlanmışdır.
-        </div>
-      </div> */}
+      <p className="text-slate-400 text-sm text-center mt-5 ">
+        <span className="text-white"> Copyright © 2024. IT HUB</span>{" "}
+        informasiya texnalogiyaları sahəsində olan <br /> mütəxəssislərə yardım
+        edilməsi üçün ərsəyə gətirilmiş bir icma layihəsidir.
+      </p>
+      <div className="flex items-center gap-3 justify-center mt-5 w-full">
+        <FontAwesomeIcon
+          icon={faLinkedin}
+          className="px-3 py-3 text-slate-300 bg-[#10172A] rounded-full text-base border-[1px] border-[rgb(30,41,60)]"
+        />
+        <FontAwesomeIcon
+          icon={faYoutube}
+          className="px-3 py-3 text-slate-300 bg-[#10172A] rounded-full text-base border-[1px] border-[rgb(30,41,60)]"
+        />
+        <FontAwesomeIcon
+          icon={faGithub}
+          className="px-3 py-3 text-slate-300 bg-[#10172A] rounded-full text-base border-[1px] border-[rgb(30,41,60)]"
+        />
+      </div>
     </div>
   );
 };

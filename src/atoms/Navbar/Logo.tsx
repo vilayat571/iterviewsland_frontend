@@ -4,13 +4,9 @@ const Logo = () => {
   return (
     <Link
       to="/"
-      id="ocean"
-      className="text-[#fff] font-black flex items-center tracking-wider"
+      className="text-[#fff] font-black  "
     >
-      <span id="poppinsbold2" className="text-blue-600 font-extrabold text-4xl">
-        it
-      </span>
-      <span className="text-3xl">hub</span>
+      <span id="poppinsbold" className="text-2xl px-2 py-1 text-[#fff] rounded">.ithub</span>
     </Link>
   );
 };

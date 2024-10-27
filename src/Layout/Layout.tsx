@@ -8,7 +8,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     <div className="flex flex-col items-center">
       <Navbar />
       <div className="w-full flex items-center justify-center">
-        <div className="w-4/5">{children}</div>
+        <div className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full">{children}</div>
       </div>
       <ScrollToTop
         top={20}

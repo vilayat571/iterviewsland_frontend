@@ -3,12 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import getQuestions from "./getQuestions";
 import getExperiences from "./getExperiences";
 import postExperience from "./postExperience";
+import addToCart from "./addToCart";
 
 export const store = configureStore({
   reducer: {
     getQuestions: getQuestions,
     getExperiences: getExperiences,
-    postExperience:postExperience
+    postExperience:postExperience,
+    addToCart:addToCart
   },
 });
 
