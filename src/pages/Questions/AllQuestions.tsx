@@ -74,7 +74,7 @@ const AllQuestions = () => {
     url: string;
   } | null>(null);
 
-  const shareUrl = "https://buldum.netlify.app/";
+  const shareUrl = "https://ithubaz.netlify.app/";
 
   const handleShare = async (
     category: string,

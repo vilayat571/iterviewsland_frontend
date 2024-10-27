@@ -30,7 +30,7 @@ const MainPdfDiv: React.FC<{
       </div>
       <div className="px-2 flex flex-row mt-5">
         <a
-          href="http://localhost:5173/"
+          href="https://ithubaz.netlify.app/"
           target="blank"
           className="bg-blue-600 p-3 text-white rounded"
         >
