@@ -18,7 +18,10 @@ const Sidebar: React.FC<{
     >
       <div className="flex items-center justify-between">
         <Logo />
-        <button onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
+        <button 
+                  aria-label="Open Sidebar Button"
+
+        onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
           <FontAwesomeIcon
             className="bg-blue-700 z-50 text-white text-lg px-4 py-3 rounded"
             icon={faTimes}
@@ -47,6 +50,8 @@ const Sidebar: React.FC<{
           Yazını tap
         </NavLink>
         <button
+                  aria-label="Open Popup Button"
+
           onClick={() => {
             setShowPopup(!showPopup);
             setIsSidebarOpen(!isSidebarOpen);

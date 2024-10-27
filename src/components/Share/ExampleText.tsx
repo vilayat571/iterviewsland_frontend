@@ -15,6 +15,8 @@ const ExampleText: React.FC<{
       flex items-center justify-center px-4 py-2 rounded"
         >
           <button
+                    aria-label="Open popup Button"
+
             onClick={() => setShowPopup(!showPopup)}
             className=" absolute top-8 z-50 right-8 border-[rgba(30,41,60)] border-[1px] text-sm text-white hover:bg-transparent bg-blue-700
                  hover:text-white

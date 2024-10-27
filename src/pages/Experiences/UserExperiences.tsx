@@ -49,6 +49,8 @@ const UserExperiences = () => {
       <Popup play={isModalVisible} setPlay={setIsModalVisible}>
         <div className="w-full bg-[#0F1629] h-screen flex items-center justify-center fixed text-white p-12 overflow-y-hidden">
           <button
+                    aria-label="Open a bar Button"
+
             onClick={() => {
               setIsModalVisible(false), setData(null);
             }}
@@ -130,6 +132,8 @@ const UserExperiences = () => {
                       {experience.category}
                     </span>
                     <button
+                              aria-label="open a modal Button"
+
                       onClick={() => handleOpenModal(experience)}
                       className="gap-4 flex items-center border-[1px] border-[rgb(30,41,60)] text-white px-3 py-3 rounded-sm text-base"
                     >
@@ -142,6 +146,8 @@ const UserExperiences = () => {
           </div>
           <div className="flex items-center gap-5 justify-center mt-8">
             <button
+                      aria-label="Increase Button"
+
               className="text-white px-6 py-4 rounded border-[rgba(30,41,60)] border-[1.5px]"
               onClick={() => setLimit(limit + 6)}
             >
@@ -149,6 +155,8 @@ const UserExperiences = () => {
             </button>
             {categoryExperience !== "Kateqoriyalar" && (
               <button
+              aria-label="Reset Button"
+
                 className="text-white px-6 py-4 rounded border-[rgba(30,41,60)] border-[1.5px]"
                 onClick={() => setCategoryExperience("Kateqoriyalar")}
               >

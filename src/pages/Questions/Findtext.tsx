@@ -107,6 +107,7 @@ const Findexperience = () => {
             </p>
             <div className="flex items-start justify-start text-lg mt-5 gap-3">
               <button
+                aria-label="Search Button"
                 id="poppins"
                 onClick={(e) => handleSubmit(e)}
                 className="text-white hover:bg-blue-900 border-[1px] border-[rgb(30,41,60)] transition duration-300 px-8 py-4 rounded text-center"
@@ -114,6 +115,7 @@ const Findexperience = () => {
                 Axtar
               </button>
               <button
+                aria-label="Write Button"
                 id="poppins"
                 onClick={(e) => handleSubmit(e)}
                 className="text-white hover:bg-blue-900 border-[1px] border-[rgb(30,41,60)] transition duration-300 px-8 py-4 rounded text-center"
@@ -125,6 +127,7 @@ const Findexperience = () => {
 
           <motion.div className={show ? styles.open : styles.close}>
             <button
+              aria-label="Open a showbar Button"
               onClick={() => setShow(false)}
               className="absolute bg-white hover:bg-red-500 text-lg hover:text-white text-black
               transition duration-300 m-4 top-0 right-0 rounded px-4 py-2 cursor-pointer"
@@ -176,7 +179,7 @@ const Findexperience = () => {
                       Yenidən sına ✨
                     </button>
                     <NavLink
-                    to={'/tecrubepaylash'}
+                      to={"/tecrubepaylash"}
                       onClick={() => setShow(false)}
                       className="px-6 py-4 rounded border-[1px] border-[rgb(30,41,60)] text-white m-1"
                     >

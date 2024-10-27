@@ -31,6 +31,7 @@ const Categories: React.FC<{
       >
         {categories?.map((category: ICategory) => (
           <button
+          aria-label="Share Button"
             onClick={(e) => scrollDown(category.categoryname, e)}
             key={category.categoryname} // Use category name as key (ensure it's unique)
             className={`px-4 py-4 ${

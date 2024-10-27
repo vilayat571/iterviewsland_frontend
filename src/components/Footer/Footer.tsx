@@ -28,6 +28,8 @@ const Footer = () => {
         </NavLink>
 
         <button
+                  aria-label="Watch a video Button"
+
           className={
             "text-slate-300 border-[1px] border-[rgb(30,41,60)] text-base px-4 py-3 rounded"
           }

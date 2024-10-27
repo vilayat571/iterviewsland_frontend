@@ -11,6 +11,8 @@ const ExampleTextBtn: React.FC<{
     <>
       {!showPopup && length == 0 && (
         <button
+        aria-label="Open popup Button"
+
           onClick={() => setShowPopup(!showPopup)}
           className="absolute top-6 z-20 right-6 border-[rgba(30,41,60)] border-[1px] text-base text-white bg-transparent 
             hover:bg-blue-700

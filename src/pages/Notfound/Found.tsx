@@ -16,6 +16,8 @@ const Found = () => {
             axtarışa uyğun nəticə tapılmadı..
           </p>
           <button
+                    aria-label="Go back Button"
+
             onClick={() => navigate(-1)}
             className="text-slate-100 border-[1px] hover:bg-blue-600 transition duration-200 border-[rgb(30,41,60)] px-5 py-3 mt-4 rounded"
           >

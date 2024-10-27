@@ -64,7 +64,9 @@ const Navbar = () => {
             <div className="flex w-full items-center justify-between mt-6">
               <p className="text-3xl">Seçilmiş sualların ₊✩‧₊</p>
               <div className="mt-3">
-                <button className="bg-white text-black px-4 py-3 hover:bg-blue-800 hover:text-white transition duration-300 rounded">
+                <button
+                          aria-label="Download Button"
+                          className="bg-white text-black px-4 py-3 hover:bg-blue-800 hover:text-white transition duration-300 rounded">
                   PDF-ini yüklə <FontAwesomeIcon icon={faDownload} />
                 </button>
               </div>
@@ -121,6 +123,8 @@ const Navbar = () => {
             Təcrübəni bölüş
           </NavLink>
           <button
+                    aria-label="Show Video Button"
+
             onClick={() => setShowPopup(!showPopup)}
             className={
               "bg-transparent text-base px-4 py-3 border-[rgb(33,46,71)] border-[1px] rounded"
@@ -145,6 +149,8 @@ const Navbar = () => {
           </NavLink>
           |
           <button
+                    aria-label="Counts in the PDF Button"
+
             onClick={() => setShowCategories(!showCategories)}
             className={
               "bg-white px-4 py-3 border-[rgb(33,46,71)] text-base border-[1px] text-black rounded"

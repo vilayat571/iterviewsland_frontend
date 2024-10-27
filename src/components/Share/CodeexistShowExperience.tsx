@@ -13,6 +13,8 @@ const CodeexistShowExperience:React.FC<{code:string, closePopup: () => void}> = 
       flex items-center justify-center px-4 py-2 rounded"
         >
           <button
+                    aria-label="Close Button"
+
             onClick={() => closePopup()}
             className=" absolute top-8 z-50 right-8 border-[rgba(30,41,60)] border-[1px] text-sm text-white hover:bg-transparent bg-blue-700
                  hover:text-white
@@ -33,6 +35,8 @@ const CodeexistShowExperience:React.FC<{code:string, closePopup: () => void}> = 
               <br />
               <div className="mt-3">
                 <button
+                          aria-label="Close Button"
+
                   onClick={() => closePopup()}
                   className=" hover:border-[rgba(30,41,60)] border-[1px] text-base text-slate-200 bg-blue-700 hover:text-white
                 transition duration-300 px-6 py-3 hover:bg-transparent border-blue-700  rounded-[3px] "

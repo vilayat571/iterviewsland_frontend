@@ -230,6 +230,8 @@ const MainpieceofShareCom: React.FC<{
 
         <div className="mt-20 w-full gap-4 items-center flex justify-center">
           <button
+                    aria-label="Send Button"
+
             id="poppins"
             onClick={(e) => sendExperience(e)}
             className=" hover:bg-transparent bg-blue-600 text-base text-white
@@ -240,6 +242,8 @@ const MainpieceofShareCom: React.FC<{
             Mətni göndər
           </button>
           <button
+                    aria-label="Go back Button"
+
             id="poppins"
             onClick={() => navigate("/")}
             className=" bg-transparent hover:bg-blue-600 text-base text-white

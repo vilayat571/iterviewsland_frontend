@@ -43,6 +43,8 @@ const Questions:React.FC<{questions:IQuestion[] | null, setSuggest: React.Dispat
             </div>
             <div id="cavablar" className="flex items-center gap-4">
               <button
+                        aria-label="Download Button"
+
                 id="poppins"
                 className="mt-6 bg-[#E7EFFE] inline w-44 rounded px-4 py-3 text-[#000]"
                 onClick={() => generatePDF()}
@@ -51,12 +53,16 @@ const Questions:React.FC<{questions:IQuestion[] | null, setSuggest: React.Dispat
               </button>
               <button
                 id="poppins"
+                aria-label="Go to categries Button"
+
                 className="mt-6 bg-[#E7EFFE] inline w-44 rounded px-4 py-3 text-[#000]"
                 onClick={() => window.scrollTo(0, 0)}
               >
                 Kateqoriyalar
               </button>
               <button
+                        aria-label="Suggest a question Button"
+
                 id="poppins"
                 className="mt-6 bg-[#E7EFFE] inline  rounded px-4 py-3 text-[#000]"
                 onClick={() => {
