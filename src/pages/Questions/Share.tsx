@@ -41,7 +41,7 @@ const Share = () => {
   return (
     <div
       id="poppins"
-      className="] w-full absolute top-0 left-0 h-screen pt-36 flex flex-col items-center"
+      className="] w-full absolute top-0 left-0 h-screen xl:pt-36 lg:pt-36 md:pt-28 sm:pt-28 flex flex-col items-center"
     >
       <SEO
         title="ITHUB - İnkişaf etdiricilər və IT Peşəkarları Müsahibə Təcrübələrini Paylaşır"

@@ -55,7 +55,7 @@ const UserExperiences = () => {
       />
 
       <Popup play={isModalVisible} setPlay={setIsModalVisible}>
-        <div className="w-full bg-[#0F1629] h-screen flex items-center justify-center fixed text-white p-12 overflow-y-hidden">
+        <div className="w-full bg-[#0F1629] h-screen flex items-center justify-center fixed text-white xl:p-12 lg:p-12 md:p-4 sm:p-4 overflow-y-hidden">
           <button
             aria-label="Open a bar Button"
             onClick={() => {
@@ -67,7 +67,8 @@ const UserExperiences = () => {
           >
             <FontAwesomeIcon className="text-white" icon={faArrowLeft} />
           </button>
-          <div className="h-auto border-[rgb(30,41,60)] rounded border-[1.5px] w-1/2 py-6 px-6 flex flex-col items-start gap-3">
+          <div className="h-auto border-[rgb(30,41,60)] rounded border-[1.5px] xl:w-1/2 lg:w-1/2 md:w-full sm:w-full  py-6 
+          xl:px-6  lg:px-6  md:px-4  sm:px-4  flex flex-col items-start gap-3">
             <p
               id="ocean"
               className="text-slate-200 text-left text-base border-[1px] border-[rgb(30,41,60)] py-4 px-3 rounded inline"
@@ -95,7 +96,7 @@ const UserExperiences = () => {
           <div className="w-full mt-24 mb-6 flex items-center justify-center">
             <select
               required
-              className="text-white bg-transparent px-3 pr-3 border-[rgb(30,41,60)] border-[1.5px] h-16 w-2/5 rounded outline-none"
+              className="text-white bg-transparent px-3 pr-3 border-[rgb(30,41,60)] border-[1.5px] h-16 xl:w-2/5 lg:w-2/5 md:w-4/5 sm:w-4/5 rounded outline-none"
               id="category"
               onChange={(e) => setCategoryExperience(e.target.value)}
               value={categoryExperience}
@@ -114,7 +115,7 @@ const UserExperiences = () => {
                 })}
             </select>
           </div>
-          <div className="grid grid-cols-3 gap-6 gap-y-6 mt-10 w-full">
+          <div className="grid xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 px-3 gap-6 gap-y-6 mt-10 w-full">
             {experiences?.map((experience: any) => {
               return (
                 <div

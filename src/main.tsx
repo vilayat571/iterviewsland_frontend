@@ -10,7 +10,6 @@ import { store } from "./redux/reducers/store";
 import Share from "./pages/Questions/Share";
 import Findtext from "./pages/Questions/Findtext";
 import UserExperiences from "./pages/Experiences/UserExperiences";
-import Login from "./pages/Login";
 import { HelmetProvider } from "react-helmet-async";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
@@ -24,7 +23,6 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
             <Route path="/tecrubeler" element={<UserExperiences />} />
             <Route path="*" element={<Found />} />
             <Route path="/yazıtap" element={<Findtext />} />
-            <Route path="/profile" element={<Login />} />
           </Routes>
         </BrowserRouter>
       </Provider>

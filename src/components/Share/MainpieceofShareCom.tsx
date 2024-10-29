@@ -163,8 +163,8 @@ const MainpieceofShareCom: React.FC<{
       <p id="ocean" className="text-4xl font-semibold text-white">
         Yaz ✎ ⋆⑅˚₊
       </p>
-      <form className="mt-8 w-3/4">
-        <div className="grid grid-cols-2 w-full gap-4 ">
+      <form className="mt-5 xl:w-3/4 lg:w-3/4 sm:w-full px-3 md:w-full ">
+        <div className="grid xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 w-full gap-4 ">
           <div className="flex flex-col items-start col-span-1">
             <select
               required
@@ -221,7 +221,7 @@ const MainpieceofShareCom: React.FC<{
           <ReactQuill
             placeholder="Təcrübəniz haqqında ətraflı yazın.."
             value={description}
-            className="h-80 text-white "
+            className="xl:h-80 lg:h-80 md:h-60 sm:h-60 text-white "
             id="description"
             modules={modules}
             onChange={setDescription}

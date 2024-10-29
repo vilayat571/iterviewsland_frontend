@@ -14,7 +14,8 @@ const ExampleTextBtn: React.FC<{
         aria-label="Open popup Button"
 
           onClick={() => setShowPopup(!showPopup)}
-          className="absolute top-6 z-20 right-6 border-[rgba(30,41,60)] border-[1px] text-base text-white bg-transparent 
+          className="absolute xl:top-6 lg:top-6 md:top-3 sm:top-3
+        z-20 xl:right-6 lg:right-6 md:right-3 sm:right-3 border-[rgba(30,41,60)] border-[1px] text-base text-white bg-transparent 
             hover:bg-blue-700
             hover:text-white
             transition duration-300 px-5 py-4 rounded"

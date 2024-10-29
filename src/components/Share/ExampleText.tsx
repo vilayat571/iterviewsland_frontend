@@ -18,13 +18,16 @@ const ExampleText: React.FC<{
                     aria-label="Open popup Button"
 
             onClick={() => setShowPopup(!showPopup)}
-            className=" absolute top-8 z-50 right-8 border-[rgba(30,41,60)] border-[1px] text-sm text-white hover:bg-transparent bg-blue-700
+            className=" absolute xl:top-8 lg:top-8 md:top-4 sm:top-4 z-50 
+            xl:right-8 lg:right-8 md:right-4 sm:right-4
+           border-[rgba(30,41,60)] border-[1px] text-sm text-white hover:bg-transparent bg-blue-700
                  hover:text-white
                 transition duration-300 px-6 py-3 rounded-[3px] "
           >
             <FontAwesomeIcon className="text-white" icon={faArrowLeft} />
           </button>
-          <div className="h-auto border-[rgb(30,41,60)] rounded border-[1.5px] w-1/2 py-6 px-6 flex flex-col items-start gap-3">
+          <div className="h-auto border-[rgb(30,41,60)] rounded border-[1.5px] 
+          xl:w-1/2 lg:w-1/2 md:w-full sm:w-full py-3 px-3 flex flex-col items-start gap-3">
             <p
               id="ocean"
             className="text-slate-200 text-left text-base border-[1px] border-[rgb(30,41,60)] py-4 px-3 w-full flex items-center justify-between  rounded">

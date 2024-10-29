@@ -126,15 +126,15 @@ const Findexperience = () => {
                 onClick={(e) => handleSubmit(e)}
                 className="text-white hover:bg-blue-900 border-[1px] border-[rgb(30,41,60)] transition duration-300 px-8 py-4 rounded text-center"
               >
-                Axtar
+                Axtar ✨
               </button>
               <button
                 aria-label="Write Button"
                 id="poppins"
-                onClick={(e) => handleSubmit(e)}
+                onClick={() => navigate("/tecrubepaylash")}
                 className="text-white hover:bg-blue-900 border-[1px] border-[rgb(30,41,60)] transition duration-300 px-8 py-4 rounded text-center"
               >
-                Yaz
+                Təcrübə Yaz ✎
               </button>
             </div>
           </div>
@@ -152,13 +152,15 @@ const Findexperience = () => {
               <Loading />
             ) : experience != null && experience != undefined ? (
               <div className="w-full absolute top-0 left-0 h-screen bg-[#0E1527] text-slate-100 flex items-center justify-center">
-                   <FontAwesomeIcon
-                  onClick={() => navigate('/')}
+                <FontAwesomeIcon
+                  onClick={() => navigate("/")}
                   className="px-4 py-3 text-lg absolute top-6 right-6 rounded cursor-pointer border-[1px] border-[rgb(30,41,60)] text-white m-1"
                   icon={faArrowLeft}
                 />
-                <div className="xl:w-1/2 lg:w-1/2 md:w-full sm:w-full border-[1px] flex flex-col gap-4 border-[rgba(30,41,60)] rounded 
-                xl:px-6 lg:px-6 md:px-4 sm:px-2 mx-3 xl:py-6 lg:py-6 md:py-3 sm:py-3  h-auto">
+                <div
+                  className="xl:w-1/2 lg:w-1/2 md:w-full sm:w-full border-[1px] flex flex-col gap-4 border-[rgba(30,41,60)] rounded 
+                xl:px-6 lg:px-6 md:px-4 sm:px-2 mx-3 xl:py-6 lg:py-6 md:py-3 sm:py-3  h-auto"
+                >
                   <p className="w-full">{experience.fullName}</p>
                   <p className="w-full border-[1px] border-[rgba(30,41,60)] px-3 py-4 rounded">
                     {experience.title}

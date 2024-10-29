@@ -10,7 +10,7 @@ const CodeexistShowExperience:React.FC<{code:string, closePopup: () => void}> = 
         <div
           id="ocean"
           className="fixed w-full h-screen right-0 top-0 bg-[#0E1527] text-white z-10 
-      flex items-center justify-center px-4 py-2 rounded"
+      flex items-center justify-center px-6  py-2 rounded"
         >
           <button
                     aria-label="Close Button"
@@ -23,7 +23,9 @@ const CodeexistShowExperience:React.FC<{code:string, closePopup: () => void}> = 
             <FontAwesomeIcon className="text-white" icon={faArrowLeft} />
           </button>
           <div className=" text-red-500 absolute top-0 left-0 w-full h-screen  bg-[#0E1527] opacity-50 "></div>
-          <div className="text-white bg-transparent border-[rgba(30,41,60)] border-[1px]  px-12 py-12 rounded w-1/2 absolute flex flex-col z-100 ">
+          <div className="text-white bg-transparent border-[rgba(30,41,60)] border-[1px]  xl:px-12 lg:px-12 md:px-4 sm:px-4
+          xl:py-12 lg:py-12 md:py-4 sm:py-4  rounded 
+          xl:w-1/2 lg:w-1/2 md:w-full sm:w-full absolute flex flex-col z-100 ">
             <p id="poppins" className="text-xl">
               Təbriklər elan uğurla bazamıza əlavə edildi! 🎉
               <p className="text-xl mt-10">
@@ -44,7 +46,7 @@ const CodeexistShowExperience:React.FC<{code:string, closePopup: () => void}> = 
                   Bağla
                 </button>
                 <NavLink
-                  to="/tecrubepaylash"
+                  to="/tecrubeler"
                   className=" border-[rgba(30,41,60)] border-[1px] text-base ml-3 text-slate-200 hover:bg-blue-700 hover:text-white
                 transition duration-300 px-6 py-[14px] rounded-[3px] "
                 >
