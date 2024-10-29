@@ -11,7 +11,7 @@ import { fetchQuestions } from "../../redux/reducers/getQuestions";
 import Loading from "../../Layout/Loading";
 import { socialMediaIcons } from "../../constants/socialMedia";
 import Popup from "../../components/Main/Popup";
-import { ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import DivshowLoading from "../../components/Allquestions/DivshowLoading";
 import MainPdfDiv from "../../components/Allquestions/MainPdfDiv";
 import Questions from "../../components/Allquestions/Questions";
@@ -30,10 +30,7 @@ const AllQuestions = () => {
   const [unsupportedShare, setUnsupportedShare] = useState(false); // New state for unsupported sharing
   const dispatch = useAppDispatch();
 
-  const { questions, loading } = useAppSelector((state) => ({
-    questions: state.getQuestions.questions,
-    loading: state.getQuestions.loading,
-  }));
+  const { questions, loading } = useAppSelector((state) =>  state.getQuestions);
 
   const scrollDown = (
     category: string,
@@ -135,7 +132,7 @@ const AllQuestions = () => {
             onClick={() => setUnsupportedShare(false)}
             icon={faArrowLeft}
           />
-          <div className="w-1/3 h-auto p-6">
+          <div className="xl:w-1/3 lg:w-1/3 md:w-full sm:w-full h-auto p-6">
             <div
               id="ocean"
               className="w-full border-[1px] border-[rgb(30,41,60)] p-3 py-5 rounded justify-between flex items-center"
@@ -174,6 +171,50 @@ const AllQuestions = () => {
     );
   };
 
+  const [suggestIdea, setSuggestIdea] = useState<{
+    category: string;
+    fullName: string;
+    description: string;
+  }>({
+    category: "",
+    fullName: "",
+    description: "",
+  });
+
+  const sendSuggestedIdea = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    e.preventDefault();
+    const uri =
+      "https://interviewsland-backend.onrender.com/api/v1/suggests/add";
+    fetch(uri, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(suggestIdea),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        toast(data.message, {
+          position: "top-right",
+          autoClose: 1500,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: false,
+          progress: undefined,
+          style: {
+            backgroundColor: "green",
+            color: "white",
+            fontFamily: "Poppins",
+            zIndex: "999",
+          },
+        })
+        setSuggestIdea({category:"", fullName:"", description:""});
+      })
+  };
+
   return (
     <>
       <SEO
@@ -183,7 +224,7 @@ const AllQuestions = () => {
         type="website"
         keywords="ITHUB, müsahibə sualları, proqramlaşdırma sualları, Java müsahibə sualları, JavaScript müsahibə sualları, Python müsahibə sualları, CSS sualları, HTML sualları, proqramlaşdırma dili sualları, Azərbaycan"
       />
-
+      <ToastContainer />
       <MainPdfDiv
         questions={questions}
         questionsRef={questionsRef}
@@ -197,7 +238,83 @@ const AllQuestions = () => {
       ) : (
         <Layout>
           <Popup play={suggest} setPlay={setSuggest}>
-            <div>dree</div>
+            <div className="fixed w-full h-screen top-0 left-0 overflow-hidden bg-[#0e1527] flex items-center justify-center">
+              <FontAwesomeIcon
+                icon={faArrowLeft}
+                className="text-slate-300 px-6 py-4 rounded border-[1px] absolute top-6 right-6 inline border-[rgb(30,41,60)]"
+              />
+              <div className="w-3/5 h-auto px-6 py-12">
+                <p
+                  id="poppinsbold"
+                  className="tracking-wide text-center mb-6 text-4xl text-white"
+                >
+                  Sual təklifinizi yazın ✐ᝰ
+                </p>
+                <form className="poppins flex flex-col gap-4">
+                  <input
+                    onChange={(e) =>
+                      setSuggestIdea({
+                        ...suggestIdea,
+                        [e.target.id]: e.target.value,
+                      })
+                    }
+                    id="fullName"
+                    className=" w-full h-16 text-white outline-none  px-3 py-5 placeholder:text-white bg-transparent border-[1px] border-[rgb(30,41,60)] text-lg rounded"
+                    placeholder="Ad və ləqəb"
+                    type="text"
+                    value={suggestIdea.fullName}
+                  />
+                  <select
+                    required
+                    className="bg-transparent placeholder:text-white border-[rgba(30,41,60)] border-[1px] text-white px-4 py-3 h-[70px] w-full rounded outline-none"
+                    id="category"
+                    onChange={(e) =>
+                      setSuggestIdea({
+                        ...suggestIdea,
+                        [e.target.id]: e.target.value,
+                      })
+                    }
+                    value={suggestIdea.category}
+                  >
+                    <option value="" className="text-white" disabled>
+                      Kateqoriya seçin
+                    </option>{" "}
+                    {/* Placeholder */}
+                    {categories != null &&
+                      categories?.map((category: { categoryname: string }) => (
+                        <option
+                          key={category.categoryname}
+                          className="text-white text-base"
+                          value={category.categoryname}
+                        >
+                          {category.categoryname}
+                        </option>
+                      ))}
+                  </select>
+                  <textarea
+                    onChange={(e) =>
+                      setSuggestIdea({
+                        ...suggestIdea,
+                        [e.target.id]: e.target.value,
+                      })
+                    }
+                    id="description"
+                    className=" w-full h-60 text-white outline-none p-3 placeholder:text-white bg-transparent border-[1px] border-[rgb(30,41,60)] text-lg rounded"
+                    placeholder="Sualı yazın"
+                    value={suggestIdea.description}
+                  />
+                  <div className="flex items-center justify-center mt-3">
+                    <button
+                      onClick={(e) => sendSuggestedIdea(e)}
+                      aria-label="send button suggest"
+                      className="text-slate-300 px-6 py-4 rounded border-[1px] inline border-[rgb(30,41,60)]"
+                    >
+                      Təklifini göndər
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
           </Popup>
           <Introtext />
 

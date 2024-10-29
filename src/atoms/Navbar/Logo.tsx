@@ -2,12 +2,20 @@ import { Link } from "react-router-dom";
 
 const Logo = () => {
   return (
-    <Link
-      to="/"
-      className="text-[#fff] font-black  "
-    >
-      <span id="poppinsbold" className="text-2xl px-2 py-1 text-[#fff] rounded">.ithub</span>
-    </Link>
+    <p className="text-center flex items-center justify-center text-white">
+        <Link to='/'  id="poppinsbold2" className="text-white text-3xl ">
+          it.hub
+        </Link>{" "}
+        <p>
+          {" "}
+          <span className="ml-[6px] mr-[3px]"> by </span>
+          <Link to='https://safarovacademy.com/'
+          target="blank"
+          className="bg-blue-600 px-1 py-1 rounded text-white">
+            vilayat
+          </Link>
+        </p>
+      </p>
   );
 };
 

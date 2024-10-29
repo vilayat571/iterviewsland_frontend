@@ -12,24 +12,25 @@ const Footer = () => {
     <div
       className="w-full bg-[#10172A]
      mt-24 flex justify-center h-auto
-     pb-20 pt-16 flex-col
+     pb-20 pt-16 flex-col px-4
      items-center"
     >
-      <div className="flex flex-row items-center gap-5 mb-16">
-        <NavLink className={"text-slate-300"} id="poppins" to="/tecrubeler">
+      <div className="flex xl:w-auto lg:w-auto md:w-full sm:w-full xl:flex-row lg:flex-row md:flex-col sm:flex-col 
+      xl:items-center lg:items-center md:items-start sm:items-start
+       gap-5 mb-16">
+        <NavLink className={"text-slate-300 xl:border-b-none lg:border-none md:border-b-[1px] sm:border-b-[1px] border-[rgb(30,41,60)] py-1 xl:w-auto lg:-auto sm:w-full md:w-full"} id="poppins" to="/tecrubeler">
           Təcrübələr
         </NavLink>
-        <NavLink className={"text-slate-300"} id="poppins" to="/tecrubepaylash">
+        <NavLink className={"text-slate-300 xl:border-b-none lg:border-none md:border-b-[1px] sm:border-b-[1px] border-[rgb(30,41,60)] py-1 xl:w-auto lg:-auto sm:w-full md:w-full"} id="poppins" to="/tecrubeler">
           Təcrübəni bölüş
         </NavLink>
 
-        <NavLink className={"text-slate-300"} to={"/yazıtap"} id="poppins">
+        <NavLink className={"text-slate-300 xl:border-b-none lg:border-none md:border-b-[1px] sm:border-b-[1px] border-[rgb(30,41,60)] py-1 xl:w-auto lg:-auto sm:w-full md:w-full"} id="poppins" to="/tecrubeler">
           Yazını tap
         </NavLink>
 
         <button
-                  aria-label="Watch a video Button"
-
+          aria-label="Watch a video Button"
           className={
             "text-slate-300 border-[1px] border-[rgb(30,41,60)] text-base px-4 py-3 rounded"
           }

@@ -8,12 +8,16 @@ import {
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Popup from "../Main/Popup";
 import Sidebar from "./Sidebar";
 import { useAppDispatch, useAppSelector } from "../../redux/reducers/store";
 import { removeQuestionFromCart } from "../../redux/reducers/addToCart";
+import { jsPDF } from "jspdf";
+import html2canvas from "html2canvas";
+import DivshowLoading from "../Allquestions/DivshowLoading";
+import PDFIN from "./PDFIN";
 
 const Navbar = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -25,10 +29,76 @@ const Navbar = () => {
     localStorage.getItem("categories") || "[]"
   );
 
+  const myQuestionsRef = useRef<HTMLDivElement | null>(null); // Ref for capturing PDF content
+
+  const [pdfLoading, setPdfLoading] = useState<boolean>(false);
+
+  const generatePDF = async () => {
+    setPdfLoading(true);
+
+    const pdf = new jsPDF("p", "pt", "a4");
+    await new Promise((resolve) => setTimeout(resolve, 100));
+
+    if (myQuestionsRef.current) {
+      const canvas = await html2canvas(myQuestionsRef.current, { scale: 2 });
+      const imgData = canvas.toDataURL("image/png");
+
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pageHeight = pdf.internal.pageSize.getHeight();
+      const imgHeight = (canvas.height * pdfWidth) / canvas.width;
+
+      let heightLeft = imgHeight;
+      let position = 0;
+
+      // Add pages as needed
+      while (heightLeft > 0) {
+        pdf.addImage(imgData, "PNG", 0, position, pdfWidth, imgHeight);
+        heightLeft -= pageHeight;
+        position -= pageHeight;
+
+        if (heightLeft > 0) pdf.addPage();
+      }
+      pdf.save(`qarishiq_musahibe_suallari.pdf`);
+    }
+    setPdfLoading(false);
+  };
+
   const { questionsCart } = useAppSelector((state) => state.addToCart);
 
   return (
     <div className="bg-[#0F1629] py-6 w-full flex items-center tracking-normal justify-center">
+      <div
+        ref={myQuestionsRef}
+        style={{
+          position: "absolute",
+          width: "100%", // Set width explicitly
+          display: pdfLoading ? "block" : "none", // Use "block" instead of "hidden" for conditional rendering
+          top: pdfLoading ? "0px" : "-10000px", // Ensure visibility within viewport
+          left: pdfLoading ? "0px" : "-10000px",
+        }}
+      >
+        <p className="bg-blue-600 text-white px-3 inline-block rounded py-4 mb-1">
+          Bu pdf - ithub saytından götürülmüşdür.{" "}
+        </p>
+        <div className="px-2 flex flex-col gap-4 mt-2">
+          {questionsCart?.length &&
+            questionsCart.map((question, index) => (
+              <p key={index}>
+                {index + 1}. {question.category}
+              </p>
+            ))}
+        </div>
+        <div className="px-2 flex flex-row mt-5">
+          <a
+            href="https://ithubaz.netlify.app/"
+            target="blank"
+            className="bg-blue-600 p-3 text-white rounded"
+          >
+            Sayta get
+          </a>
+        </div>
+      </div>
+
       <div
         className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full xl:px-0 lg:px-0  md:px-2 sm:px-2 text-[#fff]
     flex justify-between items-center  "
@@ -54,25 +124,29 @@ const Navbar = () => {
           </div>
         </Popup>
         <Popup play={showCategories} setPlay={setShowCategories}>
-          <div className="w-full bg-[#0F1629] h-screen fixed text-white p-12 overflow-y-hidden">
+          <DivshowLoading divShow={pdfLoading} />
+
+          <div className="w-full bg-[#0F1629]  h-screen fixed text-white xl:p-12 lg:p-12 md:p-12 sm:p-5 mt-8 overflow-y-hidden">
             <FontAwesomeIcon
               onClick={() => setShowCategories(!showCategories)}
               icon={faArrowLeft}
-              className="absolute top-6 right-12 border-[1px] px-3 py-2 hover:bg-red-600 hover:text-white transition duration-300
+              className="absolute xl:top-6 lg:top-6 md:top-4 sm:top-4 xl:right-12 lg:right-12 md:right-6 sm:right-6 border-[1px] px-3 py-2 hover:bg-red-600 hover:text-white transition duration-300
                rounded cursor-pointer border-[rgb(30,41,60)]"
             />
             <div className="flex w-full items-center justify-between mt-6">
-              <p className="text-3xl">Seçilmiş sualların ₊✩‧₊</p>
+              <p className="text-3xl xl:inline lg:inline md:hidden sm:hidden">Seçilmiş sualların ₊✩‧₊</p>
               <div className="mt-3">
                 <button
-                          aria-label="Download Button"
-                          className="bg-white text-black px-4 py-3 hover:bg-blue-800 hover:text-white transition duration-300 rounded">
+                  onClick={() => generatePDF()}
+                  aria-label="Download Button"
+                  className="bg-white text-black px-4 py-3 hover:bg-blue-800 hover:text-white transition duration-300 rounded"
+                >
                   PDF-ini yüklə <FontAwesomeIcon icon={faDownload} />
                 </button>
               </div>
             </div>
             {/* Scrollable container for questions */}
-            <div className="flex flex-col gap-10 mt-6 max-h-[85vh] pb-6 overflow-y-auto">
+            <div className="flex flex-col gap-10 mt-6 max-h-[85vh] w-full pb-6 overflow-y-auto">
               {questionsCart.map((item, index) => (
                 <p
                   key={index}
@@ -123,8 +197,7 @@ const Navbar = () => {
             Təcrübəni bölüş
           </NavLink>
           <button
-                    aria-label="Show Video Button"
-
+            aria-label="Show Video Button"
             onClick={() => setShowPopup(!showPopup)}
             className={
               "bg-transparent text-base px-4 py-3 border-[rgb(33,46,71)] border-[1px] rounded"
@@ -148,18 +221,11 @@ const Navbar = () => {
             Yazını tap
           </NavLink>
           |
-          <button
-                    aria-label="Counts in the PDF Button"
-
-            onClick={() => setShowCategories(!showCategories)}
-            className={
-              "bg-white px-4 py-3 border-[rgb(33,46,71)] text-base border-[1px] text-black rounded"
-            }
-            id="poppins"
-          >
-            PDF-in <FontAwesomeIcon icon={faDiagramProject} />
-            <sup className="p-1">{savedQuestionsCart.length}</sup>
-          </button>
+          <PDFIN
+            showCategories={showCategories}
+            savedQuestionsCart={savedQuestionsCart}
+            setShowCategories={setShowCategories}
+          />
         </div>
 
         <Sidebar
@@ -167,6 +233,9 @@ const Navbar = () => {
           isSidebarOpen={displaySidebar}
           setShowPopup={setShowPopup}
           showPopup={showPopup}
+          showCategories={showCategories}
+          savedQuestionsCart={savedQuestionsCart}
+          setShowCategories={setShowCategories}
         />
 
         <button

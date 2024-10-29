@@ -83,14 +83,14 @@ const Findexperience = () => {
             alt="the lock image of ITHUB website"
           />
         </div>
-        <div className="col-span-1 w-full h-screen flex items-center justify-center">
+        <div className="col-span-1 w-full h-screen flex items-center xl:px-0 lg:px-0 md:px-2 sm:px-2 justify-center">
           <div className="relative top-12 w-full flex flex-col items-center justify-center">
-            <p className="text-5xl mb-3 text-slate-100 text-center font-semibold">
+            <p className="text-5xl xl:mb-3 lg:mb-3 md:mb-0 sm:mb-0  text-slate-100 text-center font-semibold">
               Xoş gəldiniz 👋
             </p>
             <form
               onSubmit={(e) => handleSubmit(e)}
-              className="w-full mt-8 mb-1 flex items-center justify-center"
+              className="w-full xl:mt-8 lg:mt-8 md:mt-5 sm:mt-5  mb-1 flex items-center justify-center"
             >
               <OTPInput
                 value={query}
@@ -104,13 +104,18 @@ const Findexperience = () => {
                   margin: "3px",
                   color: "black",
                   fontSize: "24px",
+                  // Use media query to adjust width and height on small screens
+                  ...(window.innerWidth <= 768 && {
+                    width: "66px",
+                    height: "66px",
+                  }),
                 }}
                 renderSeparator={<span>-</span>}
                 renderInput={(props) => <input {...props} />}
               />
             </form>
 
-            <p className="text-white text-base px- text-center mt-3 mb-3">
+            <p className="text-white text-base xl:w-3/5 lg:w-3/5 md:w-full sm:w-full text-center mt-3 mb-3">
               Diqqət: zəhmət olmasa kodu daxil edərkən doğruluğundan əmin olun,
               əks halda yazı mətniniz tapılmayacaqdır.
             </p>
@@ -147,7 +152,13 @@ const Findexperience = () => {
               <Loading />
             ) : experience != null && experience != undefined ? (
               <div className="w-full absolute top-0 left-0 h-screen bg-[#0E1527] text-slate-100 flex items-center justify-center">
-                <div className="w-1/2 border-[1px] flex flex-col gap-4 border-[rgba(30,41,60)] rounded px-4 py-12 h-[80vh]">
+                   <FontAwesomeIcon
+                  onClick={() => navigate('/')}
+                  className="px-4 py-3 text-lg absolute top-6 right-6 rounded cursor-pointer border-[1px] border-[rgb(30,41,60)] text-white m-1"
+                  icon={faArrowLeft}
+                />
+                <div className="xl:w-1/2 lg:w-1/2 md:w-full sm:w-full border-[1px] flex flex-col gap-4 border-[rgba(30,41,60)] rounded 
+                xl:px-6 lg:px-6 md:px-4 sm:px-2 mx-3 xl:py-6 lg:py-6 md:py-3 sm:py-3  h-auto">
                   <p className="w-full">{experience.fullName}</p>
                   <p className="w-full border-[1px] border-[rgba(30,41,60)] px-3 py-4 rounded">
                     {experience.title}
@@ -166,31 +177,35 @@ const Findexperience = () => {
             ) : (
               <div className="flex text-center items-center justify-center bg-[#0e1527] w-full h-screen absolute top-0 left-0">
                 <FontAwesomeIcon
-                  className="px-4 py-3 text-lg absolute top-6 right-6 rounded border-[1px] border-[rgb(30,41,60)] text-white m-1"
+                  onClick={() => setShow(false)}
+                  className="px-4 py-3 text-lg absolute top-6 right-6 rounded cursor-pointer border-[1px] border-[rgb(30,41,60)] text-white m-1"
                   icon={faArrowLeft}
                 />
                 <div className="relative top-6">
                   <p className="flex flex-col">
-                    <span className="text-slate-100 text-4xl">
-                      Axtarışa uyğun <br /> yazı mətni tapılmadı ✖
+                    <span className="text-slate-100 xl:text-4xl lg:text-4xl md:text-4xl sm:text-4xl">
+                      Axtarışa uyğun{" "}
+                      <br className="xl:block lg:block sm:hidden md:hidden" />{" "}
+                      yazı mətni tapılmadı ✖
                     </span>
-                    <span className="mt-4 text-lg text-white">
-                      Əgər yazı mətninin mövcud olduğundan <br /> əminsinizsə,
-                      kodu səhf yazmış ola bilərsiniz.
+                    <span className="mt-4 w-full text-lg text-white">
+                      Əgər yazı mətninin mövcud olduğundan{" "}
+                      <br className="xl:block lg:block sm:hidden md:hidden" />{" "}
+                      əminsinizsə, kodu səhf yazmış ola bilərsiniz.
                     </span>
                   </p>
 
-                  <div className="w-full flex justify-center mt-4">
+                  <div className="w-full x flex justify-center mt-4">
                     <button
                       onClick={() => setShow(false)}
-                      className="px-6 py-4 rounded border-[1px] border-[rgb(30,41,60)] text-white m-1"
+                      className="xl:px-6 lg:px-6 md:px-5 sm:px-5 py-4 rounded border-[1px] border-[rgb(30,41,60)] text-white m-1"
                     >
                       Yenidən sına ✨
                     </button>
                     <NavLink
                       to={"/tecrubepaylash"}
                       onClick={() => setShow(false)}
-                      className="px-6 py-4 rounded border-[1px] border-[rgb(30,41,60)] text-white m-1"
+                      className="xl:px-6 lg:px-6 md:px-5 sm:px-5 py-4 rounded border-[1px] border-[rgb(30,41,60)] text-white m-1"
                     >
                       Təcrübəni yaz ✎
                     </NavLink>

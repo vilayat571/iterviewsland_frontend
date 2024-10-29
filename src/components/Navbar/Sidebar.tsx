@@ -3,25 +3,37 @@ import Logo from "../../atoms/Navbar/Logo";
 import { faPlayCircle, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink } from "react-router-dom";
+import PDFIN from "./PDFIN";
 
 const Sidebar: React.FC<{
   isSidebarOpen: boolean;
   setIsSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
   showPopup: boolean;
   setShowPopup: React.Dispatch<React.SetStateAction<boolean>>;
-}> = ({ isSidebarOpen, setIsSidebarOpen, showPopup, setShowPopup }) => {
+  savedQuestionsCart: [];
+  showCategories: boolean;
+  setShowCategories: React.Dispatch<React.SetStateAction<boolean>>;
+}> = ({
+  isSidebarOpen,
+  setIsSidebarOpen,
+  showPopup,
+  setShowPopup,
+  savedQuestionsCart,
+  showCategories,
+  setShowCategories,
+}) => {
   return (
     <div
-      className={`fixed z-50 bg-[#0e1527] w-screen left-0 top-0 h-screen transform py-6 px-12 transition-transform duration-300 ease-in-out ${
+      className={`fixed z-20 bg-[#0e1527] w-screen left-0 top-0 h-screen transform py-6 px-2 transition-transform duration-300 ease-in-out ${
         isSidebarOpen ? "translate-x-0" : "-translate-x-full"
       }`}
     >
       <div className="flex items-center justify-between">
         <Logo />
-        <button 
-                  aria-label="Open Sidebar Button"
-
-        onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
+        <button
+          aria-label="Open Sidebar Button"
+          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+        >
           <FontAwesomeIcon
             className="bg-blue-700 z-50 text-white text-lg px-4 py-3 rounded"
             icon={faTimes}
@@ -38,6 +50,7 @@ const Sidebar: React.FC<{
         <NavLink id="poppins" to="/tecrubepaylash">
           Təcrübəni bölüş
         </NavLink>
+
         <NavLink
           className={({ isActive }) =>
             isActive
@@ -49,9 +62,13 @@ const Sidebar: React.FC<{
         >
           Yazını tap
         </NavLink>
+        <PDFIN
+          showCategories={showCategories}
+          savedQuestionsCart={savedQuestionsCart}
+          setShowCategories={setShowCategories}
+        />
         <button
-                  aria-label="Open Popup Button"
-
+          aria-label="Open Popup Button"
           onClick={() => {
             setShowPopup(!showPopup);
             setIsSidebarOpen(!isSidebarOpen);
