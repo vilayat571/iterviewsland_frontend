@@ -3,7 +3,6 @@ import {
   faArrowLeft,
   faBars,
   faCircleNodes,
-  faDiagramProject,
   faDownload,
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
