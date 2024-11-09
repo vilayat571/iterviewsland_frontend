@@ -1,11 +1,13 @@
 import { faShareNodes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useEffect } from "react";
 import { ICategory } from "../../pages/Questions/AllQuestions";
+import { useAppDispatch } from "../../redux/reducers/store";
+import { fetchAuthors } from "../../redux/reducers/getAuthors";
 
 const Categories: React.FC<{
   categories: ICategory[] | null;
-  sCategory:string|null,
+  sCategory: string | null;
   scrollDown: (
     category: string,
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -14,7 +16,23 @@ const Categories: React.FC<{
     category: string,
     e: React.MouseEvent<SVGSVGElement, MouseEvent>
   ) => Promise<void>;
-}> = ({ categories, scrollDown, handleShare,sCategory }) => {
+}> = ({ categories, scrollDown, handleShare, sCategory }) => {
+  const dispatch = useAppDispatch();
+
+  const handleSetAuthor = (category: string) => {
+    localStorage.setItem("category", JSON.stringify(category));
+  };
+
+  const storedCategory = localStorage.getItem("category");
+  const category: string = storedCategory ? JSON.parse(storedCategory) : "";
+
+
+  useEffect(() => {
+    dispatch(fetchAuthors({ category }));
+  }, [category, dispatch]);
+
+
+
   return (
     <div className="flex flex-col px-3 mt-0">
       <div className="w-full flex justify-between items-center">
@@ -31,8 +49,11 @@ const Categories: React.FC<{
       >
         {categories?.map((category: ICategory) => (
           <button
-          aria-label="Share Button"
-            onClick={(e) => scrollDown(category.categoryname, e)}
+            aria-label="Share Button"
+            onClick={(e) => {
+              scrollDown(category.categoryname, e);
+              handleSetAuthor(category.categoryname);
+            }}
             key={category.categoryname} // Use category name as key (ensure it's unique)
             className={`px-4 py-4 ${
               sCategory === category.categoryname

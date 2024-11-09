@@ -4,8 +4,9 @@ const LoadingShare:React.FC<{loading:boolean}> = ({loading}) => {
   return (
     <>
       {loading ? (
-        <div className="w-full bg-black h-screen flex items-center justify-center fuxed top-0 left-0">
-          Göndərilir
+        <div className="w-full bg-[#0e1527] text-white z-50 text-2xl gap-5 flex-col fixed h-screen text-center flex items-center justify-center  top-0 left-0">
+          <p className="text-6xl">🚀</p>
+          <p>Göndərilir..</p>
         </div>
       ) : (
         ""

@@ -10,10 +10,11 @@ import MainpieceofShareCom from "../../components/Share/MainpieceofShareCom";
 import SEO from "../../constants/SEO";
 
 export interface IExperience {
+  _id?:string,
   category: string;
   title: string;
   description?: string;
-  fullName: string;
+  fullName?: string;
   status: boolean;
 }
 

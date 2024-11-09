@@ -1,1 +1,1 @@
-export const url='https://interviewsland-backend.onrender.com/api/v1'
+export const url='https://interviews-land.info/api/v1'

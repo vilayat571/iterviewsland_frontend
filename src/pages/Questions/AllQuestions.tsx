@@ -186,17 +186,38 @@ const AllQuestions = () => {
   ) => {
     e.preventDefault();
     const uri =
-      "https://interviewsland-backend.onrender.com/api/v1/suggests/add";
-    fetch(uri, {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(suggestIdea),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        toast(data.message, {
+      "https://interviews-land.info/api/v1/suggests/add";
+
+      if(suggestIdea.description.length>25){
+        fetch(uri, {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify(suggestIdea),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            toast(data.message, {
+              position: "top-right",
+              autoClose: 1500,
+              hideProgressBar: true,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: false,
+              progress: undefined,
+              style: {
+                backgroundColor: "green",
+                color: "white",
+                fontFamily: "Poppins",
+                zIndex: "999",
+              },
+            })
+            setSuggestIdea({category:"", fullName:"", description:""});
+          })
+      }
+      else{
+        toast('Sualı daha ətraflı yazın:)', {
           position: "top-right",
           autoClose: 1500,
           hideProgressBar: true,
@@ -205,14 +226,15 @@ const AllQuestions = () => {
           draggable: false,
           progress: undefined,
           style: {
-            backgroundColor: "green",
+            backgroundColor: "red",
             color: "white",
             fontFamily: "Poppins",
             zIndex: "999",
           },
         })
-        setSuggestIdea({category:"", fullName:"", description:""});
-      })
+      }
+
+    
   };
 
   return (
@@ -241,7 +263,8 @@ const AllQuestions = () => {
             <div className="fixed w-full h-screen top-0 left-0 overflow-hidden bg-[#0e1527] flex items-center justify-center">
               <FontAwesomeIcon
                 icon={faArrowLeft}
-                className="text-slate-300 px-6 py-4 rounded border-[1px] absolute top-6 right-6 inline border-[rgb(30,41,60)]"
+                onClick={()=>setSuggest(false)}
+                className="text-slate-300 px-6 py-4 cursor-pointer rounded border-[1px] absolute top-6 right-6 inline border-[rgb(30,41,60)]"
               />
               <div className="w-3/5 h-auto px-6 py-12">
                 <p

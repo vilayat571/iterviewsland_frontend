@@ -151,7 +151,7 @@ const Navbar = () => {
                   key={index}
                   className="flex border-t-0 border-l-0 border-r-0 border-b-[rgb(30,41,60)] border-[1px] items-center justify-between"
                 >
-                  {index + 1} {item.category}
+                  {index + 1}. {item.category}
                   <FontAwesomeIcon
                     onClick={() => {
                       const survey = confirm("Sualı silmək istəyirsiniz?");
@@ -182,7 +182,8 @@ const Navbar = () => {
             id="poppins"
             to="/tecrubeler"
           >
-            Təcrübələr
+            Təcrübələr <sup className="bg-blue-600 p-[3px] rounded">tezliklə
+            </sup>
           </NavLink>
           <NavLink
             className={({ isActive }) =>

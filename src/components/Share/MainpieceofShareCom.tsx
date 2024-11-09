@@ -67,7 +67,7 @@ const MainpieceofShareCom: React.FC<{
     }
 
     // Validate full name length
-    if (experience.fullName.length <= 8) {
+    if (experience.fullName!=null && undefined && experience.fullName.length <= 8) {
       toast("Adınız 8 simvoldan çox olmalıdır.", {
         position: "top-right",
         autoClose: 1500,

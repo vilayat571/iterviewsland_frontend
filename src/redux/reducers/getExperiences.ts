@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 interface IExperience {
+  status: boolean;
   title: string;
   category: string;
   number: number;
@@ -23,7 +24,7 @@ export const fetchExperiences = createAsyncThunk(
   "/fetchExperiences",
   async ({ limit, category }: { limit: string | number; category: string }) => {
     const response = await fetch(
-        `https://interviewsland-backend.onrender.com/api/v1/experiences/?skip=0&limit=${limit}${
+        `https://interviews-land.info/api/v1/experiences/?skip=0&limit=${limit}${
           category !== "Kateqoriyalar" ? `&category=${category}` : ""
         }`
       );

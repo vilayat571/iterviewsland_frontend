@@ -34,7 +34,7 @@ const Findexperience = () => {
       setLoading(true);
       setShow(true);
 
-      const uri = `https://interviewsland-backend.onrender.com/api/v1/experiences/find`;
+      const uri = `https://interviews-land.info/api/v1/experiences/find`;
 
       fetch(uri, {
         method: "POST",
@@ -158,7 +158,7 @@ const Findexperience = () => {
                   icon={faArrowLeft}
                 />
                 <div
-                  className="xl:w-1/2 lg:w-1/2 md:w-full sm:w-full border-[1px] flex flex-col gap-4 border-[rgba(30,41,60)] rounded 
+                  className="xl:w-1/2 lg:w-1/2 mt-6 md:w-full sm:w-full border-[1px] flex flex-col gap-4 border-[rgba(30,41,60)] rounded 
                 xl:px-6 lg:px-6 md:px-4 sm:px-2 mx-3 xl:py-6 lg:py-6 md:py-3 sm:py-3  h-auto"
                 >
                   <p className="w-full">{experience.fullName}</p>

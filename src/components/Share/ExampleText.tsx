@@ -18,7 +18,7 @@ const ExampleText: React.FC<{
                     aria-label="Open popup Button"
 
             onClick={() => setShowPopup(!showPopup)}
-            className=" absolute xl:top-8 lg:top-8 md:top-4 sm:top-4 z-50 
+            className=" absolute xl:top-8 lg:top-8 md:top-4 sm:top-4 z-40 
             xl:right-8 lg:right-8 md:right-4 sm:right-4
            border-[rgba(30,41,60)] border-[1px] text-sm text-white hover:bg-transparent bg-blue-700
                  hover:text-white

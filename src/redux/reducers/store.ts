@@ -4,13 +4,15 @@ import getQuestions from "./getQuestions";
 import getExperiences from "./getExperiences";
 import postExperience from "./postExperience";
 import addToCart from "./addToCart";
+import getAuthors from "./getAuthors";
 
 export const store = configureStore({
   reducer: {
     getQuestions: getQuestions,
     getExperiences: getExperiences,
     postExperience:postExperience,
-    addToCart:addToCart
+    addToCart:addToCart,
+    getAuthors:getAuthors
   },
 });
 

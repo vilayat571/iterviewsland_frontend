@@ -17,7 +17,7 @@ const initialState: {
 const sendExperienceText = createAsyncThunk(
     'experience/sendExperienceText',
     async ({ formData, description }: { formData: IExperience; description: string }) => {
-        const url = 'https://interviewsland-backend.onrender.com/api/v1/experiences/add';
+        const url = 'https://interviews-land.info/api/v1/experiences/add';
         
         const response = await fetch(url, {
             method: 'POST',

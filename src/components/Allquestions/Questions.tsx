@@ -1,9 +1,17 @@
 import { faDiagramProject } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { useAppDispatch } from "../../redux/reducers/store";
+import { useAppDispatch, useAppSelector } from "../../redux/reducers/store";
 import { addQuestionToCart } from "../../redux/reducers/addToCart";
 import { IQuestion } from "../../redux/reducers/getQuestions";
+import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { NavLink } from "react-router-dom";
+
+interface IAuthor {
+  name: string;
+  linkedin: string;
+  _id: string;
+}
 
 const Questions: React.FC<{
   questions: IQuestion[] | null;
@@ -11,6 +19,11 @@ const Questions: React.FC<{
   generatePDF: () => Promise<void>;
 }> = ({ questions, setSuggest, generatePDF }) => {
   const dispatch = useAppDispatch();
+
+  // Default authors to an empty array in the Redux state
+  const authors: IAuthor[] | string[] = useAppSelector(
+    (state) => state.getAuthors.authors ?? []
+  );
 
   return (
     <div className="w-full xl:px-3 lg:px-3 md:px-2 sm:px-3 flex justify-center items-center rounded-md sm:mt-0 md:mt-0 xl:mt-6 lg:mt-6">
@@ -42,23 +55,49 @@ const Questions: React.FC<{
                   </p>
                 ))}
               </div>
-              <div id="cavablar" className="flex xl:flex-row lg:flex-row md:flex-col sm:flex-col xl:items-center lg:items-center md:items-start sm:items-start
-               mt-6  gap-4">
+              {authors.length > 0 && (
+                <div className="flex gap-1 items-center mt-6">
+                  <p className="text-white text-xl">Müəlliflər : </p>
+                  <div id="author" className="flex gap-2">
+                    {authors.map((item: IAuthor | any) => {
+                      return (
+                        <NavLink 
+                          target="blank"
+                          to={item.linkedin} 
+                          className="border-[1px] text-sm flex items-center gap-3 border-[rgb(30,41,60)] px-5 py-3 rounded text-white"
+                          key={item._id}
+                        >
+                          <span> {item.name}</span>{" "}
+                          <FontAwesomeIcon
+                            className="text-xl"
+                            icon={faLinkedin}
+                          />
+                        </NavLink>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+              <div
+                id="cavablar"
+                className="flex xl:flex-row lg:flex-row md:flex-col sm:flex-col xl:items-center lg:items-center md:items-start sm:items-start
+               mt-6  gap-4"
+              >
                 <button
                   aria-label="Download Button"
                   id="poppins"
                   className=" bg-blue-600  inline xl:w-auto lg:w-auto md:w-full sm:w-full rounded px-4 py-3 text-[#fff]"
                   onClick={() => generatePDF()}
                 >
-                  PDF kimi yüklə
+                  PDF kimi yüklə 📥
                 </button>
                 <button
                   id="poppins"
-                  aria-label="Go to categries Button"
+                  aria-label="Go to categories Button"
                   className=" bg-blue-600  inline xl:w-auto lg:w-auto md:w-full sm:w-full rounded px-4 py-3 text-[#fff]"
                   onClick={() => window.scrollTo(0, 0)}
                 >
-                  Kateqoriyalar
+                  Kateqoriyalar ✔
                 </button>
                 <button
                   aria-label="Suggest a question Button"
@@ -66,7 +105,7 @@ const Questions: React.FC<{
                   className=" bg-blue-600  inline xl:w-auto lg:w-auto md:w-full sm:w-full  rounded px-4 py-3 text-[#fff]"
                   onClick={() => setSuggest(true)}
                 >
-                  Sual tövsiyyə et
+                  Sual tövsiyyə et 💭
                 </button>
               </div>
             </div>
