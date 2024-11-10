@@ -1,8 +1,7 @@
 import { NavLink } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlayCircle } from "@fortawesome/free-solid-svg-icons";
-import {
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";import {
   faGithub,
+  faGoogle,
   faLinkedin,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
@@ -12,33 +11,10 @@ const Footer = () => {
     <div
       className="w-full bg-[#10172A]
      mt-24 flex justify-center h-auto
-     pb-20 pt-16 flex-col px-4
+     py-16 flex-col px-4
      items-center"
     >
-      <div className="flex xl:w-auto lg:w-auto md:w-full sm:w-full xl:flex-row lg:flex-row md:flex-col sm:flex-col 
-      xl:items-center lg:items-center md:items-start sm:items-start
-       gap-5 mb-16">
-        <NavLink className={"text-slate-300 xl:border-b-none lg:border-none md:border-b-[1px] sm:border-b-[1px] border-[rgb(30,41,60)] py-1 xl:w-auto lg:-auto sm:w-full md:w-full"} id="poppins" to="/tecrubeler">
-          Təcrübələr
-        </NavLink>
-        <NavLink className={"text-slate-300 xl:border-b-none lg:border-none md:border-b-[1px] sm:border-b-[1px] border-[rgb(30,41,60)] py-1 xl:w-auto lg:-auto sm:w-full md:w-full"} id="poppins" to="/tecrubeler">
-          Təcrübəni bölüş
-        </NavLink>
 
-        <NavLink className={"text-slate-300 xl:border-b-none lg:border-none md:border-b-[1px] sm:border-b-[1px] border-[rgb(30,41,60)] py-1 xl:w-auto lg:-auto sm:w-full md:w-full"} id="poppins" to="/tecrubeler">
-          Yazını tap
-        </NavLink>
-
-        <button
-          aria-label="Watch a video Button"
-          className={
-            "text-slate-300 border-[1px] border-[rgb(30,41,60)] text-base px-4 py-3 rounded"
-          }
-          id="poppins"
-        >
-          Video təlimat <FontAwesomeIcon icon={faPlayCircle} />
-        </button>
-      </div>
 
       <div className="text-center flex items-center justify-center text-white w-full">
         <span id="poppinsbold" className="text-white text-4xl ">
@@ -59,18 +35,43 @@ const Footer = () => {
         edilməsi üçün ərsəyə gətirilmiş bir icma layihəsidir.
       </p>
       <div className="flex items-center gap-3 justify-center mt-5 w-full">
+        <NavLink 
+        target="blank"
+        to={'https://www.linkedin.com/company/interviewsland'}>
+
         <FontAwesomeIcon
           icon={faLinkedin}
-          className="px-3 py-3 text-slate-300 bg-[#10172A] rounded-full text-base border-[1px] border-[rgb(30,41,60)]"
+          className="p-3 text-white hover:bg-blue-600 transition duration-150  bg-[#10172A] rounded-full text-lg border-[1px] border-[rgb(30,41,60)]"
         />
+        </NavLink>
+        <NavLink 
+        target="blank"
+        to={'https://interviews-land.info'}>
+
         <FontAwesomeIcon
-          icon={faYoutube}
-          className="px-3 py-3 text-slate-300 bg-[#10172A] rounded-full text-base border-[1px] border-[rgb(30,41,60)]"
+          icon={faGoogle}
+          className="p-3 text-white hover:bg-blue-600 transition duration-150  bg-[#10172A] rounded-full text-lg border-[1px] border-[rgb(30,41,60)]"
         />
+        </NavLink>
+
+        <NavLink 
+        target="blank"
+        to={'https://github.com/vilayat571/iterviewsland_frontend'}>
+
         <FontAwesomeIcon
           icon={faGithub}
-          className="px-3 py-3 text-slate-300 bg-[#10172A] rounded-full text-base border-[1px] border-[rgb(30,41,60)]"
+          className="p-3 text-white hover:bg-blue-600 transition duration-150  bg-[#10172A] rounded-full text-lg border-[1px] border-[rgb(30,41,60)]"
         />
+        </NavLink>
+        <NavLink 
+        target="blank"
+        to={'https://www.youtube.com/channel/UCEbybz8tUiXY7SOmy5BZPqw'}>
+
+        <FontAwesomeIcon
+          icon={faYoutube}
+          className="p-3 text-white hover:bg-blue-600 transition duration-150  bg-[#10172A] rounded-full text-lg border-[1px] border-[rgb(30,41,60)]"
+        />
+        </NavLink>
       </div>
     </div>
   );

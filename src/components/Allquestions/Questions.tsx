@@ -1,4 +1,9 @@
-import { faFileCirclePlus } from "@fortawesome/free-solid-svg-icons";
+import {
+  faDownload,
+  faFileCirclePlus,
+  faInbox,
+  faLayerGroup,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/reducers/store";
@@ -56,20 +61,21 @@ const Questions: React.FC<{
                 ))}
               </div>
               {authors.length > 0 && (
-                <div className="flex gap-1 items-center mt-6">
-                  <p className="text-white text-xl">Müəlliflər : </p>
-                  <div id="author" className="flex gap-2">
+                <div className="flex gap-3 items-center mt-6">
+                  <p className="text-white text-base">Hazırlayanlar:</p>
+                  <div id="author" className="flex gap-1">
                     {authors.map((item: IAuthor | any) => {
                       return (
-                        <NavLink 
+                        <NavLink
+                          id="poppinsbold2"
                           target="blank"
-                          to={item.linkedin} 
-                          className="border-[1px] text-sm flex items-center gap-3 border-[rgb(30,41,60)] px-5 py-3 rounded text-white"
+                          to={item.linkedin}
+                          className=" flex items-center gap-2 rounded text-white"
                           key={item._id}
                         >
-                          <span> {item.name}</span>{" "}
+                          <span id="poppinsbold2"> {item.name}</span>{" "}
                           <FontAwesomeIcon
-                            className="text-xl"
+                            className="text-2xl "
                             icon={faLinkedin}
                           />
                         </NavLink>
@@ -86,26 +92,26 @@ const Questions: React.FC<{
                 <button
                   aria-label="Download Button"
                   id="poppins"
-                  className=" bg-blue-600  inline xl:w-auto lg:w-auto md:w-full sm:w-full rounded px-4 py-3 text-[#fff]"
+                  className=" inline border-[1px] border-[rgb(31,40,60)] px-4 py-3 rounded text-white"
                   onClick={() => generatePDF()}
                 >
-                  PDF kimi yüklə 📥
+                  PDF kimi yüklə <FontAwesomeIcon icon={faDownload} />
                 </button>
                 <button
                   id="poppins"
                   aria-label="Go to categories Button"
-                  className=" bg-blue-600  inline xl:w-auto lg:w-auto md:w-full sm:w-full rounded px-4 py-3 text-[#fff]"
+                  className=" inline border-[1px] border-[rgb(31,40,60)] px-4 py-3 rounded text-white"
                   onClick={() => window.scrollTo(0, 0)}
                 >
-                  Kateqoriyalar ✔
+                  Kateqoriyalar <FontAwesomeIcon icon={faLayerGroup} />
                 </button>
                 <button
                   aria-label="Suggest a question Button"
                   id="poppins"
-                  className=" bg-blue-600  inline xl:w-auto lg:w-auto md:w-full sm:w-full  rounded px-4 py-3 text-[#fff]"
+                  className=" inline border-[1px] border-[rgb(31,40,60)] px-4 py-3 rounded text-white"
                   onClick={() => setSuggest(true)}
                 >
-                  Sual tövsiyyə et 💭
+                  Sual tövsiyyə et <FontAwesomeIcon icon={faInbox} />
                 </button>
               </div>
             </div>

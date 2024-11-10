@@ -29,7 +29,7 @@ const AllQuestions = () => {
 
   const dispatch = useAppDispatch();
 
-  const { questions, loading } = useAppSelector((state) =>  state.getQuestions);
+  const { questions, loading } = useAppSelector((state) => state.getQuestions);
 
   const scrollDown = (
     category: string,
@@ -61,9 +61,6 @@ const AllQuestions = () => {
       dispatch(fetchQuestions({ sCategory }));
     }
   }, [dispatch, sCategory]);
-
-
-
 
   const questionsRef = useRef<HTMLDivElement | null>(null); // Ref for capturing PDF content
 
@@ -98,8 +95,6 @@ const AllQuestions = () => {
     setDivShow(false);
   };
 
-
-
   const [suggestIdea, setSuggestIdea] = useState<{
     category: string;
     fullName: string;
@@ -114,56 +109,52 @@ const AllQuestions = () => {
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     e.preventDefault();
-    const uri =
-      "https://interviews-land.info/api/v1/suggests/add";
+    const uri = "https://interviews-land.info/api/v1/suggests/add";
 
-      if(suggestIdea.description.length>25){
-        fetch(uri, {
-          method: "POST",
-          headers: {
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify(suggestIdea),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            toast(data.message, {
-              position: "top-right",
-              autoClose: 1500,
-              hideProgressBar: true,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: false,
-              progress: undefined,
-              style: {
-                backgroundColor: "green",
-                color: "white",
-                fontFamily: "Poppins",
-                zIndex: "999",
-              },
-            })
-            setSuggestIdea({category:"", fullName:"", description:""});
-          })
-      }
-      else{
-        toast('Sualı daha ətraflı yazın:)', {
-          position: "top-right",
-          autoClose: 1500,
-          hideProgressBar: true,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: false,
-          progress: undefined,
-          style: {
-            backgroundColor: "red",
-            color: "white",
-            fontFamily: "Poppins",
-            zIndex: "999",
-          },
-        })
-      }
-
-    
+    if (suggestIdea.description.length > 25) {
+      fetch(uri, {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(suggestIdea),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          toast(data.message, {
+            position: "top-right",
+            autoClose: 1500,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: false,
+            progress: undefined,
+            style: {
+              backgroundColor: "green",
+              color: "white",
+              fontFamily: "Poppins",
+              zIndex: "999",
+            },
+          });
+          setSuggestIdea({ category: "", fullName: "", description: "" });
+        });
+    } else {
+      toast("Sualı daha ətraflı yazın:)", {
+        position: "top-right",
+        autoClose: 1500,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: false,
+        progress: undefined,
+        style: {
+          backgroundColor: "red",
+          color: "white",
+          fontFamily: "Poppins",
+          zIndex: "999",
+        },
+      });
+    }
   };
 
   return (
@@ -192,15 +183,16 @@ const AllQuestions = () => {
             <div className="fixed w-full h-screen top-0 left-0 overflow-hidden bg-[#0e1527] flex items-center justify-center">
               <FontAwesomeIcon
                 icon={faArrowLeft}
-                onClick={()=>setSuggest(false)}
-                className="text-slate-300 px-6 py-4 cursor-pointer rounded border-[1px] absolute top-6 right-6 inline border-[rgb(30,41,60)]"
+                onClick={() => setSuggest(false)}
+                className="text-slate-300 px-6 py-4 cursor-pointer rounded border-[1px] absolute top-6 right-6 hover:bg-red-600 hover:text-white
+                transition duration-150 inline border-[rgb(30,41,60)]"
               />
-              <div className="w-3/5 h-auto px-6 py-12">
+              <div className="xl:w-3/5 lg:w-3/5 md:w-4/5 sm:w-full h-auto px-2 py-12">
                 <p
                   id="poppinsbold"
-                  className="tracking-wide text-center mb-6 text-4xl text-white"
+                  className="tracking-wide text-center mb-6 xl:text-4xl lg:text-4xl md:text-4xl sm:text-3xl text-white"
                 >
-                  Sual təklifinizi yazın ✐ᝰ
+                  Təklifinizi yazın ✐ᝰ
                 </p>
                 <form className="poppins flex flex-col gap-4">
                   <input
@@ -218,7 +210,7 @@ const AllQuestions = () => {
                   />
                   <select
                     required
-                    className="bg-transparent placeholder:text-white border-[rgba(30,41,60)] border-[1px] text-white px-4 py-3 h-[70px] w-full rounded outline-none"
+                    className="bg-transparent placeholder:text-white border-[rgba(30,41,60)] border-[1px] text-white px-4 py-3 h-16 w-full rounded outline-none"
                     id="category"
                     onChange={(e) =>
                       setSuggestIdea({
@@ -239,7 +231,7 @@ const AllQuestions = () => {
                           className="text-white text-base"
                           value={category.categoryname}
                         >
-                          {category.categoryname} 
+                          {category.categoryname}
                         </option>
                       ))}
                   </select>
@@ -259,9 +251,10 @@ const AllQuestions = () => {
                     <button
                       onClick={(e) => sendSuggestedIdea(e)}
                       aria-label="send button suggest"
-                      className="text-slate-300 px-6 py-4 rounded border-[1px] inline border-[rgb(30,41,60)]"
+                      className="text-slate-300 px-7 py-4 rounded border-[1px] inline border-[rgb(30,41,60)]
+                       hover:bg-blue-600 hover:text-white transition duration-150"
                     >
-                      Təklifini göndər
+                      Göndər
                     </button>
                   </div>
                 </form>
@@ -275,8 +268,6 @@ const AllQuestions = () => {
             categories={categories}
             scrollDown={scrollDown}
           />
-
-  
 
           <ToastContainer />
           <Questions

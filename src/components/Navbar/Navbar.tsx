@@ -183,7 +183,7 @@ const Navbar = () => {
           </div>
         </Popup>
 
-        <div className="xl:flex lg:flex md:hidden sm:hidden flex-row  items-center gap-0 text-base relative left-16 ">
+        <div className="xl:flex lg:flex md:hidden sm:hidden flex-row  items-center gap-1 text-base relative left-8 ">
           <NavLink
             className={({ isActive }) =>
               isActive
@@ -205,7 +205,7 @@ const Navbar = () => {
             id="poppins"
             to="/tecrubepaylash"
           >
-            Təcrübəni bölüş
+            Təcrübəni yaz
           </NavLink>
           <button
             aria-label="Show Video Button"
