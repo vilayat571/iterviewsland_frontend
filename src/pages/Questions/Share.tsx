@@ -45,11 +45,11 @@ const Share = () => {
       className="] w-full absolute top-0 left-0 h-screen xl:pt-36 lg:pt-36 md:pt-28 sm:pt-28 flex flex-col items-center"
     >
       <SEO
-        title="ITHUB - İnkişaf etdiricilər və IT Peşəkarları Müsahibə Təcrübələrini Paylaşır"
-        description="ITHUB-da inkişaf etdiricilər və digər IT mütəxəssisləri real müsahibə təcrübələrini paylaşır. Müsahibələrdə nələr baş verdiyini öyrənin və uğur qazanmağınıza kömək edəcək dəyərli məlumatlar əldə edin."
-        name="ITHUB"
+        title="Interviewsland - İnkişaf etdiricilər və IT Peşəkarları Müsahibə Təcrübələrini Paylaşır"
+        description="Interviewsland-da inkişaf etdiricilər və digər IT mütəxəssisləri real müsahibə təcrübələrini paylaşır. Müsahibələrdə nələr baş verdiyini öyrənin və uğur qazanmağınıza kömək edəcək dəyərli məlumatlar əldə edin."
+        name="Interviewsland"
         type="website"
-        keywords="ITHUB, müsahibə təcrübələri, inkişaf etdirici təcrübələri, IT müsahibələri, proqramlaşdırma, uğur hekayələri, Azərbaycan"
+        keywords="Interviewsland, müsahibə təcrübələri, inkişaf etdirici təcrübələri, IT müsahibələri, proqramlaşdırma, uğur hekayələri, Azərbaycan"
       />
 
       <ExampleText showPopup={showPopup} setShowPopup={setShowPopup} />

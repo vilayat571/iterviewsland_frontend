@@ -160,11 +160,11 @@ const AllQuestions = () => {
   return (
     <>
       <SEO
-        title="ITHUB - Proqramlaşdırma Müsahibə Sualları"
-        description="ITHUB-da Java, JavaScript, Python, CSS, HTML və digər proqramlaşdırma dillərində ən çox verilən müsahibə sualları və ətraflı cavablar ilə tanış olun."
-        name="ITHUB"
+        title="Interviewsland - Proqramlaşdırma Müsahibə Sualları"
+        description="Interviewsland-da Java, JavaScript, Python, CSS, HTML və digər proqramlaşdırma dillərində ən çox verilən müsahibə sualları və ətraflı cavablar ilə tanış olun."
+        name="Interviewsland"
         type="website"
-        keywords="ITHUB, müsahibə sualları, proqramlaşdırma sualları, Java müsahibə sualları, JavaScript müsahibə sualları, Python müsahibə sualları, CSS sualları, HTML sualları, proqramlaşdırma dili sualları, Azərbaycan"
+        keywords="Interviewsland, müsahibə sualları, proqramlaşdırma sualları, Java müsahibə sualları, JavaScript müsahibə sualları, Python müsahibə sualları, CSS sualları, HTML sualları, proqramlaşdırma dili sualları, Azərbaycan"
       />
       <ToastContainer />
       <MainPdfDiv

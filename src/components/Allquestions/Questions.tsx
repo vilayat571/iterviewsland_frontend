@@ -67,13 +67,12 @@ const Questions: React.FC<{
                     {authors.map((item: IAuthor | any) => {
                       return (
                         <NavLink
-                          id="poppinsbold2"
                           target="blank"
                           to={item.linkedin}
-                          className=" flex items-center gap-2 rounded text-white"
+                          className=" flex items-center gap-2 rounded text-blue-400"
                           key={item._id}
                         >
-                          <span id="poppinsbold2"> {item.name}</span>{" "}
+                          <span id="poppinsbold tracking-wider"> {item.name}</span>{" "}
                           <FontAwesomeIcon
                             className="text-2xl "
                             icon={faLinkedin}

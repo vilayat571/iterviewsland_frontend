@@ -50,11 +50,11 @@ const UserExperiences = () => {
     <>
       {/* Modal / Popup */}
       <SEO
-        title="ITHUB - Proqram Müsahibələri Təcrübələri"
-        description="ITHUB-da inkişaf etdiricilərin proqram müsahibələrində yaşadığı təcrübələri, müvəffəqiyyət hekayələrini və tövsiyələri oxuyun. Proqramlaşdırma müsahibələrində uğur qazanmaq üçün lazım olan ipuclarını kəşf edin."
-        name="ITHUB"
+        title="Interviewsland - Proqram Müsahibələri Təcrübələri"
+        description="Interviewsland-da inkişaf etdiricilərin proqram müsahibələrində yaşadığı təcrübələri, müvəffəqiyyət hekayələrini və tövsiyələri oxuyun. Proqramlaşdırma müsahibələrində uğur qazanmaq üçün lazım olan ipuclarını kəşf edin."
+        name="Interviewsland"
         type="website"
-        keywords="ITHUB, müsahibə təcrübələri, proqram müsahibəsi, inkişaf etdirici təcrübələri, müvəffəqiyyət hekayələri, proqramlaşdırma müsahibə tövsiyələri, Azərbaycan"
+        keywords="Interviewsland, müsahibə təcrübələri, proqram müsahibəsi, inkişaf etdirici təcrübələri, müvəffəqiyyət hekayələri, proqramlaşdırma müsahibə tövsiyələri, Azərbaycan"
       />
 
       <Popup play={isModalVisible} setPlay={setIsModalVisible}>

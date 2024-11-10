@@ -61,11 +61,11 @@ const Findexperience = () => {
       transition={{ type: "spring", stiffness: 100 }}
     >
       <SEO
-        title="ITHUB - Müsahibə Təcrübənizi Tapın"
+        title="Interviewsland - Müsahibə Təcrübənizi Tapın"
         description="ITHUB-da öz kodunuzu daxil edərək paylaşdığınız müsahibə təcrübənizi tapın. Müsahibə ilə bağlı yazdıqlarınıza asanlıqla erişin."
-        name="ITHUB"
+        name="Interviewsland"
         type="website"
-        keywords="ITHUB, kod daxil et, müsahibə təcrübələri, proqramlaşdırma, IT müsahibələri, təcrübə tapma, Azərbaycan"
+        keywords="Interviewsland, kod daxil et, müsahibə təcrübələri, proqramlaşdırma, IT müsahibələri, təcrübə tapma, Azərbaycan"
       />
 
       <p

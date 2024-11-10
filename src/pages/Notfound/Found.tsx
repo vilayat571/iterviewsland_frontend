@@ -7,11 +7,11 @@ const Found = () => {
   return (
   <>
    <SEO
-    title="ITHUB - Səhifə Tapılmadı"
+    title="Interviewsland - Səhifə Tapılmadı"
     description="Axtardığınız səhifə tapılmadı. İthub-a xoş gəlmisiniz! Proqramlaşdırma müsahibə sualları və təcrübələri ilə tanış olun."
-    name="ITHUB"
+    name="Interviewsland"
     type="website"
-    keywords="ITHUB, səhifə tapılmadı, proqramlaşdırma, müsahibə sualları, proqram inkişafı, Azərbaycan"
+    keywords="Interviewsland, səhifə tapılmadı, proqramlaşdırma, müsahibə sualları, proqram inkişafı, Azərbaycan"
   />
 
 
