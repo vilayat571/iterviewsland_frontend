@@ -3,7 +3,7 @@ import { ICategory } from "../../pages/Questions/AllQuestions";
 import { useAppDispatch } from "../../redux/reducers/store";
 import { fetchAuthors } from "../../redux/reducers/getAuthors";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBookmark } from "@fortawesome/free-solid-svg-icons";
+import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
 
 const Categories: React.FC<{
   categories: ICategory[] | null;
@@ -55,7 +55,7 @@ const Categories: React.FC<{
             } bg-[#10172A] border-[1px] flex items-center justify-between col-span-1 rounded `}
           >
             <span id="poppins">{category.categoryname}</span>
-            <FontAwesomeIcon icon={faBookmark} />
+            <FontAwesomeIcon icon={faArrowDown} />
           </button>
         ))}
       </div>

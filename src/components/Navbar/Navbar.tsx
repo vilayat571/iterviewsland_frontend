@@ -2,7 +2,6 @@ import Logo from "../../atoms/Navbar/Logo";
 import {
   faArrowLeft,
   faBars,
-  faCircleNodes,
   faDownload,
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
@@ -19,7 +18,6 @@ import DivshowLoading from "../Allquestions/DivshowLoading";
 import PDFIN from "./PDFIN";
 
 const Navbar = () => {
-  const [showPopup, setShowPopup] = useState(false);
   const [displaySidebar, setDisplaySidebar] = useState<boolean>(false);
   const [showCategories, setShowCategories] = useState(false);
   const dispatch = useAppDispatch();
@@ -103,25 +101,7 @@ const Navbar = () => {
     flex justify-between items-center  "
       >
         <Logo />
-        <Popup play={showPopup} setPlay={setShowPopup}>
-          <div className="flex items-center justify-center z-50 bg-[#0e1527] fixed w-full h-screen">
-            <FontAwesomeIcon
-              onClick={() => setShowPopup(!showPopup)}
-              icon={faArrowLeft}
-              className="absolute top-6 right-6 border-[1px] px-4 py-3 hover:bg-red-600 hover:text-white transition duration-300 rounded cursor-pointer border-[rgb(30,41,60)]"
-            />
-            <iframe
-              width="650"
-              height="405"
-              src="https://www.youtube.com/embed/1DcMeT_9jls?si=A7yMxK7XC2Lfk3Zm"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-            ></iframe>
-          </div>
-        </Popup>
+
         <Popup play={showCategories} setPlay={setShowCategories}>
           <DivshowLoading divShow={pdfLoading} />
 
@@ -207,16 +187,6 @@ const Navbar = () => {
           >
             Təcrübəni yaz
           </NavLink>
-          <button
-            aria-label="Show Video Button"
-            onClick={() => setShowPopup(!showPopup)}
-            className={
-              "bg-transparent text-base px-4 py-3 border-[rgb(33,46,71)] border-[1px] rounded"
-            }
-            id="poppins"
-          >
-            Təlimat <FontAwesomeIcon icon={faCircleNodes} />
-          </button>
         </div>
 
         <div className="xl:flex lg:flex md:hidden sm:hidden flex-row items-center gap-4 text-base">
@@ -229,7 +199,7 @@ const Navbar = () => {
             to={"/yazıtap"}
             id="poppins"
           >
-            Yazını tap
+            Tap
           </NavLink>
           |
           <PDFIN
@@ -242,8 +212,6 @@ const Navbar = () => {
         <Sidebar
           setIsSidebarOpen={setDisplaySidebar}
           isSidebarOpen={displaySidebar}
-          setShowPopup={setShowPopup}
-          showPopup={showPopup}
           showCategories={showCategories}
           savedQuestionsCart={savedQuestionsCart}
           setShowCategories={setShowCategories}

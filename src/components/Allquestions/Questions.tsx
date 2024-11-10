@@ -63,7 +63,7 @@ const Questions: React.FC<{
               {authors.length > 0 && (
                 <div className="flex gap-3 items-center mt-6">
                   <p className="text-white text-base">Hazırlayanlar:</p>
-                  <div id="author" className="flex gap-1">
+                  <div id="author" className="flex gap-5">
                     {authors.map((item: IAuthor | any) => {
                       return (
                         <NavLink

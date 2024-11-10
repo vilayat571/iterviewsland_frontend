@@ -85,12 +85,12 @@ const Findexperience = () => {
         </div>
         <div className="col-span-1 w-full h-screen flex items-center xl:px-0 lg:px-0 md:px-2 sm:px-2 justify-center">
           <div className="relative top-12 w-full flex flex-col items-center justify-center">
-            <p className="text-5xl xl:mb-3 lg:mb-3 md:mb-0 sm:mb-0  text-slate-100 text-center font-semibold">
-              Xoş gəldiniz 👋
+            <p className="text-5xl  text-slate-100 text-center font-semibold">
+              Salam 👋
             </p>
             <form
               onSubmit={(e) => handleSubmit(e)}
-              className="w-full xl:mt-8 lg:mt-8 md:mt-5 sm:mt-5  mb-1 flex items-center justify-center"
+              className="w-full xl:mt-8 lg:mt-8 md:mt-5 sm:mt-5  mb-1 flex flex-col items-center justify-center"
             >
               <OTPInput
                 value={query}
@@ -106,19 +106,18 @@ const Findexperience = () => {
                   fontSize: "24px",
                   // Use media query to adjust width and height on small screens
                   ...(window.innerWidth <= 768 && {
-                    width: "66px",
-                    height: "66px",
+                    width: "50px",
+                    height: "50px",
                   }),
                 }}
                 renderSeparator={<span>-</span>}
                 renderInput={(props) => <input {...props} />}
               />
+              <p className="text-blue-300 text-base xl:px-0 md:px-0 lg:px-0 sm:px-4 text-left mt-3 ">
+                Diqqət: kodun doğruluğundan əmin olun
+              </p>
             </form>
 
-            <p className="text-white text-base xl:w-3/5 lg:w-3/5 md:w-full sm:w-full text-center mt-3 mb-3">
-              Diqqət: zəhmət olmasa kodu daxil edərkən doğruluğundan əmin olun,
-              əks halda yazı mətniniz tapılmayacaqdır.
-            </p>
             <div className="flex items-start justify-start text-lg mt-5 gap-3">
               <button
                 aria-label="Search Button"
@@ -134,7 +133,7 @@ const Findexperience = () => {
                 onClick={() => navigate("/tecrubepaylash")}
                 className="text-white hover:bg-blue-900 border-[1px] border-[rgb(30,41,60)] transition duration-300 px-8 py-4 rounded text-center"
               >
-                Təcrübə Yaz ✎
+                Yaz ✎
               </button>
             </div>
           </div>
@@ -159,20 +158,34 @@ const Findexperience = () => {
                 />
                 <div
                   className="xl:w-1/2 lg:w-1/2 mt-6 md:w-full sm:w-full border-[1px] flex flex-col gap-4 border-[rgba(30,41,60)] rounded 
-                xl:px-6 lg:px-6 md:px-4 sm:px-2 mx-3 xl:py-6 lg:py-6 md:py-3 sm:py-3  h-auto"
+xl:px-6 lg:px-6 md:px-4 sm:px-2 mx-12 xl:py-6 lg:py-6 md:py-3 sm:py-3  h-auto"
                 >
-                  <p className="w-full">{experience.fullName}</p>
-                  <p className="w-full border-[1px] border-[rgba(30,41,60)] px-3 py-4 rounded">
-                    {experience.title}
-                  </p>
-                  <p className="w-full border-[1px] border-[rgba(30,41,60)] px-3 py-4 rounded">
-                    {experience.description}
-                  </p>
-                  <p className="w-full border-[1px] border-[rgba(30,41,60)] px-3 py-4 rounded">
-                    {experience.category}
-                  </p>
-                  <p className="w-full border-[1px] border-[rgba(30,41,60)] px-3 py-4 rounded">
-                    {experience.status ? "Paylaşılıb" : "Paylaşılmayib"}
+                    <p id="poppinsbold" className="rounded">
+                     Ad: {experience.fullName}
+                    </p>
+                 
+                    <p id="poppinsbold" className="rounded">
+                     Cari vəziyyət:  {experience.status ? "Paylaşılıb" : "Paylaşılmayib"}
+                    </p>
+                  <div className="flex items-center text-nowrap overflow-scroll justify-start gap-2">
+                    <span className="text-blue-300 ">Vakansiya:</span>
+                    <p>{experience.title}</p>
+                  </div>
+
+                  <div className="flex items-start flex-col justify-start gap-2">
+                    <span className="text-blue-300">Haqqında:</span>
+                    <p
+                      className="overflow-scroll"
+                      dangerouslySetInnerHTML={{
+                        __html: experience.description,
+                      }}
+                    />
+                  </div>
+
+                
+                
+                    <p className="w-full flex ">
+                    <span className="bg-blue-600 px-4 py-3 rounded">{experience.category}</span>
                   </p>
                 </div>
               </div>
@@ -185,13 +198,11 @@ const Findexperience = () => {
                 />
                 <div className="relative top-6">
                   <p className="flex flex-col">
-                    <span className="text-slate-100 xl:text-4xl lg:text-4xl md:text-4xl sm:text-4xl">
-                      Axtarışa uyğun{" "}
-                      <br className="xl:block lg:block sm:hidden md:hidden" />{" "}
-                      yazı mətni tapılmadı ✖
+                    <span className="text-slate-100 text-3xl">
+                      Təssüf ki, tapılmadı
                     </span>
                     <span className="mt-4 w-full text-lg text-white">
-                      Əgər yazı mətninin mövcud olduğundan{" "}
+                      Mətninin mövcud olduğundan{" "}
                       <br className="xl:block lg:block sm:hidden md:hidden" />{" "}
                       əminsinizsə, kodu səhf yazmış ola bilərsiniz.
                     </span>
@@ -202,7 +213,7 @@ const Findexperience = () => {
                       onClick={() => setShow(false)}
                       className="xl:px-6 lg:px-6 md:px-5 sm:px-5 py-4 rounded border-[1px] border-[rgb(30,41,60)] text-white m-1"
                     >
-                      Yenidən sına ✨
+                      Axtar ✨
                     </button>
                     <NavLink
                       to={"/tecrubepaylash"}

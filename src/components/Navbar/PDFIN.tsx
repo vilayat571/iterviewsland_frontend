@@ -13,7 +13,7 @@ const PDFIN: React.FC<{
       className={"bg-blue-600 px-4 py-4 border-[rgb(33,46,71)] border-[1px] inline-block text-base text-white rounded transition duration-150 hover:bg-transparent"}
       id="poppins"
     >
-      PDF-in <FontAwesomeIcon icon={faDiagramProject} />
+      PDF <FontAwesomeIcon icon={faDiagramProject} />
       <sup className="p-1">{savedQuestionsCart.length}</sup>
     </button>
   );

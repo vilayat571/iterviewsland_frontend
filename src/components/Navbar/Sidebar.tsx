@@ -1,6 +1,6 @@
 import React from "react";
 import Logo from "../../atoms/Navbar/Logo";
-import { faPlayCircle, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink } from "react-router-dom";
 import PDFIN from "./PDFIN";
@@ -8,16 +8,13 @@ import PDFIN from "./PDFIN";
 const Sidebar: React.FC<{
   isSidebarOpen: boolean;
   setIsSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  showPopup: boolean;
-  setShowPopup: React.Dispatch<React.SetStateAction<boolean>>;
   savedQuestionsCart: [];
   showCategories: boolean;
   setShowCategories: React.Dispatch<React.SetStateAction<boolean>>;
 }> = ({
   isSidebarOpen,
   setIsSidebarOpen,
-  showPopup,
-  setShowPopup,
+
   savedQuestionsCart,
   showCategories,
   setShowCategories,
@@ -40,16 +37,29 @@ const Sidebar: React.FC<{
           />
         </button>
       </div>
-      <div  
-                onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-      className="flex flex-col text-left mt-6 gap-4">
-        <NavLink className={' hover:text-blue-300 transition duration-100'} id="poppins" to="/">
+      <div
+        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+        className="flex flex-col text-left mt-6 gap-4"
+      >
+        <NavLink
+          className={" hover:text-blue-300 transition duration-100"}
+          id="poppins"
+          to="/"
+        >
           Suallar
         </NavLink>
-        <NavLink className={' hover:text-blue-300 transition duration-100'} id="poppins" to="/tecrubeler">
+        <NavLink
+          className={" hover:text-blue-300 transition duration-100"}
+          id="poppins"
+          to="/tecrubeler"
+        >
           Təcrübələr
         </NavLink>
-        <NavLink className={' hover:text-blue-300 transition duration-100'} id="poppins" to="/tecrubepaylash">
+        <NavLink
+          className={" hover:text-blue-300 transition duration-100"}
+          id="poppins"
+          to="/tecrubepaylash"
+        >
           Təcrübəni bölüş
         </NavLink>
 
@@ -69,19 +79,6 @@ const Sidebar: React.FC<{
           savedQuestionsCart={savedQuestionsCart}
           setShowCategories={setShowCategories}
         />
-        <button
-          aria-label="Open Popup Button"
-          onClick={() => {
-            setShowPopup(!showPopup);
-            setIsSidebarOpen(!isSidebarOpen);
-          }}
-          className={
-            "bg-blue-800 transition duration-150 hover:bg-transparent px-4 py-4 border-[rgb(33,46,71)] text-base border-[1px] rounded"
-          }
-          id="poppins"
-        >
-          Necə çalşır <FontAwesomeIcon icon={faPlayCircle} />
-        </button>
       </div>
     </div>
   );

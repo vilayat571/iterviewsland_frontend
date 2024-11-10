@@ -107,7 +107,7 @@ const MainpieceofShareCom: React.FC<{
     }
 
     // Validate description length
-    if (description.length < 100) {
+    if (description.length < 300) {
       toast("Təcrübəniz haqqında məlumatı ətraflı yazın.", {
         position: "top-right",
         autoClose: 1500,
