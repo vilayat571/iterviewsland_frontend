@@ -1,4 +1,4 @@
-import { faDiagramProject } from "@fortawesome/free-solid-svg-icons";
+import { faFileCirclePlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/reducers/store";
@@ -50,7 +50,7 @@ const Questions: React.FC<{
 
                     <FontAwesomeIcon
                       className="text-white cursor-pointer"
-                      icon={faDiagramProject}
+                      icon={faFileCirclePlus}
                     />
                   </p>
                 ))}

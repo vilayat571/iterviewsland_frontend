@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Logo = () => {
   return (
     <p className="text-center flex items-center justify-center text-white">
-        <Link to='/'  id="poppinsbold2" className="text-white text-3xl ">
+        <Link to='/'  id="poppinsbold" className="text-white text-[28px] ">
           it.land
         </Link>
         <p>

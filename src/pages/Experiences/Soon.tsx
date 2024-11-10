@@ -7,7 +7,7 @@ const Soon = () => {
 
   return (
     <div className="flex items-center justify-center flex-col w-full h-screen text-white">
-      <p className=" text-5xl teext-center" id="poppinsbold">
+      <p className=" xl:text-5xl lg:text-5xl md:text-4xl sm:text-3xl text-center" id="poppinsbold">
         Tezliklə sizinləyik 🔥
       </p>
       <button

@@ -40,14 +40,16 @@ const Sidebar: React.FC<{
           />
         </button>
       </div>
-      <div className="flex flex-col text-left mt-6 gap-4">
-        <NavLink id="poppins" to="/">
+      <div  
+                onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+      className="flex flex-col text-left mt-6 gap-4">
+        <NavLink className={' hover:text-blue-300 transition duration-100'} id="poppins" to="/">
           Suallar
         </NavLink>
-        <NavLink id="poppins" to="/tecrubeler">
+        <NavLink className={' hover:text-blue-300 transition duration-100'} id="poppins" to="/tecrubeler">
           Təcrübələr
         </NavLink>
-        <NavLink id="poppins" to="/tecrubepaylash">
+        <NavLink className={' hover:text-blue-300 transition duration-100'} id="poppins" to="/tecrubepaylash">
           Təcrübəni bölüş
         </NavLink>
 
@@ -55,7 +57,7 @@ const Sidebar: React.FC<{
           className={({ isActive }) =>
             isActive
               ? "bg-white px-5 py-4 rounded text-black"
-              : "bg-transparent text-base text-center px-4 py-3 border-[rgb(33,46,71)] border-[1px] rounded"
+              : "bg-transparent text-base text-center px-4 py-4 hover:bg-blue-800 transition duration-200 border-[rgb(33,46,71)] border-[1px] rounded"
           }
           to={"/yazıtap"}
           id="poppins"
@@ -74,7 +76,7 @@ const Sidebar: React.FC<{
             setIsSidebarOpen(!isSidebarOpen);
           }}
           className={
-            "bg-blue-800 px-4 py-3 border-[rgb(33,46,71)] text-base border-[1px] rounded"
+            "bg-blue-800 transition duration-150 hover:bg-transparent px-4 py-4 border-[rgb(33,46,71)] text-base border-[1px] rounded"
           }
           id="poppins"
         >

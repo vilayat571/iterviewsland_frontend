@@ -10,7 +10,7 @@ const PDFIN: React.FC<{
     <button
       aria-label="Counts in the PDF Button"
       onClick={() => setShowCategories(!showCategories)}
-      className={"bg-blue-600 px-4 py-3 text-base text-white rounded"}
+      className={"bg-blue-600 px-4 py-4 border-[rgb(33,46,71)] border-[1px] inline-block text-base text-white rounded transition duration-150 hover:bg-transparent"}
       id="poppins"
     >
       PDF-in <FontAwesomeIcon icon={faDiagramProject} />

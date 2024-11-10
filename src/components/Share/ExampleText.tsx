@@ -11,7 +11,7 @@ const ExampleText: React.FC<{
       {showPopup && (
         <div
           id="ocean"
-          className="fixed w-full h-screen right-0 top-0 bg-[#0E1527] text-white z-10 
+          className="fixed overflow-scroll w-full h-screen right-0 top-0 bg-[#0E1527] text-white z-10 
       flex items-center justify-center px-4 py-2 rounded"
         >
           <button
@@ -26,7 +26,7 @@ const ExampleText: React.FC<{
           >
             <FontAwesomeIcon className="text-white" icon={faArrowLeft} />
           </button>
-          <div className="h-auto border-[rgb(30,41,60)] rounded border-[1.5px] 
+          <div className="sm:absolute xl:relative lg:relative md:relative xl:top-0 lg:top-0 md:top-0 sm:top-20 border-[rgb(30,41,60)] rounded border-[1.5px] 
           xl:w-1/2 lg:w-1/2 md:w-full sm:w-full py-3 px-3 flex flex-col items-start gap-3">
             <p
               id="ocean"

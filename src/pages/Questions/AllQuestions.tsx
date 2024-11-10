@@ -5,11 +5,10 @@ import Introtext from "../../atoms/Questions/Introtext";
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faShare } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { useAppDispatch, useAppSelector } from "../../redux/reducers/store";
 import { fetchQuestions } from "../../redux/reducers/getQuestions";
 import Loading from "../../Layout/Loading";
-import { socialMediaIcons } from "../../constants/socialMedia";
 import Popup from "../../components/Main/Popup";
 import { toast, ToastContainer } from "react-toastify";
 import DivshowLoading from "../../components/Allquestions/DivshowLoading";
@@ -25,9 +24,9 @@ export interface ICategory {
 const AllQuestions = () => {
   const [suggest, setSuggest] = useState(false);
   const [categories, setCategories] = useState<ICategory[] | null>(null);
-  const [sCategory, setSCategory] = useState<string | null>("Javascript");
+  const [sCategory, setSCategory] = useState<string | null>("JavaScript");
   const [display, setDisplay] = useState(false);
-  const [unsupportedShare, setUnsupportedShare] = useState(false); // New state for unsupported sharing
+
   const dispatch = useAppDispatch();
 
   const { questions, loading } = useAppSelector((state) =>  state.getQuestions);
@@ -63,28 +62,8 @@ const AllQuestions = () => {
     }
   }, [dispatch, sCategory]);
 
-  const [content, setContent] = useState<{
-    title: string;
-    text: string;
-    url: string;
-  } | null>(null);
 
-  const shareUrl = "https://ithubaz.netlify.app/";
 
-  const handleShare = async (
-    category: string,
-    e: React.MouseEvent<SVGSVGElement, MouseEvent>
-  ) => {
-    e.stopPropagation();
-    const shareData: { title: string; text: string; url: string } = {
-      title: `${category}-ilə bağlı m`,
-      text: "ded",
-      url: shareUrl,
-    };
-
-    setContent(shareData);
-    setUnsupportedShare(true); // Set unsupported share state
-  };
 
   const questionsRef = useRef<HTMLDivElement | null>(null); // Ref for capturing PDF content
 
@@ -119,57 +98,7 @@ const AllQuestions = () => {
     setDivShow(false);
   };
 
-  const ShareComponent = (content: {
-    title: string;
-    text: string;
-    url: string;
-  }) => {
-    return (
-      <Popup play={unsupportedShare} setPlay={setUnsupportedShare}>
-        <div className="bg-[#0E1527] text-white w-full h-screen fixed flex items-center justify-center rounded">
-          <FontAwesomeIcon
-            className="px-4 cursor-pointer py-3 rounded border-[1px] hover:bg-red-600 hover:text-white  absolute top-6 right-6 text-lg border-[rgb(30,41,60)]"
-            onClick={() => setUnsupportedShare(false)}
-            icon={faArrowLeft}
-          />
-          <div className="xl:w-1/3 lg:w-1/3 md:w-full sm:w-full h-auto p-6">
-            <div
-              id="ocean"
-              className="w-full border-[1px] border-[rgb(30,41,60)] p-3 py-5 rounded justify-between flex items-center"
-            >
-              <p className="text-2xl"> Bizi paylaşmağı unutma 🤗</p>
-            </div>
-            <div className="border-[rgb(31,40,60)] border-[1px] p-6 px-3 flex flex-col gap-5 rounded border-t-0">
-              {socialMediaIcons.map((icon) => {
-                const completeUrl = `${icon.url}${icon.queryParams(
-                  encodeURIComponent(shareUrl),
-                  encodeURIComponent(content?.title || "")
-                )}`;
 
-                return (
-                  <a
-                    href={completeUrl}
-                    className="flex gap-2 justify-between items-center rounded"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    key={icon.text}
-                  >
-                    <p className="flex items-center justify-center gap-2">
-                      <span className="text-lg">{icon.text}</span>
-                    </p>
-                    <FontAwesomeIcon
-                      className="px-1 ml-1 text-xl"
-                      icon={faShare}
-                    />
-                  </a>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </Popup>
-    );
-  };
 
   const [suggestIdea, setSuggestIdea] = useState<{
     category: string;
@@ -310,7 +239,7 @@ const AllQuestions = () => {
                           className="text-white text-base"
                           value={category.categoryname}
                         >
-                          {category.categoryname}
+                          {category.categoryname} 
                         </option>
                       ))}
                   </select>
@@ -344,17 +273,10 @@ const AllQuestions = () => {
           <Categories
             sCategory={sCategory}
             categories={categories}
-            handleShare={handleShare}
             scrollDown={scrollDown}
           />
 
-          {unsupportedShare && content && (
-            <ShareComponent
-              title={content.title}
-              text={content.text}
-              url={content.url}
-            />
-          )}
+  
 
           <ToastContainer />
           <Questions

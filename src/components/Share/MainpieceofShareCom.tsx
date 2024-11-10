@@ -151,7 +151,6 @@ const MainpieceofShareCom: React.FC<{
     toolbar: [
       [{ header: [1, 2, 3, 4, 5, 6, false] }],
       [{ font: [] }],
-      [{ size: [] }],
       ["link"],
     ],
   };
@@ -160,21 +159,21 @@ const MainpieceofShareCom: React.FC<{
     <>
       <ToastContainer />
 
-      <p id="ocean" className="text-4xl font-semibold text-white">
+      <p id="ocean" className=" xl:mt-0 lg:mt-0 md:mt-0 sm:mt-10  xl:text-4xl lg:text-4xl md:text-3xl sm:text-3xl font-semibold text-white">
         Yaz ✎ ⋆⑅˚₊
       </p>
-      <form className="mt-5 xl:w-3/4 lg:w-3/4 sm:w-full px-3 md:w-full ">
-        <div className="grid xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 w-full gap-4 ">
+      <form className="mt-6 xl:w-3/4 lg:w-3/4 sm:w-full px-3 md:w-full ">
+        <div className="grid xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 w-full xl:gap-4 lg:gap-4 md:gap-2 sm:gap-2 ">
           <div className="flex flex-col items-start col-span-1">
             <select
               required
-              className="bg-transparent placeholder:text-white border-[rgba(30,41,60)] border-[1px] text-white px-4 py-3 h-[70px] w-full rounded outline-none"
+              className="bg-transparent placeholder:text-white border-[rgba(30,41,60)] border-[1px] text-white px-4 py-3 xl:h-[70px] lg:h-[70px] md:h-[70px] sm:h-14 w-full rounded outline-none"
               id="category"
               onChange={(e) => changeInputs(e)}
               value={experience.category}
             >
               <option value="" className="text-white" disabled>
-                Kateqoriya seçin
+                Sahə
               </option>{" "}
               {/* Placeholder */}
               {categories != null &&
@@ -193,10 +192,10 @@ const MainpieceofShareCom: React.FC<{
           <div className="flex flex-col items-start col-span-1">
             <input
               required={true}
-              className="bg-transparent border-[rgba(30,41,60)] border-[1px] poppins text-white  px-4 py-3 h-[70px]  w-full rounded outline-none
+              className="bg-transparent border-[rgba(30,41,60)] border-[1px] poppins text-white  px-4 py-3 xl:h-[70px] lg:h-[70px] md:h-[70px] sm:h-14  w-full rounded outline-none
                placeholder:text-slate-300"
               id="fullName"
-              placeholder="Ad və soyadınızı daxil edin.."
+              placeholder="Ad və ya ləqəb"
               onChange={(e) => changeInputs(e)}
               value={experience.fullName}
             />
@@ -207,10 +206,11 @@ const MainpieceofShareCom: React.FC<{
           <div className="flex flex-col items-start col-span-1">
             <input
               required={true}
-              className="bg-transparent border-[rgba(30,41,60)] border-[1px] poppins text-white placeholder:text-slate-300  px-4 py-3 h-[70px] w-full rounded outline-none
+              className="bg-transparent border-[rgba(30,41,60)] border-[1px] poppins text-white placeholder:text-slate-300 
+               px-4 py-3 xl:h-[70px] lg:h-[70px] md:h-[70px] sm:h-14 w-full rounded outline-none
                "
               id="title"
-              placeholder="Təcrübənizə uyğun başlıq daxil edin.."
+              placeholder="Vakansiya"
               onChange={(e) => changeInputs(e)}
               value={experience.title}
             />
@@ -219,7 +219,7 @@ const MainpieceofShareCom: React.FC<{
 
         <div className="flex flex-col w-full mt-6">
           <ReactQuill
-            placeholder="Təcrübəniz haqqında ətraflı yazın.."
+            placeholder="Təcrübəniz"
             value={description}
             className="xl:h-80 lg:h-80 md:h-60 sm:h-60 text-white "
             id="description"
@@ -239,7 +239,7 @@ const MainpieceofShareCom: React.FC<{
             border-[rgba(30,41,60)] border-[1px] hover:text-white
             px-5 py-4 rounded"
           >
-            Mətni göndər
+           Göndər
           </button>
           <button
                     aria-label="Go back Button"
@@ -251,7 +251,7 @@ const MainpieceofShareCom: React.FC<{
             border-[rgba(30,41,60)] border-[1px] hover:text-white
             px-5 py-4 rounded"
           >
-            Geri dön
+            Geri
           </button>
         </div>
       </form>

@@ -129,43 +129,54 @@ const Navbar = () => {
             <FontAwesomeIcon
               onClick={() => setShowCategories(!showCategories)}
               icon={faArrowLeft}
-              className="absolute xl:top-6 lg:top-6 md:top-4 sm:top-4 xl:right-12 lg:right-12 md:right-6 sm:right-6 border-[1px] px-3 py-2 hover:bg-red-600 hover:text-white transition duration-300
+              className="absolute xl:top-6 lg:top-6 md:top-4 sm:top-0 xl:right-12 lg:right-12 md:right-6 sm:right-6 border-[1px] px-4
+              text-base py-3 hover:bg-red-600 hover:text-white transition duration-300
                rounded cursor-pointer border-[rgb(30,41,60)]"
             />
-            <div className="flex w-full items-center justify-between mt-6">
-              <p className="text-3xl xl:inline lg:inline md:hidden sm:hidden">Seçilmiş sualların ₊✩‧₊</p>
-              <div className="mt-3">
-                <button
-                  onClick={() => generatePDF()}
-                  aria-label="Download Button"
-                  className="bg-white text-black px-4 py-3 hover:bg-blue-800 hover:text-white transition duration-300 rounded"
-                >
-                  PDF-ini yüklə <FontAwesomeIcon icon={faDownload} />
-                </button>
+            {questionsCart.length > 0 && (
+              <div className="flex w-full items-center justify-between mt-6">
+                <p className="text-3xl xl:inline lg:inline md:hidden sm:hidden">
+                  Seçilmiş sualların ₊✩‧₊
+                </p>
+                <div className="mt-3">
+                  <button
+                    onClick={() => generatePDF()}
+                    aria-label="Download Button"
+                    className="bg-white text-black px-4 py-3 hover:bg-blue-800 hover:text-white transition duration-300 rounded"
+                  >
+                    PDF-ini yüklə <FontAwesomeIcon icon={faDownload} />
+                  </button>
+                </div>
               </div>
-            </div>
+            )}
             {/* Scrollable container for questions */}
             <div className="flex flex-col gap-10 mt-6 max-h-[85vh] w-full pb-6 overflow-y-auto">
-              {questionsCart.map((item, index) => (
-                <p
-                  key={index}
-                  className="flex border-t-0 border-l-0 border-r-0 border-b-[rgb(30,41,60)] border-[1px] items-center justify-between"
-                >
-                  {index + 1}. {item.category}
-                  <FontAwesomeIcon
-                    onClick={() => {
-                      const survey = confirm("Sualı silmək istəyirsiniz?");
-                      if (survey) {
-                        dispatch(
-                          removeQuestionFromCart({ category: item.category })
-                        );
-                      }
-                    }}
-                    className="p-2 px-3 mb-2 hover:bg-red-600 hover:border-red-600 cursor-pointer transition duration-300 rounded border-[1px] border-[rgb(30,41,60)]"
-                    icon={faTimes}
-                  />
-                </p>
-              ))}
+              {questionsCart.length == 0 ? (
+                <div className="h-screen  text-3xl text-center flex items-center justify-center">
+                  <span>PDF boşdur 🧠</span>{" "}
+                </div>
+              ) : (
+                questionsCart.map((item, index) => (
+                  <p
+                    key={index}
+                    className="flex border-t-0 border-l-0 border-r-0 border-b-[rgb(30,41,60)] border-[1px] items-center justify-between"
+                  >
+                    {index + 1}. {item.category}
+                    <FontAwesomeIcon
+                      onClick={() => {
+                        const survey = confirm("Sualı silmək istəyirsiniz?");
+                        if (survey) {
+                          dispatch(
+                            removeQuestionFromCart({ category: item.category })
+                          );
+                        }
+                      }}
+                      className="p-2 px-3 mb-2 hover:bg-red-600 hover:border-red-600 cursor-pointer transition duration-300 rounded border-[1px] border-[rgb(30,41,60)]"
+                      icon={faTimes}
+                    />
+                  </p>
+                ))
+              )}
             </div>
 
             {/* Button for PDF download */}
@@ -182,8 +193,8 @@ const Navbar = () => {
             id="poppins"
             to="/tecrubeler"
           >
-            Təcrübələr <sup className="bg-blue-600 p-[3px] rounded">tezliklə
-            </sup>
+            Təcrübələr{" "}
+            <sup className="bg-blue-600 p-[3px] rounded">tezliklə</sup>
           </NavLink>
           <NavLink
             className={({ isActive }) =>
